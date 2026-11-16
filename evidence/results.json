@@ -1,0 +1,34 @@
+{
+  "viewports": [
+    360,
+    390,
+    768,
+    1440
+  ],
+  "routes": [
+    "home",
+    "shop",
+    "product/atlas",
+    "cart",
+    "checkout",
+    "pos",
+    "admin",
+    "matrix"
+  ],
+  "layoutChecks": 36,
+  "interactionChecks": [
+    "fixed lens pricing",
+    "consultation blocks purchase",
+    "unavailable blocks purchase",
+    "WhatsApp message safety",
+    "cart lens breakdown",
+    "checkout allocation exception",
+    "empty search",
+    "reset filters",
+    "sort",
+    "barcode example",
+    "offline finalization blocked",
+    "mobile navigation"
+  ],
+  "failures": []
+}

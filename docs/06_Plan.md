@@ -30,3 +30,10 @@ Real payment gateway integration, printer auto-cut validation, privacy policy, b
 
 ## Change control
 Every change to a locked rule requires a new version entry and explicit user approval. Maintain root AGENTS.md and the six canonical docs; preserve test evidence and rollback plans.
+
+## Changelog — 2026-11-17 / Phase 03
+- Architecture direction approved subject to PHP/MySQL compatibility checks; production-specific decisions remain open.
+- UI baseline approved. Explicit authorization granted for frontend visual prototype only, on a separate branch/PR.
+- Added responsive storefront, collection, product/lens selection, cart/checkout simulation, POS and read-only admin/matrix previews. No backend batch authorization is implied.
+- Review checks and rollback are documented in `preview/README.md`; screenshots and actual browser results are in `evidence/`.
+- Gate: stop after frontend delivery. Await user review and separate backend authorization; do not merge or publish automatically.

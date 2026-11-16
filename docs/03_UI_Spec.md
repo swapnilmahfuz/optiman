@@ -32,3 +32,6 @@ Products/variants, categories, lens rules and price matrix, WhatsApp config, bra
 
 ## Accessibility / performance
 Responsive image sizes, lazy loading, semantic form labels, keyboard navigation, empty/error/loading states, no AR camera prompt until user clicks Try On. Optimize for moderate shared hosting.
+
+## Phase 03 review implementation — 2026-11-17
+Architecture direction and the proposed UI baseline were approved in chat. User authorization is limited to a frontend visual prototype. The implementation in `preview/` uses the locked palette and original responsive layouts, synthetic catalog data and in-memory interactions. It does not satisfy backend, privacy-storage, stock or production acceptance criteria. Review routes, mock boundaries and evidence are documented in `preview/README.md`. Locked requirements above remain unchanged.

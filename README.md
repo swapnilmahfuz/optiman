@@ -19,3 +19,8 @@ Build a polished **local-PC functional client prototype** of Optiman eyewear ret
 
 ## Scope boundary
 The external 3D model generator/scanner/photography box is deferred. AR is an optional add-on; calibrated 2D frames are allowed for the first demo, 3D GLB import later. AR failure must never block checkout.
+
+## Phase 03 — frontend preview (2026-11-17)
+The architecture direction and UI baseline were approved in chat. Authorization now covers **frontend visual prototyping only**. Locked business requirements are unchanged; backend, database, authentication, live payments and production deployment remain unapproved.
+
+See [preview/README.md](preview/README.md) for local Windows instructions, mocked interactions, routes and limitations. Run the preview from `preview/index.html` or a local static server. Review evidence is in `evidence/`.

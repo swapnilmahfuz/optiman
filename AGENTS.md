@@ -19,3 +19,6 @@ Cross-channel inventory; concurrent last-unit sale; warehouse fallback; returns;
 
 ## Approved Phase 03.5D / 03.6 / 03.7 amendment — 2026-11-17
 The owner's consolidated prompt explicitly supersedes earlier demo assumptions: exactly Owner and Branch Manager, identical modules with location scope only; online allocation from any eligible single location (no warehouse-first preference); shared browser-local persistent synthetic operational state and simulated stock mutations; immediate same-page prescription controls without a wizard. Persist no prescription measurements, photo filenames/content, actual customer information or credentials. Production still requires transactional server authorization/inventory and private prescription storage. This phase authorizes frontend demo implementation and Pages updates only; no backend or merge.
+
+## Targeted storefront authorization — 2026-11-17
+Latest owner instruction establishes the configurable BDT 150 once-per-order delivery/lens advance policy and Bangla merchant guidance, superseding prior unconfigured-payment assumptions for the online demo only. Preserve prescription fields/validation/compatibility and operational modules. Supplied return text remains a merchant draft for legal review, subject to statutory rights; no automatic legal-policy enforcement or real payment verification is authorized.

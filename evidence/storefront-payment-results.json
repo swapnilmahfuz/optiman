@@ -1,0 +1,15 @@
+{
+  "checks": [
+    "unchanged explicit lens prices/states",
+    "delivery once per order",
+    "frame-only advance",
+    "mixed multi-quantity lens advance/COD",
+    "verification and dispatch gate",
+    "retry idempotency and reservation preservation",
+    "exception cannot confirm",
+    "configurable fee and snapshots",
+    "audience tags without SKU duplication",
+    "unchanged prescription fields/validation and compatibility"
+  ],
+  "failures": []
+}

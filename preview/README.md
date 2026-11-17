@@ -1,3 +1,7 @@
+# Latest targeted storefront update
+
+See [finish names, Bangla guidance, payment rules, audience setup and review checklist](../docs/12_Targeted_Storefront_Update.md). This supersedes older notes that delivery/advance were unconfigured.
+
 # Latest prescription correction
 
 See [current lens behavior, WhatsApp setup and review checklist](../docs/11_Lens_Selection_Correction.md). Progressive is a separate fourth type; customer suggestions contain only compatible purchasable lenses.

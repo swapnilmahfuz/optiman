@@ -20,10 +20,10 @@ const fs=require('node:fs');
   await p.locator('#add-cart').click();
   if(!(await p.locator('#bag-feedback').textContent()).includes('Added')||!await p.locator('#view-bag').isVisible())failures.push(`${width}: bag feedback`);
   const mode=p.getByRole('button',{name:'With Power / Lens',exact:true});await mode.focus();await p.keyboard.press('Enter');
-  for(const [category,lens,total] of [['Single vision','৳1,200','৳4,400'],['Blue-cut / anti-reflective','৳1,600','৳4,800'],['Photochromic','৳2,200','৳5,400']]){
+  for(const [category,lens,total] of [['Anti-Reflective Lens','৳1,200','৳4,400'],['Blue Cut Lens','৳1,600','৳4,800'],['Photochromic Lens','৳2,200','৳5,400']]){
    await p.selectOption('#lens-category',category);const text=await p.locator('.price-breakdown').textContent();if(!text.includes(lens)||!text.includes(total))failures.push(`${width}: ${category} calculation`);
   }
-  await p.selectOption('#lens-category','Single vision');await checkLayout('product-lenses');
+  await p.selectOption('#lens-category','Anti-Reflective Lens');await checkLayout('product-lenses');
   await p.locator('#add-cart').click();
   await p.locator('[data-rx-type=progressive]').click();for(const side of ['right','left']){await p.fill(`#rx-${side}-sph`,'1');await p.fill(`#rx-${side}-add`,'1');}
   if(!await p.locator('#add-cart').isDisabled())failures.push(`${width}: consultation purchase`);

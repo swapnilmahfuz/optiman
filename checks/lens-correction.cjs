@@ -6,14 +6,15 @@ const heading='Looking for a specific lens?';
 const body='For your specific lens requirements, please contact us on WhatsApp. Our team will be happy to assist you.';
 (async()=>{
  const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',args:['--no-sandbox']});
+ // Respect reduced motion to avoid smooth-scroll timing during repeated cart edits.
  const results=[],errors=[];
  for(const width of [360,390,768,1024,1440]){
-  const p=await browser.newPage({viewport:{width,height:1000}});p.on('pageerror',e=>errors.push(`${width}: ${e.message}`));
+  const p=await browser.newPage({viewport:{width,height:1000},reducedMotion:'reduce'});p.on('pageerror',e=>errors.push(`${width}: ${e.message}`));
   await p.goto(base+'#product/atlas');
   await p.evaluate(()=>OptimanDemo.command('reset',{}, {role:'Owner'},'correction-reset'));
   await p.reload();
   const original=await p.evaluate(()=>OptimanDemo.lensRules());
-  assert.equal(original[5].type,'UNAVAILABLE');assert.equal(original[3].type,'CONSULT_WHATSAPP');assert.equal(original.at(-1).types.join(','),'progressive');assert.equal(original.at(-1).type,'CONSULT_WHATSAPP');
+  assert.equal(original[5].type,'UNAVAILABLE');assert.equal(original[3].type,'CONSULT_WHATSAPP');assert.equal(original.find(r=>r.category==='Progressive').types.join(','),'progressive');assert.equal(original.find(r=>r.category==='Progressive').type,'CONSULT_WHATSAPP');
   await p.locator('[data-mode=lens]').click();
   assert.deepEqual(await p.locator('[data-rx-type] strong').allTextContents(),['Zero Power','Unifocal','Bifocal','Progressive']);
   assert.equal(await p.locator('[data-rx-next],[data-rx-back],.rx-steps').count(),0);

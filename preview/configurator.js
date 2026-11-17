@@ -46,7 +46,7 @@ function rxValidation(){
   }
   return errors;
 }
-function rxOptions(){return OptimanDemo.lensRules().map((r,id)=>({...r,id,features:r.features||({0:'Clear vision · anti-reflective finish',1:'Blue-cut · anti-reflective finish',2:'Light-adaptive lenses',6:'Moon shape · lined near and distance'}[id]||'Configured lens finish')}));}
+function rxOptions(){return OptimanDemo.lensRules().map((r,id)=>({...r,id,ruleCategory:r.category,category:r.lensType||({0:'Anti-Reflective Lens',1:'Blue Cut Lens',2:'Photochromic Lens',6:'White Lens'}[id]||'White Lens'),features:r.features||({0:'Clear vision · anti-reflective finish',1:'Blue-cut · anti-reflective finish',2:'Light-adaptive lenses',6:'Moon shape · lined near and distance'}[id]||'Configured lens finish')}));}
 function rxEligibility(option){
   if(option.type==='UNAVAILABLE')return {type:'UNAVAILABLE',reason:'This explicit demo combination is unavailable.'};
   if(rxValidation().length)return {type:'UNAVAILABLE',reason:'Complete valid demo details first.'};
@@ -81,11 +81,11 @@ function rxLensStep(){
   rxRevalidate();
   if(rxValidation().length)return '<h3>Explore lenses</h3><p class="rx-guidance">Enter your prescription details to explore lens options.</p>';
   const options=rxVisibleOptions();
-  if(!options.length)return rxFallback();
-  const categories=[...new Set(options.map(o=>o.category))];
+  const categories=['White Lens','Anti-Reflective Lens','Blue Cut Lens','Photochromic Lens','Photochromic + Blue Cut Lens'];
   if(rxDraft.category&&!categories.includes(rxDraft.category))rxDraft.category='';
   const visible=options.filter(o=>!rxDraft.category||o.category===rxDraft.category);
-  return `<h3 tabindex="-1">Choose your lenses</h3><label>Lens category<select id="lens-category"><option value="">All lens options</option>${categories.map(c=>`<option ${rxDraft.category===c?'selected':''}>${esc(c)}</option>`).join('')}</select></label><div class="rx-lens-options">${visible.map(o=>`<button type="button" data-rx-lens="${o.id}" aria-pressed="${o.id===rxDraft.lensId}"><strong>${esc(o.option)}</strong><span>${esc(o.features)}</span><span class="rx-lens-price">${money(o.price)} / pair</span>${o.id===rxDraft.lensId?'<small>Selected</small>':''}</button>`).join('')}</div>`;
+  return `<h3 tabindex="-1">Choose your lenses</h3><label>Lens category<select id="lens-category"><option value="">All lens options</option>${categories.map(c=>`<option ${rxDraft.category===c?'selected':''}>${esc(c)}</option>`).join('')}</select></label>${visible.length?`<div class="rx-lens-options">${visible.map(o=>`<button type="button" data-rx-lens="${o.id}" aria-pressed="${o.id===rxDraft.lensId}"><strong>${esc(o.option)}</strong><span>${esc(o.features)}</span><span class="rx-lens-price">${money(o.price)} / pair</span>${o.id===rxDraft.lensId?'<small>Selected</small>':''}</button>`).join('')}</div>`:rxFallback()}`;
+
 }
 function lensPanel(){return `<section class="lens-panel rx-configurator" aria-label="Synthetic prescription configurator"><div class="lens-heading"><div><h2>Prescription & lenses</h2><p>Synthetic demonstration · use invented details only; nothing is submitted</p></div></div>${rxTypeStep()}${rxDraft.type==='zero'?'':rxDetailStep()}${rxErrorHTML()}<div id="rx-live-lenses">${rxLensStep()}</div></section>`;}
 function rxRefresh(){
@@ -95,7 +95,7 @@ function rxRefresh(){
 }
 function productPrice(p){
   const selected=selectedRxOption(),valid=rxSelectionValid(),pair=lens?selected?.price:0,qty=rxDraft.qty;
-  return `<div class="price-breakdown" aria-live="polite"><p class="eyebrow">Your synthetic demo selection</p><dl><div><dt>Frame price</dt><dd>${money(p.price)}</dd></div><div><dt>Lens price per pair</dt><dd>${!lens?'Not selected':valid?money(pair):selected?.type==='CONSULT_WHATSAPP'?'Consultation required':'Choose your lenses'}</dd></div><div><dt>Quantity</dt><dd>${Number.isInteger(qty)&&qty>=1&&qty<=99?qty:'—'}</dd></div><div class="selection-total"><dt>Illustrative total</dt><dd>${valid?money((p.price+pair)*qty):'Not quoted'}</dd></div></dl><small>Demo prices only. Delivery, tax and discounts are not configured. No payment split is assumed.</small></div>`;
+  return `<div class="price-breakdown" aria-live="polite"><p class="eyebrow">Your synthetic demo selection</p><dl><div><dt>Frame price</dt><dd>${money(p.price)}</dd></div><div><dt>Lens price per pair</dt><dd>${!lens?'Not selected':valid?money(pair):selected?.type==='CONSULT_WHATSAPP'?'Consultation required':'Choose your lenses'}</dd></div><div><dt>Quantity</dt><dd>${Number.isInteger(qty)&&qty>=1&&qty<=99?qty:'—'}</dd></div><div class="selection-total"><dt>Illustrative total</dt><dd>${valid?money((p.price+pair)*qty):'Not quoted'}</dd></div></dl>${valid&&!(typeof rxPOSContext!=='undefined'&&rxPOSContext)?paymentLines(cartPaymentPlan([{price:p.price,lensPrice:pair,qty}])):''}<small>Demo item prices. Order delivery and required advance are shown at checkout; tax and discounts are not configured.</small></div>`;
 }
 function rxQuantity(){return `<label class="rx-quantity">Quantity · demo pairs<input id="rx-qty" type="number" min="1" max="99" step="1" value="${rxDraft.qty}" inputmode="numeric"></label>`;}
 function rxCompactSummary(){const selected=selectedRxOption();return `<span>Synthetic demo selection · ${rxDraft.qty} pair(s)</span><b>${rxSelectionValid()?money((current().price+(lens?selected.price:0))*rxDraft.qty):'Choose an eligible lens pair'}</b><small>No payment or stock reservation until simulated checkout.</small>`;}

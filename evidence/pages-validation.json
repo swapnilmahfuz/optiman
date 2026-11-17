@@ -1,6 +1,6 @@
 {
   "date": "2026-11-17",
-  "local_base_url": "http://127.0.0.1:4191/optiman/",
+  "local_base_url": "http://127.0.0.1:4193/optiman/",
   "public_file_count": 22,
   "public_files": [
     "app.js",
@@ -36,12 +36,14 @@
     "engine": "passed",
     "operations_browser": "passed five widths under /optiman/",
     "immediate_configurator": "passed five widths under /optiman/",
-    "configurator_edges": "passed",
-    "ui": "passed 45 layouts and interactions",
-    "premium": "passed five widths",
-    "shopping": "passed five widths",
-    "lens_correction": "passed all five widths under /optiman/",
-    "lens_engine": "passed additive upgrade, config and rule guards"
+    "configurator_edges": "passed under /optiman/",
+    "ui": "passed 45 layouts under /optiman/",
+    "premium": "passed five widths under /optiman/",
+    "shopping": "passed five widths under /optiman/",
+    "lens_correction": "passed five widths under /optiman/ with reduced-motion test mode",
+    "lens_engine": "passed",
+    "storefront_update": "passed all five widths under /optiman/",
+    "storefront_payments": "passed finance/verification/reservation/preservation checks"
   },
   "live_deployment": "unverified: network proxy denies GitHub API and Pages hostname with HTTP 403"
 }

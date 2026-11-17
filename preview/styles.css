@@ -470,3 +470,14 @@ main:empty{min-height:100vh}
 .rx-consultation p{line-height:1.7}
 .rx-consultation .button{min-height:44px;white-space:normal;text-align:center}
 .rx-configurator .rx-lens-options button[aria-pressed=true]{background:var(--sand)}
+
+/* Merchant guidance and audience controls, scoped to storefront surfaces. */
+.checkout-guidance{border:1px solid var(--caramel);border-left:4px solid var(--caramel);background:var(--sand);padding:20px;border-radius:12px;margin:20px 0;overflow-wrap:anywhere}
+.checkout-guidance h3{font-size:18px;line-height:1.7;margin-top:0}
+.checkout-guidance p,.shipping-policy [lang=bn] p{font-family:system-ui,sans-serif;line-height:1.9}
+.shipping-policy{margin:20px 0;padding:16px 0;border-top:1px solid var(--sand);border-bottom:1px solid var(--sand)}
+.shipping-policy summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:600}
+.policy-review{font-size:12px;line-height:1.7;color:var(--mocha)}
+.summary .required-advance{background:var(--sand);padding:12px;border-radius:8px}
+.summary-line{gap:12px}
+@media(min-width:1024px){.listing .filterbar{grid-template-columns:1.4fr repeat(4,1fr) auto}}

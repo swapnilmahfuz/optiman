@@ -87,3 +87,6 @@ Owner authorizes targeted frontend correction: four immediate prescription types
 
 ## Default collection sorting — 2026-11-17
 Owner requests price low-to-high as the default shop/category ordering, including Reset. Featured, high-to-low and Name remain available on selection. Verify default/reset and all alternate sorts; rollback by reverting this commit. No product data or homepage ordering change.
+
+## Targeted storefront update — 2026-11-17
+Owner explicitly configures BDT 150 delivery once per order and advance = delivery + all lens charges; frame balance remains COD. Preserve reservation mechanics, add a distinct verification/confirmation gate. Supplied Bangla instruction/policy wording is reproduced as a merchant draft, flagged for legal review and subject to statutory rights; conflicting defect-only versus expectation clauses require review. Preserve prescription functions/eligibility and unrelated operations. Map existing explicit prices to lens finish labels; new unpriced finishes remain consultation-only. Audience tags filter existing SKUs, with no inferred gender/child suitability. Test five widths, pricing, verification, filters and full regressions; rollback this targeted commit and retain old operational records. Feature branch only, no backend or main merge.

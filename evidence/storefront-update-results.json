@@ -1,0 +1,80 @@
+{
+  "results": [
+    {
+      "width": 360,
+      "checks": [
+        "English shell/Bangla-only guidance",
+        "verbatim policy/rights caveat/keyboard accordion",
+        "four Rx types unchanged",
+        "purchasable named lens types",
+        "mixed basket fee once/advance/COD",
+        "verification gates confirmation",
+        "audience combinations/reset/empty Kids/no duplicate SKU",
+        "configurable delivery/Bangla fee",
+        "Progressive positive fallback",
+        "no overflow"
+      ]
+    },
+    {
+      "width": 390,
+      "checks": [
+        "English shell/Bangla-only guidance",
+        "verbatim policy/rights caveat/keyboard accordion",
+        "four Rx types unchanged",
+        "purchasable named lens types",
+        "mixed basket fee once/advance/COD",
+        "verification gates confirmation",
+        "audience combinations/reset/empty Kids/no duplicate SKU",
+        "configurable delivery/Bangla fee",
+        "Progressive positive fallback",
+        "no overflow"
+      ]
+    },
+    {
+      "width": 768,
+      "checks": [
+        "English shell/Bangla-only guidance",
+        "verbatim policy/rights caveat/keyboard accordion",
+        "four Rx types unchanged",
+        "purchasable named lens types",
+        "mixed basket fee once/advance/COD",
+        "verification gates confirmation",
+        "audience combinations/reset/empty Kids/no duplicate SKU",
+        "configurable delivery/Bangla fee",
+        "Progressive positive fallback",
+        "no overflow"
+      ]
+    },
+    {
+      "width": 1024,
+      "checks": [
+        "English shell/Bangla-only guidance",
+        "verbatim policy/rights caveat/keyboard accordion",
+        "four Rx types unchanged",
+        "purchasable named lens types",
+        "mixed basket fee once/advance/COD",
+        "verification gates confirmation",
+        "audience combinations/reset/empty Kids/no duplicate SKU",
+        "configurable delivery/Bangla fee",
+        "Progressive positive fallback",
+        "no overflow"
+      ]
+    },
+    {
+      "width": 1440,
+      "checks": [
+        "English shell/Bangla-only guidance",
+        "verbatim policy/rights caveat/keyboard accordion",
+        "four Rx types unchanged",
+        "purchasable named lens types",
+        "mixed basket fee once/advance/COD",
+        "verification gates confirmation",
+        "audience combinations/reset/empty Kids/no duplicate SKU",
+        "configurable delivery/Bangla fee",
+        "Progressive positive fallback",
+        "no overflow"
+      ]
+    }
+  ],
+  "errors": []
+}

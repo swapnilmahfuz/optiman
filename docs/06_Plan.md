@@ -37,3 +37,8 @@ Every change to a locked rule requires a new version entry and explicit user app
 - Added responsive storefront, collection, product/lens selection, cart/checkout simulation, POS and read-only admin/matrix previews. No backend batch authorization is implied.
 - Review checks and rollback are documented in `preview/README.md`; screenshots and actual browser results are in `evidence/`.
 - Gate: stop after frontend delivery. Await user review and separate backend authorization; do not merge or publish automatically.
+
+## Changelog — 2026-11-17 / Phase 03 realistic imagery
+- Integrated the five supplied AI demonstration photographs as responsive local WebP assets; no external image dependency.
+- Updated editorial hero and consistent product mapping; removed misleading alternate gallery crop.
+- Scope remains frontend-only. Expected behavior, verification and rollback are documented in `preview/README.md`. Await visual approval after delivery.

@@ -28,7 +28,10 @@
     "sort",
     "barcode example",
     "offline finalization blocked",
-    "mobile navigation"
+    "mobile navigation",
+    "all product gallery mappings",
+    "images decode on every route",
+    "uncropped hero ratio at all widths"
   ],
   "failures": []
 }

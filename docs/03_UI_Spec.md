@@ -35,3 +35,6 @@ Responsive image sizes, lazy loading, semantic form labels, keyboard navigation,
 
 ## Phase 03 review implementation — 2026-11-17
 Architecture direction and the proposed UI baseline were approved in chat. User authorization is limited to a frontend visual prototype. The implementation in `preview/` uses the locked palette and original responsive layouts, synthetic catalog data and in-memory interactions. It does not satisfy backend, privacy-storage, stock or production acceptance criteria. Review routes, mock boundaries and evidence are documented in `preview/README.md`. Locked requirements above remain unchanged.
+
+## Phase 03 image review — 2026-11-17
+User-supplied AI-generated demonstration photographs replace illustrations. Hero headline: “See Better. Look Sharper.” Supporting text: “Eyewear for your everyday life — style, comfort and clear vision.” Primary action: “Explore Collection”. Desktop splits cream copy from the full two-model campaign image; mobile/tablet stack them. Text stays outside the image. Product photography is contained and shared across all views, with no invented alternate gallery angles. Existing synthetic catalog and business rules remain unchanged. Asset mapping and review details: `preview/README.md`.

@@ -19,8 +19,19 @@ class TryOn {
  status(text){if(!this.closed)this.host.querySelector('.vto-status').textContent=text;}
  busy(value){this.host.querySelectorAll('[data-vto-start],[data-vto-photo]').forEach(b=>b.disabled=value);}
  setMode(mode,label){this.mode=mode;this.host.querySelector('.vto-mode').textContent=label;this.host.querySelector('.vto-intro').hidden=mode!=='off';}
+ photoPicker(){
+  this.stopMedia();let panel=this.host.querySelector('.vto-photo-panel');if(!panel){panel=document.createElement('section');panel.className='vto-photo-panel';panel.innerHTML=`<h3>Photo Preview</h3><p>Choose a local portrait or our clearly labeled AI-generated sample. Your image is processed only in this browser and is not uploaded or saved.</p><label><input type="checkbox" data-vto-consent> I agree to process a photo locally for this preview.</label><label>Local photo · JPG, PNG or WebP, up to 8 MiB<input data-vto-file type="file" accept="image/jpeg,image/png,image/webp" disabled></label><button class="quiet" data-vto-sample disabled>Use synthetic sample portrait</button><p>Photo Preview is a still image, not a live camera feed.</p>`;this.host.querySelector('.vto-source-controls').after(panel);panel.addEventListener('change',e=>{if(e.target.hasAttribute('data-vto-consent')){panel.querySelector('[data-vto-file]').disabled=!e.target.checked;panel.querySelector('[data-vto-sample]').disabled=!e.target.checked;}if(e.target.hasAttribute('data-vto-file')){const file=e.target.files?.[0];e.target.value='';if(file)this.loadPhoto(file);}});}panel.hidden=false;this.setMode('off','Photo Preview · choose a photo');this.status('Choose a front-facing, well-lit portrait without glasses.');panel.scrollIntoView({block:'nearest',behavior:'instant'});
+ }
+ async loadPhoto(file=null){
+  if(!this.host.querySelector('[data-vto-consent]')?.checked)return;
+  if(file&&(!['image/jpeg','image/png','image/webp'].includes(file.type)||file.size>8*1024*1024)){this.status('Choose a JPG, PNG or WebP up to 8 MiB.');return;}
+  this.stopMedia();const token=this.token;this.busy(true);this.setMode('loading','Photo Preview · processing');this.status('Finding your face…');let url,image=new Image();
+  try{url=file?URL.createObjectURL(file):new URL('./assets/sample-portrait.webp',import.meta.url).href;image.src=url;await image.decode();if(image.naturalWidth*image.naturalHeight>16000000)throw Error('Choose a photo smaller than 16 megapixels.');await this.assetsPromise;if(this.closed||token!==this.token){image.src='';return;}if(!this.images)throw Error('Frame images could not load.');this.photoImage=image;this.source=image;this.size(image.naturalWidth,image.naturalHeight);this.setMode('photo',file?'Photo Preview · local image':'Photo Preview · AI-generated sample');await this.analyzePhoto();
+  }catch(error){if(!this.closed&&token===this.token){this.stopMedia();this.status(error.message||'This photo could not be opened. Try another portrait.');}}finally{if(file&&url)URL.revokeObjectURL(url);if(!this.closed)this.busy(false);}
+ }
+ async analyzePhoto(){const source=this.source,token=this.token;if(!source)return;this.status('Finding your face…');try{const start=performance.now(),result=await this.tracker.detectPhoto(source);if(this.closed||token!==this.token)return;const elapsed=performance.now()-start;this.metrics={frames:1,inferenceMs:elapsed,maxInferenceMs:elapsed,started:0,tracking:false};this.apply(result,performance.now(),true);this.paint();}catch(error){if(!this.closed)this.status('Photo tracking could not initialize. You can continue shopping or try again.');}}
  async start(){
-  this.stopMedia();const token=this.token;this.busy(true);this.setMode('loading','Camera setup');this.status('Preparing your preview…');
+  this.stopMedia();const panel=this.host.querySelector('.vto-photo-panel');if(panel)panel.hidden=true;const token=this.token;this.busy(true);this.setMode('loading','Camera setup');this.status('Preparing your preview…');
   try{await Promise.all([this.tracker.setMode('VIDEO'),this.assetsPromise]);if(this.closed||token!==this.token)return;if(!this.images)throw Error('Frame images could not load.');this.status('Allow camera access to begin.');if(!await this.camera.start()||this.closed||token!==this.token)return;
    this.source=this.video;this.size(this.video.videoWidth,this.video.videoHeight);this.setMode('live','Live Camera · mirrored');this.lastVideo=-1;this.lastInference=0;this.metrics={frames:0,inferenceMs:0,maxInferenceMs:0,started:performance.now(),tracking:false};this.status('Look towards the camera and hold still briefly.');this.host.querySelector('.vto-guide').hidden=false;this.loop();
   }catch(error){if(!this.closed){this.stopMedia();this.status(cameraError(error));}}finally{if(!this.closed)this.busy(false);}
@@ -39,7 +50,8 @@ class TryOn {
   if(b.hasAttribute('data-vto-close')){this.close();return;}
   if(b.dataset.vtoFrame){this.selected=b.dataset.vtoFrame;this.host.querySelectorAll('[data-vto-frame]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.vtoFrame===this.selected)));this.paint();}
   if(b.hasAttribute('data-vto-start'))this.start();
-  if(b.hasAttribute('data-vto-photo'))this.photoPicker?.();
+  if(b.hasAttribute('data-vto-photo'))this.photoPicker();
+  if(b.hasAttribute('data-vto-sample'))this.loadPhoto();
   if(b.hasAttribute('data-vto-reset')){this.fine={scale:1,vertical:0};this.host.querySelector('[data-vto-scale]').value=1;this.host.querySelector('[data-vto-vertical]').value=0;this.calibration.reset();this.pose=null;if(this.mode==='photo')this.analyzePhoto?.();else{this.paint();this.status('Look towards the camera to recalibrate.');}}
   if(b.hasAttribute('data-vto-cart')||b.hasAttribute('data-vto-configure')){const id=this.selected,add=b.hasAttribute('data-vto-cart');this.close();this.options.onChoose(id,add);}
  }

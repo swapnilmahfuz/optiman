@@ -68,3 +68,8 @@ Every change to a locked rule requires a new version entry and explicit user app
 ## Phase 03.5 — 2026-11-17
 - Authorized product/lens/cart/checkout visual refinement only. Expected: explicit price breakdown, touch-friendly choices, clear mock feedback and no overlapping mobile controls; preserve catalog, lens rules and homepage.
 - Test at five widths: frame-only, all lens rule types, quantities/removal, checkout outcomes, navigation and keyboard. Save product/cart/checkout screenshots. Rollback: revert this commit; no persistent data. Stop for visual approval before Phase 04; no merge or deployment.
+
+## GitHub Pages demo setup — 2026-11-17
+- User explicitly authorized public frontend demo setup, superseding the earlier no-deployment restriction for this demo only. Feature branch remains isolated; backend and production-domain work remain unauthorized.
+- Added isolated Pages packaging and branch-specific Actions workflow; exclude README and all non-public repository files. See `docs/08_Demo_Publishing.md` for manual configuration, updates and rollback/unpublishing.
+- Verify the staged artifact and existing regression under `/optiman/`. Network-proxy denial prevents live Pages/API verification; report deployment as unverified until a successful Actions run and public-site check.

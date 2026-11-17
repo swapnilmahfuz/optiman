@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-17",
+  "local_base_url": "http://127.0.0.1:4174/optiman/",
+  "public_file_count": 18,
+  "public_files": [
+    "app.js",
+    "assets/atlas-tortoiseshell-sunglasses-1000.webp",
+    "assets/atlas-tortoiseshell-sunglasses-320.webp",
+    "assets/atlas-tortoiseshell-sunglasses-640.webp",
+    "assets/campaign-eyewear-duo-1200.webp",
+    "assets/campaign-eyewear-duo-1774.webp",
+    "assets/campaign-eyewear-duo-768.webp",
+    "assets/forma-brown-optical-1000.webp",
+    "assets/forma-brown-optical-320.webp",
+    "assets/forma-brown-optical-640.webp",
+    "assets/muse-amber-optical-1000.webp",
+    "assets/muse-amber-optical-320.webp",
+    "assets/muse-amber-optical-640.webp",
+    "assets/noir-black-sunglasses-1000.webp",
+    "assets/noir-black-sunglasses-320.webp",
+    "assets/noir-black-sunglasses-640.webp",
+    "index.html",
+    "styles.css"
+  ],
+  "artifact_source_hash_comparison": "all files identical",
+  "excluded_paths_http_status": {
+    "README.md": 404,
+    "docs/01_PRD.md": 404
+  },
+  "suite_results": {
+    "results.json": [],
+    "premium-results.json": [],
+    "shopping-results.json": []
+  },
+  "workflow_yaml": "parsed; branch and artifact directory checked",
+  "live_deployment": "unverified: network proxy denies GitHub API and Pages hostname with HTTP 403"
+}

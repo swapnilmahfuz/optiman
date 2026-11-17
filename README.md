@@ -24,3 +24,6 @@ The external 3D model generator/scanner/photography box is deferred. AR is an op
 The architecture direction and UI baseline were approved in chat. Authorization now covers **frontend visual prototyping only**. Locked business requirements are unchanged; backend, database, authentication, live payments and production deployment remain unapproved.
 
 See [preview/README.md](preview/README.md) for local Windows instructions, mocked interactions, routes and limitations. Run the preview from `preview/index.html` or a local static server. Review evidence is in `evidence/`.
+
+## Public interactive demo setup
+[GitHub Pages deployment instructions](docs/08_Demo_Publishing.md) describe the feature-branch workflow, isolated public artifact, manual GitHub settings and future updates. Adding the workflow does not establish a successful live deployment; check the Actions deployment status.

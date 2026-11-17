@@ -1,3 +1,4 @@
+const baseURL = process.env.PREVIEW_URL || 'http://127.0.0.1:4173/';
 const {chromium}=require('playwright');
 const fs=require('node:fs');
 (async()=>{
@@ -11,7 +12,7 @@ const fs=require('node:fs');
    if(bad.overflow||bad.clipped||bad.overlap)failures.push(`${width} ${name}: overflow, clipped control or overlapping purchase action`);
    await p.screenshot({path:`evidence/${name}-shopping-${width}.png`,fullPage:true});
   }
-  await p.goto('http://127.0.0.1:4173/#product/atlas');
+  await p.goto(baseURL+'#product/atlas');
   if(await p.getByRole('button',{name:'Frame Only',exact:true}).getAttribute('aria-pressed')!=='true')failures.push(`${width}: frame default`);
   if(await p.locator('#lens-category,#rx,input[type=file]').count())failures.push(`${width}: frame-only prescription step`);
   if(!(await p.locator('.price-breakdown').textContent()).includes('৳3,200'))failures.push(`${width}: frame price`);
@@ -33,18 +34,18 @@ const fs=require('node:fs');
   await p.selectOption('#lens-category','Single vision');await p.selectOption('#lens-option','5');if(!await p.locator('#add-cart').isDisabled()||await p.locator('#consult').count())failures.push(`${width}: unavailable rule`);
   if(!(await p.locator('.price-breakdown').textContent()).includes('Not quoted'))failures.push(`${width}: unavailable fallback price`);
   await p.getByRole('button',{name:'Frame Only',exact:true}).click();if(await p.locator('#rx').count()||await p.locator('#add-cart').isDisabled())failures.push(`${width}: frame-only reset`);
-  await p.goto('http://127.0.0.1:4173/#cart');await checkLayout('cart');
+  await p.goto(baseURL+'#cart');await checkLayout('cart');
   const plus=p.locator('[data-qty="0"][data-delta="1"]');await plus.focus();await p.keyboard.press('Enter');
   if(!await p.locator('[data-qty="0"][data-delta="1"]').evaluate(e=>e===document.activeElement))failures.push(`${width}: quantity focus`);
   if(!(await p.locator('.summary-line.total').textContent()).includes('৳10,800'))failures.push(`${width}: quantity total`);
   await p.locator('[data-qty="0"][data-delta="-1"]').click();if(!(await p.locator('.summary-line.total').textContent()).includes('৳7,600'))failures.push(`${width}: quantity reduction`);
-  await p.goto('http://127.0.0.1:4173/#checkout');await checkLayout('checkout');
+  await p.goto(baseURL+'#checkout');await checkLayout('checkout');
   if(!(await p.locator('main').textContent()).includes('SIMULATED PAYMENT ONLY'))failures.push(`${width}: simulation label`);
   await p.locator('#checkout-form input:not([type=radio])').evaluateAll(inputs=>inputs.forEach((e,i)=>e.value=i===1?'example@example.test':'Example'));
   for(const state of ['pending','failed','conflict']){
    if(state!=='pending')await p.locator('input[value=online]').check();await p.selectOption('#outcome',state);await p.locator('#checkout-form .button').click();const text=await p.locator('dialog').textContent();if(!text.includes('No order was created')||!text.includes(state==='pending'?'Pending review':state==='failed'?'Payment failure':'Allocation exception'))failures.push(`${width}: ${state} simulation`);await p.keyboard.press('Escape');
   }
-  await p.goto('http://127.0.0.1:4173/#cart');await p.locator('[data-remove="0"]').focus();await p.keyboard.press('Enter');if(await p.locator('.bag-item').count()!==1)failures.push(`${width}: removal`);await p.locator('[data-remove="0"]').click();if(!(await p.locator('main').textContent()).includes('Your demo bag is empty'))failures.push(`${width}: empty bag`);
+  await p.goto(baseURL+'#cart');await p.locator('[data-remove="0"]').focus();await p.keyboard.press('Enter');if(await p.locator('.bag-item').count()!==1)failures.push(`${width}: removal`);await p.locator('[data-remove="0"]').click();if(!(await p.locator('main').textContent()).includes('Your demo bag is empty'))failures.push(`${width}: empty bag`);
   if(width<600){await p.getByRole('button',{name:'Open menu'}).click();await p.locator('nav').getByRole('link',{name:'Optical Frames',exact:true}).click();if(await p.locator('#filter-category').inputValue()!=='Optical Frames')failures.push(`${width}: mobile menu`);}
   checks.push({width,flows:['frame-only','three fixed prices','consultation command guard','unavailable blocking','frame-only reset','quantity and focus','removal/empty cart','three checkout simulations','no file input'],screens:['product','product-lenses','cart','checkout']});await p.close();
  }

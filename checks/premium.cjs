@@ -1,3 +1,4 @@
+const baseURL = process.env.PREVIEW_URL || 'http://127.0.0.1:4173/';
 // Review the photographic composition and keyboard/touch behavior in Chromium.
 const {chromium}=require('playwright');
 const fs=require('node:fs');
@@ -9,7 +10,7 @@ const fs=require('node:fs');
   const page=await browser.newPage({viewport:{width,height:1000}});
   page.on('pageerror',e=>failures.push(`${width}: ${e.message}`));
   await page.addInitScript(()=>{window.reviewCLS=0;new PerformanceObserver(list=>{for(const e of list.getEntries())if(!e.hadRecentInput)window.reviewCLS+=e.value}).observe({type:'layout-shift',buffered:true});});
-  await page.goto('http://127.0.0.1:4173/#home');
+  await page.goto(baseURL+'#home');
   await page.locator('main img').evaluateAll(async imgs=>{for(const i of imgs){i.loading='eager';await i.decode();}});
   await page.waitForTimeout(250);
   const layout=await page.evaluate(()=>{
@@ -47,7 +48,7 @@ const fs=require('node:fs');
   if(JSON.stringify(navigation.labels)!==JSON.stringify(categories.map(c=>c[0])))failures.push(`${width}: category order`);
   if(await page.locator('.category-disclosure').count())failures.push(`${width}: obsolete disclosure`);
   for(const [label,slug,category] of categories){
-   await page.goto('http://127.0.0.1:4173/#home');
+   await page.goto(baseURL+'#home');
    const tile=page.locator('.category-pills').getByRole('link',{name:label,exact:true});
    const h=await tile.evaluate(e=>e.getBoundingClientRect().height);if(h<44)failures.push(`${width}: ${label} touch target`);
    await tile.focus();await page.keyboard.press('Shift+Tab');await page.keyboard.press('Tab');
@@ -58,11 +59,11 @@ const fs=require('node:fs');
    if(JSON.stringify(active)!==JSON.stringify([label]))failures.push(`${width}: ${label} route-derived active state`);
    if(label==='Sale'&&await page.locator('.product-card').count()!==0)failures.push(`${width}: Sale should be empty`);
   }
-  await page.goto('http://127.0.0.1:4173/#home');
+  await page.goto(baseURL+'#home');
   await page.fill('#search','Noir');await page.locator('#search-form button').click();
   await page.waitForFunction(()=>document.querySelectorAll('.product-card').length===1);
   if(!(await page.locator('.product-card').textContent()).includes('Noir'))failures.push(`${width}: header search`);
-  await page.fill('#search','');await page.goto('http://127.0.0.1:4173/#product/atlas');await page.locator('.gallery-main img').evaluate(i=>i.decode());
+  await page.fill('#search','');await page.goto(baseURL+'#product/atlas');await page.locator('.gallery-main img').evaluate(i=>i.decode());
   await page.waitForTimeout(150);await page.screenshot({path:`evidence/product-premium-${width}.png`,fullPage:true});
   await page.getByRole('button',{name:'Frame + Prescription Lenses',exact:true}).click();
   if(await page.locator('.purchase').evaluate(e=>getComputedStyle(e).position)!=='static'&&width<600)failures.push(`${width}: purchase may obstruct form`);

@@ -1,0 +1,50 @@
+name: Publish frontend demo to GitHub Pages
+
+on:
+  push:
+    branches: [feat/phase-03-ui-prototype]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: optiman-frontend-pages
+  cancel-in-progress: false
+
+jobs:
+  package:
+    if: github.ref == 'refs/heads/feat/phase-03-ui-prototype'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: read
+    steps:
+      - name: Check out the approved prototype branch
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Check JavaScript syntax
+        run: node --check preview/app.js
+      - name: Stage only public frontend files
+        run: python3 scripts/package_preview.py "$RUNNER_TEMP/optiman-pages"
+      - name: Read Pages configuration
+        uses: actions/configure-pages@v5
+      - name: Upload isolated Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ runner.temp }}/optiman-pages
+
+  deploy:
+    needs: package
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy frontend demo
+        id: deployment
+        uses: actions/deploy-pages@v4

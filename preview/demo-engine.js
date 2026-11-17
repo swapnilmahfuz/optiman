@@ -89,7 +89,7 @@
   if(type==='hold'){permitted(a,data.location);if(data.items.some(l=>l.rx||l.lensId!=null))throw Error('Hold supports frame-only demo lines; prescription drafts are never persisted.');const h={id:id(s,'HOLD'),location:data.location,items:saleLines(s,data.items).map(l=>({product:l.product,qty:l.qty,lensId:data.items.find(x=>(x.product||x.id)===l.product)?.lensId??null})),at:new Date().toISOString()};s.holds.push(h);return h;}
   if(type==='resume'){const h=s.holds.find(h=>h.id===data.id);if(!h)throw Error('Held sale not found.');permitted(a,h.location);s.holds=s.holds.filter(x=>x.id!==h.id);return h;}
   if(type==='transferCreate'){
-   exists(s,data.source);exists(s,data.destination);const t={id:id(s,'TRF'),source:data.source,destination:data.destination,product:product(s,data.product).id,qty:whole(data.qty),received:0,status:'planned',at:new Date().toISOString()};transferScope(a,t);if(t.source===t.destination)throw Error('Choose different locations.');if(a.role==='Owner'||t.source==='khulna'){if(available(bal(s,t.source,t.product))<t.qty)throw Error('Insufficient source availability.');}s.transfers.push(t);return t;
+   exists(s,data.source);exists(s,data.destination);const t={id:id(s,'TRF'),source:data.source,destination:data.destination,product:product(s,data.product).id,qty:whole(data.qty),received:0,status:'planned',at:new Date().toISOString()};transferScope(a,t);if(t.source===t.destination)throw Error('Choose different locations.');if(available(bal(s,t.source,t.product))<t.qty)throw Error('Insufficient source availability.');s.transfers.push(t);return t;
   }
   if(type.startsWith('transfer')){
    const t=s.transfers.find(t=>t.id===data.id);if(!t)throw Error('Transfer not found.');transferScope(a,t);

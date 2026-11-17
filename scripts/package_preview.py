@@ -14,6 +14,13 @@ files = [source / name for name in ('index.html', 'styles.css', 'app.js', 'confi
 files += sorted((source / 'assets').glob('*.webp'))
 if len(files) == 7:
     parser.error('Expected local WebP assets')
+vto_files = ['camera.mjs', 'tracker.mjs', 'geometry.mjs', 'frames.mjs', 'controller.mjs', 'vto.css',
+             'assets/atlas-front.webp', 'assets/noir-front.webp', 'assets/muse-front.webp',
+             'assets/forma-front.webp', 'assets/sample-portrait.webp', 'vendor/vision_bundle.mjs',
+             'vendor/face_landmarker.task', 'vendor/LICENSE',
+             'vendor/wasm/vision_wasm_internal.js', 'vendor/wasm/vision_wasm_internal.wasm',
+             'vendor/wasm/vision_wasm_nosimd_internal.js', 'vendor/wasm/vision_wasm_nosimd_internal.wasm']
+files += [source / 'vto' / name for name in vto_files]
 for file in files:
     if file.is_symlink() or not file.is_file() or not file.resolve().is_relative_to(source):
         parser.error(f'Invalid public file: {file.name}')

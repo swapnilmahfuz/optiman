@@ -98,3 +98,6 @@ Label correction results: exact text, selection, mobile wrapping, Cart notificat
 
 ## Policy emphasis — 2026-11-17
 Owner requests at-a-glance highlighting of Shipping, Return & Exchange. Bold key conditions, separate readable paragraphs, and use approved sand/brown callouts; preserve all wording, legal-review/statutory-rights caveat and native accordion behavior. Verify exact text, keyboard toggle, product/cart/checkout and five responsive widths. Rollback this visual commit; no business logic changes.
+
+## Optional Virtual Try-On — 2026-11-17
+Owner authorizes MediaPipe camera/photo preview with four distinct assets, prioritizing credible tracked 2D over unvalidated 3D. A–G commits and quality gates are documented in `13_Virtual_Try_On.md`. Preserve storefront/operations; no physical camera is available here, so real-device visual/performance acceptance remains mandatory. No backend or main merge.

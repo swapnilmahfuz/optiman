@@ -1,0 +1,47 @@
+{
+  "results": [
+    {
+      "width": 360,
+      "realPhotoInference": true,
+      "fourFrames": true,
+      "reset": true,
+      "shopping": true,
+      "inference": 324.40000000596046
+    },
+    {
+      "width": 390,
+      "realPhotoInference": true,
+      "fourFrames": true,
+      "reset": true,
+      "shopping": true,
+      "inference": 191.59999999403954
+    },
+    {
+      "width": 768,
+      "realPhotoInference": true,
+      "fourFrames": true,
+      "reset": true,
+      "shopping": true,
+      "inference": 192.20000000298023
+    },
+    {
+      "width": 1024,
+      "realPhotoInference": true,
+      "fourFrames": true,
+      "reset": true,
+      "shopping": true,
+      "inference": 241.09999999403954
+    },
+    {
+      "width": 1440,
+      "realPhotoInference": true,
+      "fourFrames": true,
+      "reset": true,
+      "shopping": true,
+      "inference": 203.20000000298023
+    }
+  ],
+  "errors": [],
+  "badRequests": [],
+  "device": "Headless Chromium, software WebGL; synthetic portrait, no physical camera"
+}

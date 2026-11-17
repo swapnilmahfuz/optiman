@@ -31,8 +31,11 @@ jobs:
           node --check preview/demo-engine.js
           node --check preview/barcode.js
           node --check preview/staff.js
+          for file in preview/vto/*.mjs; do node --check "$file"; done
       - name: Check shared engine invariants
-        run: node checks/demo-engine.cjs
+        run: |
+          node checks/demo-engine.cjs
+          node checks/vto-geometry.mjs
       - name: Stage only public frontend files
         run: python3 scripts/package_preview.py "$RUNNER_TEMP/optiman-pages"
       - name: Read Pages configuration

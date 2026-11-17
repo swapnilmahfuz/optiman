@@ -1,0 +1,35 @@
+{
+  "environment": "Headless Chromium + SwiftShader software renderer, synthetic portrait; no physical device benchmark",
+  "results": [
+    {
+      "delegate": "CPU",
+      "startupMs": 549.8000000044703,
+      "meanInferenceMs": 56.3125,
+      "samples": [
+        116.5,
+        54,
+        46.5,
+        47.600000001490116,
+        45.5,
+        46,
+        44.29999999701977,
+        50.100000001490116
+      ]
+    },
+    {
+      "delegate": "GPU",
+      "startupMs": 620.5,
+      "meanInferenceMs": 183.66249999962747,
+      "samples": [
+        195.5,
+        192.10000000149012,
+        190.5,
+        189.19999999552965,
+        161.30000000447035,
+        178.09999999403954,
+        180.60000000149012,
+        182
+      ]
+    }
+  ]
+}

@@ -41,7 +41,7 @@ function product(){
  const p=current(),blocked=!rxCanAdd();
  return `<div class="breadcrumb"><a href="#shop">The collection</a> / ${p.name}</div>
  <section class="product-detail">
-  <div class="gallery"><div class="gallery-main">${productPhoto(p,'gallery')}</div><p class="photo-caption">AI-generated demo photograph · One supplied view · Not client inventory</p><aside id="gallery-summary" class="gallery-summary" aria-live="polite">${rxCompactSummary()}</aside></div>
+  <div class="gallery"><div class="gallery-main">${productPhoto(p,'gallery')}</div><p class="photo-caption">AI-generated demo photograph · One supplied view · Not client inventory</p>${photography[p.id]&&!rxPOSContext?'<button class="button" id="ar">Virtual Try-On <i class="arrow" aria-hidden="true"></i></button>':''}<aside id="gallery-summary" class="gallery-summary" aria-live="polite">${rxCompactSummary()}</aside></div>
   <div class="product-config"><p class="eyebrow">${p.tag}</p><h1>${p.name}</h1>
    <div class="price-row"><strong>${money(p.price)}</strong><span>Illustrative frame price</span></div>
    <p class="product-intro">A considered silhouette with an effortless feel. A synthetic style, created for this design preview.</p>
@@ -61,7 +61,7 @@ function product(){
    ${rxEditing!==null?'<button class="quiet" id="rx-cancel" type="button">Cancel editing</button>':''}
    <div class="bag-feedback"><p id="bag-feedback" role="status" aria-live="polite">Cart preview only. No stock is reserved or changed.</p><a id="view-bag" href="#cart" ${cart.length?'':'hidden'}>View Cart</a></div>
    <details><summary>Demo details & care</summary><p>${p.material}. Dimensions and materials are synthetic examples. Care guidance awaits approval; merchant return terms are provided above for legal review. Color names and category are demo catalog data, not verified by the photograph. Other color selections reuse the supplied image.</p></details>
-   ${photography[p.id]&&!rxPOSContext?'<button class="button" id="ar">Virtual Try-On <i class="arrow" aria-hidden="true"></i></button>':''}
+
   </div>
  </section>`;
 }

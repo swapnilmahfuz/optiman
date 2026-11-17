@@ -1,3 +1,7 @@
+# Optional Virtual Try-On
+
+Atlas, Noir, Muse and Forma have an opt-in Virtual Try-On entry. [Technical notes, local run instructions and mandatory live-camera acceptance checklist](../docs/13_Virtual_Try_On.md). Photo Preview works with a labeled synthetic portrait or a consented local image. Physical-camera quality is unverified; do not describe it as client-ready yet. Serve over localhost or HTTPS; file:// is unsuitable for camera and module loading.
+
 # Latest targeted storefront update
 
 See [finish names, Bangla guidance, payment rules, audience setup and review checklist](../docs/12_Targeted_Storefront_Update.md). This supersedes older notes that delivery/advance were unconfigured.

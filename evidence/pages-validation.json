@@ -1,7 +1,7 @@
 {
   "date": "2026-11-17",
-  "local_base_url": "http://127.0.0.1:4193/optiman/",
-  "public_file_count": 22,
+  "local_base_url": "http://127.0.0.1:4197/optiman/",
+  "public_file_count": 40,
   "public_files": [
     "app.js",
     "assets/atlas-tortoiseshell-sunglasses-1000.webp",
@@ -24,26 +24,53 @@
     "demo-engine.js",
     "index.html",
     "staff.js",
-    "styles.css"
+    "styles.css",
+    "vto/assets/atlas-front.webp",
+    "vto/assets/forma-front.webp",
+    "vto/assets/muse-front.webp",
+    "vto/assets/noir-front.webp",
+    "vto/assets/sample-portrait.webp",
+    "vto/camera.mjs",
+    "vto/controller.mjs",
+    "vto/frames.mjs",
+    "vto/geometry.mjs",
+    "vto/tracker.mjs",
+    "vto/vendor/LICENSE",
+    "vto/vendor/face_landmarker.task",
+    "vto/vendor/vision_bundle.mjs",
+    "vto/vendor/wasm/vision_wasm_internal.js",
+    "vto/vendor/wasm/vision_wasm_internal.wasm",
+    "vto/vendor/wasm/vision_wasm_nosimd_internal.js",
+    "vto/vendor/wasm/vision_wasm_nosimd_internal.wasm",
+    "vto/vto.css"
   ],
   "artifact_source_hash_comparison": "all files identical",
   "excluded_paths_http_status": {
     "README.md": 404,
     "docs/01_PRD.md": 404,
-    ".git/config": 404
+    ".git/config": 404,
+    "vto/assets/README.md": 404,
+    "vto/vendor/PROVENANCE.md": 404,
+    "vto/vendor/sources.json": 404
   },
-  "suite_results": {
-    "engine": "passed",
-    "operations_browser": "passed five widths under /optiman/",
-    "immediate_configurator": "passed five widths under /optiman/",
-    "configurator_edges": "passed under /optiman/",
-    "ui": "passed 45 layouts under /optiman/",
-    "premium": "passed five widths under /optiman/",
-    "shopping": "passed five widths under /optiman/",
-    "lens_correction": "passed five widths under /optiman/ with reduced-motion test mode",
+  "suites": {
+    "vto_photo": "passed five widths; genuine MediaPipe inference",
+    "vto_synthetic_camera": "passed; actual physical camera not available",
+    "vto_geometry": "passed",
+    "vto_camera_lifecycle": "passed",
+    "ui": "passed 45 layouts",
+    "premium": "passed",
+    "shopping": "passed",
+    "configurator": "passed",
+    "configurator_edges": "passed",
+    "operations": "passed",
+    "storefront": "passed",
+    "lens_correction": "passed",
+    "demo_engine": "passed",
     "lens_engine": "passed",
-    "storefront_update": "passed all five widths under /optiman/",
-    "storefront_payments": "passed finance/verification/reservation/preservation checks"
+    "payment_preservation": "passed"
   },
-  "live_deployment": "unverified: network proxy denies GitHub API and Pages hostname with HTTP 403"
+  "live_deployment": "unverified: GitHub API proxy HTTP 403",
+  "client_ready": false,
+  "required_manual_gate": "Real-camera visual check and physical mobile/device performance"
 }

@@ -32,3 +32,5 @@ See [preview/README.md](preview/README.md) for local Windows instructions, mocke
 The owner-approved Phase 03.5D / 03.6 / 03.7 frontend is implemented on the feature branch. [Current demo runbook and review checklist](docs/10_Operations_Demo.md) supersede older preview-state descriptions. Backend and production integration remain unimplemented.
 
 Latest storefront-only update: [lens finishes, Bangla guidance, advance/delivery rules and audience configuration](docs/12_Targeted_Storefront_Update.md).
+
+Optional frontend [Virtual Try-On review build and live-device acceptance checklist](docs/13_Virtual_Try_On.md): tracked 2D, four distinct assets and local Photo Preview. Real-camera visual quality remains unverified.

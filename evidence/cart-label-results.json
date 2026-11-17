@@ -1,0 +1,45 @@
+{
+  "results": [
+    {
+      "width": 360,
+      "labels": true,
+      "wrapping": true,
+      "selection": true,
+      "addToCart": true,
+      "terminology": true
+    },
+    {
+      "width": 390,
+      "labels": true,
+      "wrapping": true,
+      "selection": true,
+      "addToCart": true,
+      "terminology": true
+    },
+    {
+      "width": 768,
+      "labels": true,
+      "wrapping": true,
+      "selection": true,
+      "addToCart": true,
+      "terminology": true
+    },
+    {
+      "width": 1024,
+      "labels": true,
+      "wrapping": true,
+      "selection": true,
+      "addToCart": true,
+      "terminology": true
+    },
+    {
+      "width": 1440,
+      "labels": true,
+      "wrapping": true,
+      "selection": true,
+      "addToCart": true,
+      "terminology": true
+    }
+  ],
+  "errors": []
+}

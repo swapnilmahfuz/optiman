@@ -1,7 +1,7 @@
 'use strict';
 // Synthetic demonstration only. No storage, file reads, uploads or external calls.
 const rxTypes = {zero:'Zero Power',unifocal:'Unifocal',bifocal:'Bifocal',progressive:'Progressive'};
-const rxTypeHelp={zero:'No correction',unifocal:'Distance / Single Vision',bifocal:'Near & Distance',progressive:'Multifocal / No-line'};
+const rxTypeHelp={zero:'no correction (পাওয়ার ছাড়া)',unifocal:'distance power (দূরের পাওয়ার)',bifocal:'near power (কাছের পাওয়ার)',progressive:'multifocal power (দূর ও কাছের পাওয়ার)'};
 const emptyEye = () => ({sphSign:'+',sph:'',cylSign:'-',cyl:'',axis:'',add:''});
 const freshRx = () => ({type:'zero',shape:'',right:emptyEye(),left:emptyEye(),ipd:'',fileName:'',step:1,category:'',lensId:null,qty:1});
 let rxDraft=freshRx(), rxEditing=null, rxPendingEdit=null, rxErrors=[];
@@ -102,7 +102,7 @@ function rxCompactSummary(){const selected=selectedRxOption();return `<span>Synt
 function updateRxPrice(){
   const price=document.querySelector('.price-breakdown');if(price)price.outerHTML=productPrice(current());
   const compact=document.querySelector('#gallery-summary');if(compact)compact.innerHTML=rxCompactSummary();
-  const button=document.querySelector('#add-cart');if(button){button.disabled=!rxCanAdd();button.innerHTML=rxEditing!==null?'Save configuration':rxCanAdd()?'Add to demo bag':'Complete an eligible selection';}
+  const button=document.querySelector('#add-cart');if(button){button.disabled=!rxCanAdd();button.innerHTML=rxEditing!==null?'Save configuration':rxCanAdd()?'Add to Cart':'Complete an eligible selection';}
 }
 function rxRender(focus){render();if(focus)document.querySelector(focus)?.focus();}
 function rxPowerText(eye,key){return eye[key]===''?'not supplied':(key==='add'?'+':eye[key+'Sign'])+Number(eye[key]).toFixed(2);}
@@ -129,7 +129,7 @@ function configuredAdd(){
   if(typeof rxPOSContext!=='undefined'&&rxPOSContext){savePOSRx(line);return;}
   checkoutCommand=null;
   if(rxEditing!==null){cart[rxEditing]=line;location.hash='cart';return;}
-  cart.push(line);document.querySelector('#bag-count').textContent=cart.reduce((n,l)=>n+l.qty,0);document.querySelector('#bag-feedback').textContent='Added this synthetic configuration. No stock reserved.';document.querySelector('#view-bag').hidden=false;
+  cart.push(line);document.querySelector('#bag-count').textContent=cart.reduce((n,l)=>n+l.qty,0);document.querySelector('#bag-feedback').textContent='Added to Cart. Synthetic configuration; no stock reserved.';document.querySelector('#view-bag').hidden=false;
 }
 // Event interception is limited to the new configurator and configured-cart commands.
 const rxMain=document.querySelector('main');

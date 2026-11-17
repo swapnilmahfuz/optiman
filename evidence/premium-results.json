@@ -1,0 +1,137 @@
+{
+  "details": [
+    {
+      "width": 360,
+      "heroHeight": 560,
+      "copyTop": 244.921875,
+      "visibleGlasses": [
+        false,
+        true
+      ],
+      "copyCoversGlasses": [
+        false,
+        false
+      ],
+      "cls": 0,
+      "overflow": false,
+      "focus": {
+        "visible": true,
+        "outline": 3,
+        "height": 54.390625
+      }
+    },
+    {
+      "width": 390,
+      "heroHeight": 560,
+      "copyTop": 244.921875,
+      "visibleGlasses": [
+        false,
+        true
+      ],
+      "copyCoversGlasses": [
+        false,
+        false
+      ],
+      "cls": 0,
+      "overflow": false,
+      "focus": {
+        "visible": true,
+        "outline": 3,
+        "height": 54.390625
+      }
+    },
+    {
+      "width": 768,
+      "heroHeight": 620,
+      "copyTop": 266.203125,
+      "visibleGlasses": [
+        true,
+        true
+      ],
+      "copyCoversGlasses": [
+        false,
+        false
+      ],
+      "cls": 0,
+      "overflow": false,
+      "focus": {
+        "visible": true,
+        "outline": 3,
+        "height": 54.390625
+      }
+    },
+    {
+      "width": 1024,
+      "heroHeight": 650,
+      "copyTop": 299.109375,
+      "visibleGlasses": [
+        true,
+        true
+      ],
+      "copyCoversGlasses": [
+        false,
+        false
+      ],
+      "cls": 0,
+      "overflow": false,
+      "focus": {
+        "visible": true,
+        "outline": 3,
+        "height": 54.390625
+      }
+    },
+    {
+      "width": 1440,
+      "heroHeight": 650,
+      "copyTop": 260.484375,
+      "visibleGlasses": [
+        true,
+        true
+      ],
+      "copyCoversGlasses": [
+        false,
+        false
+      ],
+      "cls": 0,
+      "overflow": false,
+      "focus": {
+        "visible": true,
+        "outline": 3,
+        "height": 54.390625
+      }
+    }
+  ],
+  "categoryRoutes": [
+    [
+      "Sunglasses",
+      "sunglasses",
+      "Sunglasses"
+    ],
+    [
+      "Optical Frames",
+      "optical",
+      "Optical Frames"
+    ],
+    [
+      "Day-Night",
+      "day-night",
+      "Day-Night"
+    ],
+    [
+      "Polarized",
+      "polarized",
+      "Polarized"
+    ],
+    [
+      "Sale",
+      "sale",
+      "Sale"
+    ],
+    [
+      "Shop All",
+      "",
+      ""
+    ]
+  ],
+  "failures": []
+}

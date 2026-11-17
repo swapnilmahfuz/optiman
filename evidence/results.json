@@ -3,6 +3,7 @@
     360,
     390,
     768,
+    1024,
     1440
   ],
   "routes": [
@@ -15,7 +16,7 @@
     "admin",
     "matrix"
   ],
-  "layoutChecks": 36,
+  "layoutChecks": 45,
   "interactionChecks": [
     "fixed lens pricing",
     "consultation blocks purchase",
@@ -31,7 +32,7 @@
     "mobile navigation",
     "all product gallery mappings",
     "images decode on every route",
-    "uncropped hero ratio at all widths"
+    "responsive overlaid hero at all widths"
   ],
   "failures": []
 }

@@ -50,3 +50,8 @@ Every change to a locked rule requires a new version entry and explicit user app
 ## Changelog — 2026-11-17 / natural image holder height
 - Follow-up visual correction: remove holder aspect ratio and percentage image height; let the block image determine holder height directly. Version static asset URLs to refresh cached styling.
 - Expected: holder and rendered photograph have identical heights. Verify this at four widths alongside existing UI checks. Rollback: revert this commit.
+
+## Phase 03.2 — 2026-11-17
+- Authorized targeted frontend refinement on `feat/phase-03-ui-prototype`: cinematic hero, responsive header, category tiles, product presentation and detail hierarchy.
+- Expected: legible overlaid copy with visible eyewear, natural image-holder height, preserved shopping interactions. Validate at 360/390/768/1024/1440px, including categories, keyboard/touch, image loading and layout stability.
+- Rollback: revert the Phase 03.2 commit. No persistent state or backend changes. Stop for visual approval; no merge, deployment or Phase 04.

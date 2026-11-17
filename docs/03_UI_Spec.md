@@ -38,3 +38,6 @@ Architecture direction and the proposed UI baseline were approved in chat. User 
 
 ## Phase 03 image review — 2026-11-17
 User-supplied AI-generated demonstration photographs replace illustrations. Hero headline: “See Better. Look Sharper.” Supporting text: “Eyewear for your everyday life — style, comfort and clear vision.” Primary action: “Explore Collection”. Desktop splits cream copy from the full two-model campaign image; mobile/tablet stack them. Text stays outside the image. Product photography is contained and shared across all views, with no invented alternate gallery angles. Existing synthetic catalog and business rules remain unchanged. Asset mapping and review details: `preview/README.md`.
+
+## Phase 03.2 — premium storefront refinement / 2026-11-17
+Explicit user instruction supersedes the previous split-hero design: full-width lifestyle image with cream headline/CTA overlay and subtle brown gradient. Mobile uses a dedicated focal crop prioritizing visible eyewear. Discovery uses six photographic category tiles; featured holders follow natural image dimensions. Refine header, type scale, product hierarchy and controls while preserving all rules, routes, prices and mock-only boundaries. No new product claims or backend work.

@@ -62,7 +62,7 @@ Hero variants are 768/1200/1774px wide; product variants are 320/640/1000px squa
 
 One shared image mapping covers cards, listings, galleries, bag and POS. Each gallery shows the single supplied photograph without invented alternate views. Existing names, SKUs, prices, categories, filters and color choices are preserved. Their synthetic metadata (including Forma's category/material/color and Noir's polarized category) is not verified by the photos; this is stated on product pages. Other color selections reuse the same demo photograph.
 
-The hero uses the full 2:1 composition at every reviewed width, retaining both models' faces and glasses. All copy and actions are HTML outside the image. Mobile and tablet stack the panels; desktop uses a cream text panel and large photograph.
+Phase 03.2 supersedes the split hero. The campaign now fills a 650px desktop hero, with cream HTML copy over a brown gradient at lower left. Mobile uses a 560px hero with a dedicated right-side focal crop and lower-left overlay. The supplied 2:1 photograph cannot keep both faces at mobile portrait proportions: the sunglasses model is prioritized, with her eyewear intact and above the copy. Desktop and tablet retain both sets of glasses. No new image or fictional campaign claim is introduced.
 
 The frontend is structured for later extraction into PHP templates: shell in `index.html`, components and synthetic data in `app.js`, responsive styles in `styles.css`. This makes no claim of verified PHP/MySQL or live hosting compatibility.
 
@@ -70,7 +70,7 @@ The frontend is structured for later extraction into PHP templates: shell in `in
 
 - Syntax: `node --check preview/app.js`.
 - Browser regression: start the static server on port 4173, then `node checks/ui.cjs` from the repository root, using an already installed Playwright and Chromium. Set `CHROMIUM_PATH` when necessary. This optional review tool is not an application dependency.
-- Checked 360, 390, 768 and 1440px: eight routes plus expanded lens selection = 36 layout checks, plus the behavioral cases listed in `evidence/results.json`.
+- Current regression covers 360, 390, 768, 1024 and 1440px: eight routes plus expanded lens selection = 45 layout checks, plus the behavioral cases listed in `evidence/results.json`.
 - Screenshots are under `evidence/`; they show synthetic prepopulated review state.
 - Automated checks cover Chromium only. Physical touch, screen readers, Windows, PHP, MySQL, payments, scanner, printer and AR have not been verified. Accessibility attributes and keyboard focus styles are included but no accessibility certification is claimed.
 
@@ -86,6 +86,16 @@ Backend implementation must wait for separate authorization after UI review. Do 
 ## Image integration review — 2026-11-17
 Expected behavior: local AI photographs replace SVG illustrations on all surfaces, without changing shopping rules. Verify image decoding, mapping, full hero framing, gallery containment, four responsive widths and existing interactions. Rollback: revert the image-integration commit; no migrations or persistent data are involved. Backend, deployment and merge remain unauthorized.
 
-Latest result: 36 layout checks passed at 360/390/768/1440px, including image decoding, square product image proportions and uncropped 2:1 hero framing. Existing interaction regression and all four gallery mappings passed with no JavaScript errors. Desktop/mobile screenshots were visually reviewed. This remains Chromium-based review, not physical-device or Windows verification.
+Earlier image-integration result: 36 layout checks passed at 360/390/768/1440px, including image decoding, square product image proportions and uncropped 2:1 hero framing. Existing interaction regression and all four gallery mappings passed with no JavaScript errors. Desktop/mobile screenshots were visually reviewed. This remains Chromium-based review, not physical-device or Windows verification.
 
 Product-card refinement: homepage and listing holders follow the actual rendered photograph height, with no fixed height or forced aspect ratio. Images retain natural proportions. Responsive checks explicitly verify holder height matches image height.
+
+## Phase 03.2 review
+- Full-width campaign, image-safe mobile focal point, brighter CTA, larger wordmark and search, six photographic category routes, natural product holders, stronger frame-price/variant/lens hierarchy. No business behavior or architecture change.
+- Category photographs are illustrative: they do not prove polarization, day-night behavior, material, stock or discounts. Sale remains an honest empty demo collection.
+- `node checks/premium.cjs` checks all six category routes at five widths, header search, image/overlay geometry, keyboard focus and consultation dialog behavior, touch targets, and initial layout shifts. Eyewear bounds are manually traced from the supplied photo and checked against the CSS crop and copy region. This supplements screenshot review; it is not a substitute for physical-device or screen-reader testing.
+- Required screenshots: `evidence/home-premium-1440.png`, `evidence/home-premium-390.png`, `evidence/product-premium-1440.png`, `evidence/product-premium-390.png`. Additional widths use the same naming convention.
+- Preview: open `preview/index.html`, or run `py -m http.server 4173 --directory preview` on Windows and visit `http://127.0.0.1:4173/`. No installation or build is required.
+- Rollback: revert the Phase 03.2 commit. Backend, merge, deployment and Phase 04 remain unauthorized.
+
+Actual Phase 03.2 results: `node --check preview/app.js` and `git diff --check` passed. `node checks/ui.cjs` passed 45 viewport/route layout checks and existing shopping regression. `node checks/premium.cjs` passed all six category routes at all five widths, header search, hero keyboard focus/touch size, keyboard consultation/Escape, eyewear crop/overlay bounds and image loading checks. Initial CLS measured 0 at each viewport after adding initial route space reservation. The cream copy/brown gradient and focal crop were also reviewed in screenshots; no formal contrast or accessibility certification is claimed. See `evidence/results.json` and `evidence/premium-results.json`.

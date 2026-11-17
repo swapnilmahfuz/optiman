@@ -18,6 +18,19 @@
         "visible": true,
         "outline": 3,
         "height": 54.390625
+      },
+      "navigation": {
+        "images": 0,
+        "columns": 2,
+        "labels": [
+          "Sunglasses",
+          "Optical Frames",
+          "Day-Night",
+          "Polarized",
+          "Sale",
+          "Shop All"
+        ],
+        "clipping": false
       }
     },
     {
@@ -38,6 +51,19 @@
         "visible": true,
         "outline": 3,
         "height": 54.390625
+      },
+      "navigation": {
+        "images": 0,
+        "columns": 2,
+        "labels": [
+          "Sunglasses",
+          "Optical Frames",
+          "Day-Night",
+          "Polarized",
+          "Sale",
+          "Shop All"
+        ],
+        "clipping": false
       }
     },
     {
@@ -58,6 +84,19 @@
         "visible": true,
         "outline": 3,
         "height": 54.390625
+      },
+      "navigation": {
+        "images": 0,
+        "columns": 3,
+        "labels": [
+          "Sunglasses",
+          "Optical Frames",
+          "Day-Night",
+          "Polarized",
+          "Sale",
+          "Shop All"
+        ],
+        "clipping": false
       }
     },
     {
@@ -78,6 +117,19 @@
         "visible": true,
         "outline": 3,
         "height": 54.390625
+      },
+      "navigation": {
+        "images": 0,
+        "columns": 6,
+        "labels": [
+          "Sunglasses",
+          "Optical Frames",
+          "Day-Night",
+          "Polarized",
+          "Sale",
+          "Shop All"
+        ],
+        "clipping": false
       }
     },
     {
@@ -98,6 +150,19 @@
         "visible": true,
         "outline": 3,
         "height": 54.390625
+      },
+      "navigation": {
+        "images": 0,
+        "columns": 6,
+        "labels": [
+          "Sunglasses",
+          "Optical Frames",
+          "Day-Night",
+          "Polarized",
+          "Sale",
+          "Shop All"
+        ],
+        "clipping": false
       }
     }
   ],

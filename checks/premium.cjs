@@ -33,13 +33,26 @@ const fs=require('node:fs');
   if(!focus.visible||focus.outline<2||focus.height<44)failures.push(`${width}: hero keyboard/touch`);
   await page.locator('.hero-copy .button').blur();
   // Fresh screenshots contain the entire page; force images to paint first.
-  await page.screenshot({path:`evidence/home-premium-${width}.png`,fullPage:true});
+  await page.screenshot({path:`evidence/home-categories-${width}.png`,fullPage:true});
+  const navigation=await page.locator('.category-links').evaluate(e=>({
+   images:e.querySelectorAll('img').length,
+   columns:getComputedStyle(e).gridTemplateColumns.split(' ').length,
+   labels:[...e.querySelectorAll('a')].map(a=>a.textContent.trim()),
+   clipping:[...e.querySelectorAll('a span')].some(a=>a.scrollWidth>a.clientWidth)
+  }));
+  if(navigation.images||navigation.clipping)failures.push(`${width}: category imagery or clipping`);
+  if(navigation.columns!==(width>=1024?6:width>=600?3:2))failures.push(`${width}: category columns`);
+  if(JSON.stringify(navigation.labels)!==JSON.stringify(categories.map(c=>c[0])))failures.push(`${width}: category order`);
+  if(await page.locator('.category-disclosure').count())failures.push(`${width}: obsolete disclosure`);
   for(const [label,slug,category] of categories){
    await page.goto('http://127.0.0.1:4173/#home');
    const tile=page.locator('.category-links').getByRole('link',{name:label,exact:true});
    const h=await tile.evaluate(e=>e.getBoundingClientRect().height);if(h<44)failures.push(`${width}: ${label} touch target`);
-   await tile.click();await page.waitForURL('**/#shop'+(slug?'/'+slug:''));
+   await tile.focus();await page.keyboard.press('Shift+Tab');await page.keyboard.press('Tab');
+   if(!await tile.evaluate(e=>e===document.activeElement&&e.matches(':focus-visible')&&parseFloat(getComputedStyle(e).outlineWidth)>=2))failures.push(`${width}: ${label} keyboard focus`);
+   await page.keyboard.press('Enter');await page.waitForURL('**/#shop'+(slug?'/'+slug:''));
    if(await page.locator('#filter-category').inputValue()!==category)failures.push(`${width}: ${label} filter`);
+   if(label==='Sale'&&await page.locator('.product-card').count()!==0)failures.push(`${width}: Sale should be empty`);
   }
   await page.goto('http://127.0.0.1:4173/#home');
   await page.fill('#search','Noir');await page.locator('#search-form button').click();
@@ -53,7 +66,7 @@ const fs=require('node:fs');
   await page.locator('#consult').focus();await page.keyboard.press('Enter');
   if(!await page.locator('dialog').isVisible())failures.push(`${width}: keyboard consultation`);
   await page.keyboard.press('Escape');if(await page.locator('dialog').isVisible())failures.push(`${width}: dialog escape`);
-  details.push({width,...layout,focus});await page.close();
+  details.push({width,...layout,focus,navigation});await page.close();
  }
  fs.writeFileSync('evidence/premium-results.json',JSON.stringify({details,categoryRoutes:categories,failures},null,2)+'\n');
  console.log(JSON.stringify({details,failures},null,2));await browser.close();if(failures.length)process.exitCode=1;

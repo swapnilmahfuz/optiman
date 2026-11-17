@@ -41,3 +41,6 @@ User-supplied AI-generated demonstration photographs replace illustrations. Hero
 
 ## Phase 03.2 — premium storefront refinement / 2026-11-17
 Explicit user instruction supersedes the previous split-hero design: full-width lifestyle image with cream headline/CTA overlay and subtle brown gradient. Mobile uses a dedicated focal crop prioritizing visible eyewear. Discovery uses six photographic category tiles; featured holders follow natural image dimensions. Refine header, type scale, product hierarchy and controls while preserving all rules, routes, prices and mock-only boundaries. No new product claims or backend work.
+
+## Phase 03.3 — clean category navigation / 2026-11-17
+Homepage discovery supersedes photographic tiles with six ordered text links and subtle separators: six columns from 1024px, three at tablet widths, two on mobile. Minimum 44px touch targets, visible keyboard focus and compact transition to featured frames. Remove the category-only image disclosure; preserve hero, top navigation, product data and business flows.

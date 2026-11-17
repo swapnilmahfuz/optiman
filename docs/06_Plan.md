@@ -55,3 +55,8 @@ Every change to a locked rule requires a new version entry and explicit user app
 - Authorized targeted frontend refinement on `feat/phase-03-ui-prototype`: cinematic hero, responsive header, category tiles, product presentation and detail hierarchy.
 - Expected: legible overlaid copy with visible eyewear, natural image-holder height, preserved shopping interactions. Validate at 360/390/768/1024/1440px, including categories, keyboard/touch, image loading and layout stability.
 - Rollback: revert the Phase 03.2 commit. No persistent state or backend changes. Stop for visual approval; no merge, deployment or Phase 04.
+
+## Phase 03.3 — 2026-11-17
+- Authorized homepage category refinement only: text navigation, no repeated product photos, exact six routes/order, reduced spacing before featured products.
+- Expected: 6/3/2 responsive columns, touch targets at least 44px, no clipping or overflow, Sale empty state unchanged. Run existing regression plus category keyboard/layout checks at 360/390/768/1024/1440px.
+- Rollback: revert this commit. Preserve the approved hero and top navigation; no merge, backend or deployment. Stop for visual approval.

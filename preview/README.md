@@ -87,3 +87,5 @@ Backend implementation must wait for separate authorization after UI review. Do 
 Expected behavior: local AI photographs replace SVG illustrations on all surfaces, without changing shopping rules. Verify image decoding, mapping, full hero framing, gallery containment, four responsive widths and existing interactions. Rollback: revert the image-integration commit; no migrations or persistent data are involved. Backend, deployment and merge remain unauthorized.
 
 Latest result: 36 layout checks passed at 360/390/768/1440px, including image decoding, square product image proportions and uncropped 2:1 hero framing. Existing interaction regression and all four gallery mappings passed with no JavaScript errors. Desktop/mobile screenshots were visually reviewed. This remains Chromium-based review, not physical-device or Windows verification.
+
+Product-card refinement: homepage and listing panels use a fixed 4:3 ratio and trim surplus studio background. Product galleries retain the complete square photograph. Responsive checks explicitly verify panel proportions.

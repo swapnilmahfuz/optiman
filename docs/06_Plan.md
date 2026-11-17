@@ -42,3 +42,7 @@ Every change to a locked rule requires a new version entry and explicit user app
 - Integrated the five supplied AI demonstration photographs as responsive local WebP assets; no external image dependency.
 - Updated editorial hero and consistent product mapping; removed misleading alternate gallery crop.
 - Scope remains frontend-only. Expected behavior, verification and rollback are documented in `preview/README.md`. Await visual approval after delivery.
+
+## Changelog — 2026-11-17 / compact product cards
+- Visual feedback: constrain collection/homepage product panels to 4:3, trimming excess studio background while retaining the full eyewear. Gallery remains square.
+- Expected: compact panels regardless of intrinsic image height; verify all four widths, frame visibility and existing interactions. Rollback: revert this styling commit. Frontend-only scope unchanged.

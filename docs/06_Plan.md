@@ -46,3 +46,7 @@ Every change to a locked rule requires a new version entry and explicit user app
 ## Changelog — 2026-11-17 / compact product cards
 - Visual feedback: constrain collection/homepage product panels to 4:3, trimming excess studio background while retaining the full eyewear. Gallery remains square.
 - Expected: compact panels regardless of intrinsic image height; verify all four widths, frame visibility and existing interactions. Rollback: revert this styling commit. Frontend-only scope unchanged.
+
+## Changelog — 2026-11-17 / natural image holder height
+- Follow-up visual correction: remove holder aspect ratio and percentage image height; let the block image determine holder height directly. Version static asset URLs to refresh cached styling.
+- Expected: holder and rendered photograph have identical heights. Verify this at four widths alongside existing UI checks. Rollback: revert this commit.

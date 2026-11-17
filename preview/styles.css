@@ -25,7 +25,6 @@ nav{background:var(--brown);color:var(--cream);border-color:var(--mocha)}
 @media(min-width:1024px){.campaign-hero .hero-art img{flex:0 0 auto}}
 @media(max-width:1023px){.campaign-hero{display:flex;flex-direction:column}.campaign-hero .hero-copy{padding:45px 6%;width:100%}.campaign-hero h1{font-size:60px}.campaign-hero .hero-copy>p:not(.eyebrow){max-width:420px}.campaign-hero .hero-copy small{margin-top:25px}.campaign-hero .hero-art{min-height:0;width:100%}.campaign-hero .hero-art img{height:auto;object-fit:contain}}
 @media(max-width:599px){.campaign-hero .hero-copy{padding:34px 6% 32px}.campaign-hero h1{font-size:clamp(43px,12vw,62px);line-height:1.05}.campaign-hero .hero-copy>.eyebrow{font-size:9px}.campaign-hero .hero-copy>p:not(.eyebrow){max-width:310px;margin-bottom:24px}.campaign-hero .hero-art img{height:auto;min-height:0;aspect-ratio:2/1}.campaign-hero figcaption{padding:9px 15px;font-size:7px}.editorial img{max-height:none}.gallery-main{min-height:0}.gallery .muted{margin-bottom:25px}}
-/* Compact cards: constrain the panel independently of source image dimensions.
-   Trim only studio background above/below; keep the complete frame visible. */
-.product-image{aspect-ratio:4/3}
-.product-image img{width:100%;height:100%;aspect-ratio:auto;object-fit:cover;object-position:center 58%}
+/* Let the card holder follow the real photograph, with no percentage-height loop. */
+.product-image{height:auto;min-height:0;aspect-ratio:auto;padding:0;align-self:start}
+.product-image img{display:block;width:100%;height:auto;min-height:0;aspect-ratio:auto;object-fit:contain}

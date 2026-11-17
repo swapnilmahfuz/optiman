@@ -88,4 +88,4 @@ Expected behavior: local AI photographs replace SVG illustrations on all surface
 
 Latest result: 36 layout checks passed at 360/390/768/1440px, including image decoding, square product image proportions and uncropped 2:1 hero framing. Existing interaction regression and all four gallery mappings passed with no JavaScript errors. Desktop/mobile screenshots were visually reviewed. This remains Chromium-based review, not physical-device or Windows verification.
 
-Product-card refinement: homepage and listing panels use a fixed 4:3 ratio and trim surplus studio background. Product galleries retain the complete square photograph. Responsive checks explicitly verify panel proportions.
+Product-card refinement: homepage and listing holders follow the actual rendered photograph height, with no fixed height or forced aspect ratio. Images retain natural proportions. Responsive checks explicitly verify holder height matches image height.

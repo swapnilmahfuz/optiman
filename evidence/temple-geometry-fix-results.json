@@ -1,0 +1,16 @@
+{
+  "frontTransformCases": 648,
+  "checks": [
+    "exact front-draw hinge coordinates",
+    "scale/distance/roll/calibration",
+    "single camera mirror",
+    "frontal concealment",
+    "near/far yaw perspective",
+    "bounded length and angle",
+    "frame-relative thickness",
+    "temporal fit/visibility smoothing",
+    "conservative hide/reset",
+    "immutable front/tracker/camera/UI/business scope"
+  ],
+  "failures": []
+}

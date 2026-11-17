@@ -1,0 +1,1412 @@
+{
+  "input": "Matched synthetic portrait pixels and identical real MediaPipe poses for baseline 017cc52 and revised renderer; mirrored inputs cover opposite turn",
+  "cases": [
+    {
+      "name": "frontal",
+      "id": "atlas",
+      "yaw": 0.013130372240061717,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 644,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.2607416221291422,
+            "alpha": 0.2968422988036593
+          },
+          {
+            "length": 0.2282377444091738,
+            "alpha": 0.4983825211360864
+          }
+        ]
+      },
+      "after": {
+        "pixels": 15,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.0102413960604882,
+            "alpha": 0.021250867883096804
+          },
+          {
+            "length": 0.0102413960604882,
+            "alpha": 0.026003902167264694
+          }
+        ]
+      }
+    },
+    {
+      "name": "frontal",
+      "id": "noir",
+      "yaw": 0.013130372240061717,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 521,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.24656529818627343,
+            "alpha": 0.3632349577278272
+          },
+          {
+            "length": 0.21269784827571625,
+            "alpha": 0.4983825211360864
+          }
+        ]
+      },
+      "after": {
+        "pixels": 27,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.010503995959475076,
+            "alpha": 0.027579158483896134
+          },
+          {
+            "length": 0.010503995959475076,
+            "alpha": 0.027579158483896134
+          }
+        ]
+      }
+    },
+    {
+      "name": "frontal",
+      "id": "muse",
+      "yaw": 0.013130372240061717,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 359,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.2400391798210442,
+            "alpha": 0.3632349577278272
+          },
+          {
+            "length": 0.2081177060381749,
+            "alpha": 0.4983825211360864
+          }
+        ]
+      },
+      "after": {
+        "pixels": 15,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.00997879616150132,
+            "alpha": 0.024450445003700607
+          },
+          {
+            "length": 0.00997879616150132,
+            "alpha": 0.024450445003700607
+          }
+        ]
+      }
+    },
+    {
+      "name": "frontal",
+      "id": "forma",
+      "yaw": 0.013130372240061717,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 336,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.22157038485211367,
+            "alpha": 0.3632349577278272
+          },
+          {
+            "length": 0.1907546256917303,
+            "alpha": 0.4983825211360864
+          }
+        ]
+      },
+      "after": {
+        "pixels": 12,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.01011009611099476,
+            "alpha": 0.025224290284443153
+          },
+          {
+            "length": 0.01011009611099476,
+            "alpha": 0.025224290284443153
+          }
+        ]
+      }
+    },
+    {
+      "name": "slight-left",
+      "id": "atlas",
+      "yaw": 0.1502700729402109,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 418,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.33931375773062056,
+            "alpha": 0.5110204019439334
+          }
+        ]
+      },
+      "after": {
+        "pixels": 149,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.09770950140742939,
+            "alpha": 0.6661832991801151
+          }
+        ]
+      }
+    },
+    {
+      "name": "slight-left",
+      "id": "noir",
+      "yaw": 0.1502700729402109,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 375,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.31598001537793735,
+            "alpha": 0.6903781021162952
+          }
+        ]
+      },
+      "after": {
+        "pixels": 109,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.08465059920292005,
+            "alpha": 0.8999999999999999
+          }
+        ]
+      }
+    },
+    {
+      "name": "slight-left",
+      "id": "muse",
+      "yaw": 0.1502700729402109,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 249,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.3253497975721762,
+            "alpha": 0.6903781021162952
+          }
+        ]
+      },
+      "after": {
+        "pixels": 75,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.09670950140742939,
+            "alpha": 0.8999999999999999
+          }
+        ]
+      }
+    },
+    {
+      "name": "slight-left",
+      "id": "forma",
+      "yaw": 0.1502700729402109,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 234,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.31608608608286526,
+            "alpha": 0.6903781021162952
+          }
+        ]
+      },
+      "after": {
+        "pixels": 83,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.09770950140742939,
+            "alpha": 0.8999999999999999
+          }
+        ]
+      }
+    },
+    {
+      "name": "slight-right",
+      "id": "atlas",
+      "yaw": 0.14452075821831808,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 438,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.34480895007344653,
+            "alpha": 0.48715710627612263
+          }
+        ]
+      },
+      "after": {
+        "pixels": 157,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.1014718883415303,
+            "alpha": 0.6425659119384919
+          }
+        ]
+      }
+    },
+    {
+      "name": "slight-right",
+      "id": "noir",
+      "yaw": 0.14452075821831808,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 345,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.3213679786074485,
+            "alpha": 0.6823290615056453
+          }
+        ]
+      },
+      "after": {
+        "pixels": 115,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.08833119511671438,
+            "alpha": 0.8999999999999999
+          }
+        ]
+      }
+    },
+    {
+      "name": "slight-right",
+      "id": "muse",
+      "yaw": 0.14452075821831808,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 254,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.33100950711851473,
+            "alpha": 0.6823290615056453
+          }
+        ]
+      },
+      "after": {
+        "pixels": 81,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.1004718883415303,
+            "alpha": 0.8999999999999999
+          }
+        ]
+      }
+    },
+    {
+      "name": "slight-right",
+      "id": "forma",
+      "yaw": 0.14452075821831808,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 249,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.32192663513433284,
+            "alpha": 0.6823290615056453
+          }
+        ]
+      },
+      "after": {
+        "pixels": 87,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.1014718883415303,
+            "alpha": 0.8999999999999999
+          }
+        ]
+      }
+    },
+    {
+      "name": "moderate-left",
+      "id": "atlas",
+      "yaw": 0.41557002019699263,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      },
+      "after": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      }
+    },
+    {
+      "name": "moderate-left",
+      "id": "noir",
+      "yaw": 0.41557002019699263,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      },
+      "after": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      }
+    },
+    {
+      "name": "moderate-left",
+      "id": "muse",
+      "yaw": 0.41557002019699263,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      },
+      "after": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      }
+    },
+    {
+      "name": "moderate-left",
+      "id": "forma",
+      "yaw": 0.41557002019699263,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      },
+      "after": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      }
+    },
+    {
+      "name": "moderate-right",
+      "id": "atlas",
+      "yaw": 0.41651531022992033,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      },
+      "after": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      }
+    },
+    {
+      "name": "moderate-right",
+      "id": "noir",
+      "yaw": 0.41651531022992033,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      },
+      "after": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      }
+    },
+    {
+      "name": "moderate-right",
+      "id": "muse",
+      "yaw": 0.41651531022992033,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      },
+      "after": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      }
+    },
+    {
+      "name": "moderate-right",
+      "id": "forma",
+      "yaw": 0.41651531022992033,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      },
+      "after": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      }
+    },
+    {
+      "name": "head-tilt",
+      "id": "atlas",
+      "yaw": 0.015346987189377869,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 622,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.24992593807430066,
+            "alpha": 0.2501575625887797
+          },
+          {
+            "length": 0.21393577302172115,
+            "alpha": 0.501485782065129
+          }
+        ]
+      },
+      "after": {
+        "pixels": 36,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.01197018010535102,
+            "alpha": 0.02568446792721511
+          },
+          {
+            "length": 0.01197018010535102,
+            "alpha": 0.036657238403279314
+          }
+        ]
+      }
+    },
+    {
+      "name": "head-tilt",
+      "id": "noir",
+      "yaw": 0.015346987189377869,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 495,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.23477073173407842,
+            "alpha": 0.357028435869742
+          },
+          {
+            "length": 0.19834345447154855,
+            "alpha": 0.501485782065129
+          }
+        ]
+      },
+      "after": {
+        "pixels": 37,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.012277107800360022,
+            "alpha": 0.03859251810327655
+          },
+          {
+            "length": 0.012277107800360022,
+            "alpha": 0.03859251810327655
+          }
+        ]
+      }
+    },
+    {
+      "name": "head-tilt",
+      "id": "muse",
+      "yaw": 0.015346987189377869,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 345,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.22959913016543587,
+            "alpha": 0.357028435869742
+          },
+          {
+            "length": 0.19387782982682383,
+            "alpha": 0.501485782065129
+          }
+        ]
+      },
+      "after": {
+        "pixels": 18,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.01166325241034202,
+            "alpha": 0.03472894441803136
+          },
+          {
+            "length": 0.01166325241034202,
+            "alpha": 0.03472894441803136
+          }
+        ]
+      }
+    },
+    {
+      "name": "head-tilt",
+      "id": "forma",
+      "yaw": 0.015346987189377869,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 312,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.211816912474749,
+            "alpha": 0.357028435869742
+          },
+          {
+            "length": 0.17667540721829,
+            "alpha": 0.501485782065129
+          }
+        ]
+      },
+      "after": {
+        "pixels": 22,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.01181671625784652,
+            "alpha": 0.03569196526728007
+          },
+          {
+            "length": 0.01181671625784652,
+            "alpha": 0.03569196526728007
+          }
+        ]
+      }
+    },
+    {
+      "name": "closer",
+      "id": "atlas",
+      "yaw": 0.01513324985994015,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 886,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.25017483512208594,
+            "alpha": 0.26012331760962626
+          },
+          {
+            "length": 0.22645368085938813,
+            "alpha": 0.5011865498039162
+          }
+        ]
+      },
+      "after": {
+        "pixels": 52,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.011803484349059793,
+            "alpha": 0.025900424612131878
+          },
+          {
+            "length": 0.011803484349059793,
+            "alpha": 0.03560883606281882
+          }
+        ]
+      }
+    },
+    {
+      "name": "closer",
+      "id": "noir",
+      "yaw": 0.01513324985994015,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 726,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.2359626493372789,
+            "alpha": 0.3576269003921676
+          },
+          {
+            "length": 0.21030086262800293,
+            "alpha": 0.5011865498039162
+          }
+        ]
+      },
+      "after": {
+        "pixels": 51,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.01210613779390748,
+            "alpha": 0.037513874478149356
+          },
+          {
+            "length": 0.01210613779390748,
+            "alpha": 0.037513874478149356
+          }
+        ]
+      }
+    },
+    {
+      "name": "closer",
+      "id": "muse",
+      "yaw": 0.01513324985994015,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 492,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.22950174941180393,
+            "alpha": 0.3576269003921676
+          },
+          {
+            "length": 0.20661243175728483,
+            "alpha": 0.5011865498039162
+          }
+        ]
+      },
+      "after": {
+        "pixels": 26,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.011500830904212105,
+            "alpha": 0.0337127272587473
+          },
+          {
+            "length": 0.011500830904212105,
+            "alpha": 0.0337127272587473
+          }
+        ]
+      }
+    },
+    {
+      "name": "closer",
+      "id": "forma",
+      "yaw": 0.01513324985994015,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 459,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.21110837349180495,
+            "alpha": 0.3576269003921676
+          },
+          {
+            "length": 0.18972278545896085,
+            "alpha": 0.5011865498039162
+          }
+        ]
+      },
+      "after": {
+        "pixels": 29,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.011652157626635948,
+            "alpha": 0.03465942295068214
+          },
+          {
+            "length": 0.011652157626635948,
+            "alpha": 0.03465942295068214
+          }
+        ]
+      }
+    },
+    {
+      "name": "farther",
+      "id": "atlas",
+      "yaw": 0.004976255574036953,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 459,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.2621426936561925,
+            "alpha": 0.2667922113750413
+          },
+          {
+            "length": 0.23029976711759623,
+            "alpha": 0.48696675780365173
+          }
+        ]
+      },
+      "after": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      }
+    },
+    {
+      "name": "farther",
+      "id": "noir",
+      "yaw": 0.004976255574036953,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 385,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.2470848363976655,
+            "alpha": 0.38606648439269653
+          },
+          {
+            "length": 0.21440475525275599,
+            "alpha": 0.48696675780365173
+          }
+        ]
+      },
+      "after": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      }
+    },
+    {
+      "name": "farther",
+      "id": "muse",
+      "yaw": 0.004976255574036953,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 281,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.24175514595677167,
+            "alpha": 0.3851829883393654
+          },
+          {
+            "length": 0.2103298366232706,
+            "alpha": 0.48696675780365173
+          }
+        ]
+      },
+      "after": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      }
+    },
+    {
+      "name": "farther",
+      "id": "forma",
+      "yaw": 0.004976255574036953,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 262,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.22383862597690382,
+            "alpha": 0.38606648439269653
+          },
+          {
+            "length": 0.1932121220693063,
+            "alpha": 0.48696675780365173
+          }
+        ]
+      },
+      "after": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      }
+    },
+    {
+      "name": "manual-small",
+      "id": "atlas",
+      "yaw": 0.013130372240061717,
+      "scale": 0.9,
+      "vertical": 0,
+      "before": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      },
+      "after": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      }
+    },
+    {
+      "name": "manual-small",
+      "id": "noir",
+      "yaw": 0.013130372240061717,
+      "scale": 0.9,
+      "vertical": 0,
+      "before": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      },
+      "after": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      }
+    },
+    {
+      "name": "manual-small",
+      "id": "muse",
+      "yaw": 0.013130372240061717,
+      "scale": 0.9,
+      "vertical": 0,
+      "before": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      },
+      "after": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      }
+    },
+    {
+      "name": "manual-small",
+      "id": "forma",
+      "yaw": 0.013130372240061717,
+      "scale": 0.9,
+      "vertical": 0,
+      "before": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      },
+      "after": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      }
+    },
+    {
+      "name": "manual-large",
+      "id": "atlas",
+      "yaw": 0.013130372240061717,
+      "scale": 1.1,
+      "vertical": 0,
+      "before": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      },
+      "after": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      }
+    },
+    {
+      "name": "manual-large",
+      "id": "noir",
+      "yaw": 0.013130372240061717,
+      "scale": 1.1,
+      "vertical": 0,
+      "before": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      },
+      "after": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      }
+    },
+    {
+      "name": "manual-large",
+      "id": "muse",
+      "yaw": 0.013130372240061717,
+      "scale": 1.1,
+      "vertical": 0,
+      "before": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      },
+      "after": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      }
+    },
+    {
+      "name": "manual-large",
+      "id": "forma",
+      "yaw": 0.013130372240061717,
+      "scale": 1.1,
+      "vertical": 0,
+      "before": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      },
+      "after": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      }
+    },
+    {
+      "name": "calibrate-up",
+      "id": "atlas",
+      "yaw": 0.013130372240061717,
+      "scale": 1,
+      "vertical": -0.12,
+      "before": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      },
+      "after": {
+        "pixels": 31,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.0102413960604882,
+            "alpha": 0.026003902167264694
+          },
+          {
+            "length": 0.0102413960604882,
+            "alpha": 0.026003902167264694
+          }
+        ]
+      }
+    },
+    {
+      "name": "calibrate-up",
+      "id": "noir",
+      "yaw": 0.013130372240061717,
+      "scale": 1,
+      "vertical": -0.12,
+      "before": {
+        "pixels": 0,
+        "protectedPixels": 0,
+        "plans": []
+      },
+      "after": {
+        "pixels": 28,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.010503995959475076,
+            "alpha": 0.027579158483896134
+          },
+          {
+            "length": 0.010503995959475076,
+            "alpha": 0.027579158483896134
+          }
+        ]
+      }
+    },
+    {
+      "name": "calibrate-up",
+      "id": "muse",
+      "yaw": 0.013130372240061717,
+      "scale": 1,
+      "vertical": -0.12,
+      "before": {
+        "pixels": 249,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.3178980466079194,
+            "alpha": 0.38171730319319563
+          }
+        ]
+      },
+      "after": {
+        "pixels": 6,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.00997879616150132,
+            "alpha": 0.024450445003700607
+          },
+          {
+            "length": 0.00997879616150132,
+            "alpha": 0.01872689657616958
+          }
+        ]
+      }
+    },
+    {
+      "name": "calibrate-up",
+      "id": "forma",
+      "yaw": 0.013130372240061717,
+      "scale": 1,
+      "vertical": -0.12,
+      "before": {
+        "pixels": 214,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.2981880688239942,
+            "alpha": 0.14975666551806652
+          }
+        ]
+      },
+      "after": {
+        "pixels": 8,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.01011009611099476,
+            "alpha": 0.025224290284443153
+          },
+          {
+            "length": 0.01011009611099476,
+            "alpha": 0.007579530667421816
+          }
+        ]
+      }
+    },
+    {
+      "name": "calibrate-down",
+      "id": "atlas",
+      "yaw": 0.013130372240061717,
+      "scale": 1,
+      "vertical": 0.12,
+      "before": {
+        "pixels": 411,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.15819225626182262,
+            "alpha": 0.3632349577278272
+          },
+          {
+            "length": 0.13389879834449878,
+            "alpha": 0.4983825211360864
+          }
+        ]
+      },
+      "after": {
+        "pixels": 31,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.0102413960604882,
+            "alpha": 0.026003902167264694
+          },
+          {
+            "length": 0.0102413960604882,
+            "alpha": 0.026003902167264694
+          }
+        ]
+      }
+    },
+    {
+      "name": "calibrate-down",
+      "id": "noir",
+      "yaw": 0.013130372240061717,
+      "scale": 1,
+      "vertical": 0.12,
+      "before": {
+        "pixels": 306,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.13844268140168717,
+            "alpha": 0.3632349577278272
+          },
+          {
+            "length": 0.11140075502242495,
+            "alpha": 0.4983825211360864
+          }
+        ]
+      },
+      "after": {
+        "pixels": 26,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.010503995959475076,
+            "alpha": 0.027579158483896134
+          },
+          {
+            "length": 0.010503995959475076,
+            "alpha": 0.027579158483896134
+          }
+        ]
+      }
+    },
+    {
+      "name": "calibrate-down",
+      "id": "muse",
+      "yaw": 0.013130372240061717,
+      "scale": 1,
+      "vertical": 0.12,
+      "before": {
+        "pixels": 215,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.1409779968086411,
+            "alpha": 0.3632349577278272
+          },
+          {
+            "length": 0.11986154969819722,
+            "alpha": 0.4983825211360864
+          }
+        ]
+      },
+      "after": {
+        "pixels": 13,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.00997879616150132,
+            "alpha": 0.024450445003700607
+          },
+          {
+            "length": 0.00997879616150132,
+            "alpha": 0.024450445003700607
+          }
+        ]
+      }
+    },
+    {
+      "name": "calibrate-down",
+      "id": "forma",
+      "yaw": 0.013130372240061717,
+      "scale": 1,
+      "vertical": 0.12,
+      "before": {
+        "pixels": 204,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.12871213805573742,
+            "alpha": 0.3632349577278272
+          },
+          {
+            "length": 0.11251013312853735,
+            "alpha": 0.4983825211360864
+          }
+        ]
+      },
+      "after": {
+        "pixels": 14,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.01011009611099476,
+            "alpha": 0.025224290284443153
+          },
+          {
+            "length": 0.01011009611099476,
+            "alpha": 0.025224290284443153
+          }
+        ]
+      }
+    },
+    {
+      "name": "recalibrated",
+      "id": "atlas",
+      "yaw": 0.013130372240061717,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 644,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.2607416221291422,
+            "alpha": 0.2968422988036593
+          },
+          {
+            "length": 0.2282377444091738,
+            "alpha": 0.4983825211360864
+          }
+        ]
+      },
+      "after": {
+        "pixels": 15,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.0102413960604882,
+            "alpha": 0.021250867883096804
+          },
+          {
+            "length": 0.0102413960604882,
+            "alpha": 0.026003902167264694
+          }
+        ]
+      }
+    },
+    {
+      "name": "recalibrated",
+      "id": "noir",
+      "yaw": 0.013130372240061717,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 521,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.24656529818627343,
+            "alpha": 0.3632349577278272
+          },
+          {
+            "length": 0.21269784827571625,
+            "alpha": 0.4983825211360864
+          }
+        ]
+      },
+      "after": {
+        "pixels": 27,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.010503995959475076,
+            "alpha": 0.027579158483896134
+          },
+          {
+            "length": 0.010503995959475076,
+            "alpha": 0.027579158483896134
+          }
+        ]
+      }
+    },
+    {
+      "name": "recalibrated",
+      "id": "muse",
+      "yaw": 0.013130372240061717,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 359,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.2400391798210442,
+            "alpha": 0.3632349577278272
+          },
+          {
+            "length": 0.2081177060381749,
+            "alpha": 0.4983825211360864
+          }
+        ]
+      },
+      "after": {
+        "pixels": 15,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.00997879616150132,
+            "alpha": 0.024450445003700607
+          },
+          {
+            "length": 0.00997879616150132,
+            "alpha": 0.024450445003700607
+          }
+        ]
+      }
+    },
+    {
+      "name": "recalibrated",
+      "id": "forma",
+      "yaw": 0.013130372240061717,
+      "scale": 1,
+      "vertical": 0,
+      "before": {
+        "pixels": 336,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.22157038485211367,
+            "alpha": 0.3632349577278272
+          },
+          {
+            "length": 0.1907546256917303,
+            "alpha": 0.4983825211360864
+          }
+        ]
+      },
+      "after": {
+        "pixels": 12,
+        "protectedPixels": 0,
+        "plans": [
+          {
+            "length": 0.01011009611099476,
+            "alpha": 0.025224290284443153
+          },
+          {
+            "length": 0.01011009611099476,
+            "alpha": 0.025224290284443153
+          }
+        ]
+      }
+    }
+  ],
+  "physicalWebcam": false
+}

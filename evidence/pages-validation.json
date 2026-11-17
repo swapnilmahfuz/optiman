@@ -1,6 +1,6 @@
 {
   "date": "2026-11-17",
-  "local_base_url": "http://127.0.0.1:4198/optiman/",
+  "local_base_url": "http://127.0.0.1:4199/optiman/",
   "public_file_count": 45,
   "public_files": [
     "app.js",
@@ -49,16 +49,16 @@
     "vto/vendor/wasm/vision_wasm_nosimd_internal.wasm",
     "vto/vto.css"
   ],
-  "artifact_source_hash_comparison": "all files identical",
+  "artifact_source_hash_comparison": "all 45 files identical",
   "excluded_paths_http_status": {
     "README.md": 404,
-    "docs/14_Temple_Arms.md": 404,
+    "docs/15_Temple_Geometry_Correction.md": 404,
     ".git/config": 404,
-    "evidence/temple-fixtures/slight-turn.webp": 404,
+    "evidence/temple-fixtures/moderate-turn.webp": 404,
     "vto/assets/README.md": 404
   },
   "targeted_checks": {
-    "temple_geometry_scope": "passed; original fronts/camera/tracker/calibration/UI preserved",
+    "temple_geometry_scope": "passed 648 final-front affine cases, proportional geometry, smoothing and immutable scope",
     "temple_render": "all four frontal/turned/mirrored, protected face pixels zero",
     "vto_photo": "passed five widths",
     "vto_synthetic_camera": "passed translation/roll/scale/loss/switching/cleanup",
@@ -67,7 +67,8 @@
     "engine": "passed",
     "payment_preservation": "passed",
     "original_geometry": "passed",
-    "camera_lifecycle": "passed"
+    "camera_lifecycle": "passed",
+    "matched_before_after": "passed 52 synthetic cases, all four models, zero sampled protected face pixels"
   },
   "physical_camera_arms": "unverified; manual visual acceptance required",
   "live_pages": "not verified from this environment"

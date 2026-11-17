@@ -2,7 +2,7 @@ import {CameraSession,cameraError} from './camera.mjs';
 import {FaceTracker} from './tracker.mjs';
 import {facePose,Calibration} from './geometry.mjs';
 import {frameSpecs,loadFrames,drawFrame} from './frames.mjs';
-import {TempleState,loadTemples,drawTemples} from './temples.mjs';
+import {TempleState,loadTemples,drawTemples} from './temples.mjs?v=2';
 let active=null;
 export const tryOnDiagnostics=()=>active?.diagnostics()||null;
 export function openTryOn(options){active?.close();active=new TryOn(options);return active;}

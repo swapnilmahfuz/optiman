@@ -1,0 +1,142 @@
+{
+  "fixture": "AI-generated portrait and mirrored AI head-turn input; genuine MediaPipe detections, not physical camera tests",
+  "report": [
+    {
+      "id": "atlas",
+      "view": "frontal",
+      "turn": -0.013130372240061717,
+      "plans": 2,
+      "sides": [
+        -1,
+        1
+      ],
+      "armPixels": 50,
+      "protectedFacePixels": 0
+    },
+    {
+      "id": "noir",
+      "view": "frontal",
+      "turn": -0.013130372240061717,
+      "plans": 2,
+      "sides": [
+        -1,
+        1
+      ],
+      "armPixels": 43,
+      "protectedFacePixels": 0
+    },
+    {
+      "id": "muse",
+      "view": "frontal",
+      "turn": -0.013130372240061717,
+      "plans": 2,
+      "sides": [
+        -1,
+        1
+      ],
+      "armPixels": 29,
+      "protectedFacePixels": 0
+    },
+    {
+      "id": "forma",
+      "view": "frontal",
+      "turn": -0.013130372240061717,
+      "plans": 2,
+      "sides": [
+        -1,
+        1
+      ],
+      "armPixels": 30,
+      "protectedFacePixels": 0
+    },
+    {
+      "id": "atlas",
+      "view": "turn",
+      "turn": -0.1502700729402109,
+      "plans": 1,
+      "sides": [
+        1
+      ],
+      "armPixels": 167,
+      "protectedFacePixels": 0
+    },
+    {
+      "id": "noir",
+      "view": "turn",
+      "turn": -0.1502700729402109,
+      "plans": 1,
+      "sides": [
+        1
+      ],
+      "armPixels": 123,
+      "protectedFacePixels": 0
+    },
+    {
+      "id": "muse",
+      "view": "turn",
+      "turn": -0.1502700729402109,
+      "plans": 1,
+      "sides": [
+        1
+      ],
+      "armPixels": 94,
+      "protectedFacePixels": 0
+    },
+    {
+      "id": "forma",
+      "view": "turn",
+      "turn": -0.1502700729402109,
+      "plans": 1,
+      "sides": [
+        1
+      ],
+      "armPixels": 102,
+      "protectedFacePixels": 0
+    },
+    {
+      "id": "atlas",
+      "view": "mirrored-turn",
+      "turn": 0.14452075821831808,
+      "plans": 1,
+      "sides": [
+        -1
+      ],
+      "armPixels": 176,
+      "protectedFacePixels": 0
+    },
+    {
+      "id": "noir",
+      "view": "mirrored-turn",
+      "turn": 0.14452075821831808,
+      "plans": 1,
+      "sides": [
+        -1
+      ],
+      "armPixels": 123,
+      "protectedFacePixels": 0
+    },
+    {
+      "id": "muse",
+      "view": "mirrored-turn",
+      "turn": 0.14452075821831808,
+      "plans": 1,
+      "sides": [
+        -1
+      ],
+      "armPixels": 97,
+      "protectedFacePixels": 0
+    },
+    {
+      "id": "forma",
+      "view": "mirrored-turn",
+      "turn": 0.14452075821831808,
+      "plans": 1,
+      "sides": [
+        -1
+      ],
+      "armPixels": 102,
+      "protectedFacePixels": 0
+    }
+  ],
+  "errors": []
+}

@@ -28,6 +28,11 @@ jobs:
         run: |
           node --check preview/app.js
           node --check preview/configurator.js
+          node --check preview/demo-engine.js
+          node --check preview/barcode.js
+          node --check preview/staff.js
+      - name: Check shared engine invariants
+        run: node checks/demo-engine.cjs
       - name: Stage only public frontend files
         run: python3 scripts/package_preview.py "$RUNNER_TEMP/optiman-pages"
       - name: Read Pages configuration

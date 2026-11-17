@@ -46,3 +46,5 @@ No installation is needed for the website. These optional local verification too
 This environment's network proxy returns HTTP 403 for GitHub API and Pages-host checks. A successful git push does not establish a successful Actions run or public deployment. Check the Actions status manually using the steps above. Live deployment and repository visibility are unverified from this environment.
 
 Actual local result: all three suites passed against the staged `/optiman/` site, including 45 route/layout checks and shopping/category regressions at five widths. At that deployment-setup stage, all 18 staged files match their original frontend bytes. README and docs requests return 404. Workflow YAML parsed successfully and branch/artifact path assertions passed. Evidence: `evidence/pages-validation.json`. No live deployment success is claimed.
+
+Current packaging includes `demo-engine.js`, `barcode.js` and `staff.js` alongside the original frontend files: 22 public files total. See [current operational runbook](10_Operations_Demo.md).

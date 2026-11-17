@@ -1,0 +1,25 @@
+{
+  "requiredSequence": {
+    "initial": 10,
+    "afterSale": 9,
+    "afterReceipt": 13,
+    "afterReservation": 11
+  },
+  "checks": [
+    "location scope",
+    "same role features/catalog config",
+    "duplicate SKU/invoice/command",
+    "atomic failed receiving",
+    "last-unit race",
+    "transfer partial/cancel",
+    "return disposition/refund",
+    "cost snapshots",
+    "lens review/customer acceptance",
+    "paid-unallocated",
+    "ledger reconciliation",
+    "sensitive persistence exclusion",
+    "analytics/date/category/price/branch",
+    "Code128 widths/checksum/quiet zones"
+  ],
+  "failures": []
+}

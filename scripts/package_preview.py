@@ -10,9 +10,9 @@ source = Path(__file__).resolve().parents[1] / 'preview'
 output = args.output.resolve()
 if output == source or source in output.parents:
     parser.error('Staging must be outside preview/')
-files = [source / name for name in ('index.html', 'styles.css', 'app.js', 'configurator.js')]
+files = [source / name for name in ('index.html', 'styles.css', 'app.js', 'configurator.js', 'demo-engine.js', 'barcode.js', 'staff.js')]
 files += sorted((source / 'assets').glob('*.webp'))
-if len(files) == 4:
+if len(files) == 7:
     parser.error('Expected local WebP assets')
 for file in files:
     if file.is_symlink() or not file.is_file() or not file.resolve().is_relative_to(source):

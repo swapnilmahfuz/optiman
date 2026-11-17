@@ -12,6 +12,7 @@ function enterProductRoute(){
     if(line&&current().id===line.id){rxEditing=rxPendingEdit;rxDraft=line.rx?cloneRx(line.rx):freshRx();rxDraft.qty=line.qty;rxDraft.step=line.rx?3:1;lens=!!line.rx;color=line.color;}
     rxPendingEdit=null;
   }
+  if(typeof preparePOSRx==='function')preparePOSRx();
 }
 function rxMagnitude(v){return v===''?null:Number(v);}
 function rxManualBlank(){return ['right','left'].every(side=>['sph','cyl','axis','add'].every(k=>rxDraft[side][k]===''));}
@@ -44,30 +45,20 @@ function rxValidation(){
   }
   return errors;
 }
-function rxOptions(){
-  return rules.map((r,id)=>({...r,id,features:id===0?'Clear / anti-reflective demo pair':id===1?'Blue-cut coating demo pair':id===2?'Light-adaptive demo pair':'Staff consultation or explicit availability rule'})).concat({id:6,category:'Bifocal demo',option:'Moon standard pair',type:'FIXED_PRICE',price:1800,features:'Synthetic bifocal pair · Moon Shape example'});
-}
+function rxOptions(){return OptimanDemo.lensRules().map((r,id)=>({...r,id,features:r.features||r.option+' · synthetic pair rule'}));}
 function rxEligibility(option){
   if(option.type==='UNAVAILABLE')return {type:'UNAVAILABLE',reason:'This explicit demo combination is unavailable.'};
   if(rxValidation().length)return {type:'UNAVAILABLE',reason:'Complete valid demo details first.'};
-  if(option.id===3&&rxDraft.type==='zero')return {type:'UNAVAILABLE',reason:'Powered fitting consultation is not a zero-power option.'};
+  if(option.types&&!option.types.includes(rxDraft.type))return {type:'UNAVAILABLE',reason:'This rule is not configured for the selected prescription type.'};
   if(option.type==='CONSULT_WHATSAPP')return {type:option.type,reason:'Contact our WhatsApp for details. No automatic quotation.'};
-  if(rxUploadOnly())return {type:'UNAVAILABLE',reason:'A filename cannot establish powers. Choose consultation.'};
-  if(option.id===6){
-    if(rxDraft.type!=='bifocal'||rxDraft.shape!=='Moon Shape')return {type:'UNAVAILABLE',reason:'Demo fixed pair requires Bifocal + Moon Shape.'};
-    if(['right','left'].some(s=>Number(rxDraft[s].sph)>3||Number(rxDraft[s].add)>2.5))return {type:'UNAVAILABLE',reason:'Outside this synthetic pair rule (SPH ≤3; ADD ≤2.5).'};
-  }else{
-    if(rxDraft.type==='bifocal')return {type:'UNAVAILABLE',reason:'This fixed example is for Zero Power or Unifocal only.'};
-    const maxSph=option.id===2?2:4,maxCyl=option.id===2?1:2;
-    if(rxDraft.type!=='zero'&&['right','left'].some(s=>Number(rxDraft[s].sph)>maxSph||Number(rxDraft[s].cyl)>maxCyl))return {type:'UNAVAILABLE',reason:`Outside this synthetic pair rule (SPH ≤${maxSph}; CYL ≤${maxCyl}).`};
-  }
-  return {type:'FIXED_PRICE',reason:'Eligible under synthetic demo rules only; staff verification required.'};
+  return OptimanDemo.lensDecision(option,rxDraft)?{type:'FIXED_PRICE',reason:'Eligible under configured synthetic demo rules only; staff verification required.'}:{type:'UNAVAILABLE',reason:'Outside the configured synthetic power/type/shape rules. No price substitution.'};
 }
 function selectedRxOption(){
   const option=rxOptions().find(o=>o.id===rxDraft.lensId);
   return option?{...option,...rxEligibility(option)}:null;
 }
-function rxCanAdd(){return Number.isInteger(rxDraft.qty)&&rxDraft.qty>=1&&rxDraft.qty<=99&&(!lens||(!rxValidation().length&&selectedRxOption()?.type==='FIXED_PRICE'));}
+function rxSelectionValid(){return Number.isInteger(rxDraft.qty)&&rxDraft.qty>=1&&rxDraft.qty<=99&&(!lens||(!rxValidation().length&&selectedRxOption()?.type==='FIXED_PRICE'));}
+function rxCanAdd(){const quantity=typeof rxPOSContext!=='undefined'&&rxPOSContext?stockAt(current().id,rxPOSContext.location):OptimanDemo.onlineAvailable(current().id);return rxSelectionValid()&&quantity>=rxDraft.qty;}
 function rxErrorHTML(){return `<div id="rx-errors" role="alert" tabindex="-1" ${rxErrors.length?'':'hidden'}>${rxErrors.length?'<b>Check the demo details</b><ul>'+rxErrors.map(e=>`<li>${esc(e)}</li>`).join('')+'</ul>':''}</div>`;}
 function rxField(side,key,label,{sign=false,max=12,step='.25',optional=false}={}){
   const eye=rxDraft[side],id=`rx-${side}-${key}`;
@@ -88,12 +79,14 @@ function rxRefresh(){
   updateRxPrice();
 }
 function productPrice(p){
-  const selected=selectedRxOption(),valid=rxCanAdd(),pair=lens?selected?.price:0,qty=rxDraft.qty;
+  const selected=selectedRxOption(),valid=rxSelectionValid(),pair=lens?selected?.price:0,qty=rxDraft.qty;
   return `<div class="price-breakdown" aria-live="polite"><p class="eyebrow">Your synthetic demo selection</p><dl><div><dt>Frame price</dt><dd>${money(p.price)}</dd></div><div><dt>Lens price per pair</dt><dd>${!lens?'Not selected':valid?money(pair):selected?.type==='CONSULT_WHATSAPP'?'Consultation required':selected?.type==='UNAVAILABLE'?'Unavailable':'Choose eligible lenses'}</dd></div><div><dt>Quantity</dt><dd>${Number.isInteger(qty)&&qty>=1&&qty<=99?qty:'—'}</dd></div><div class="selection-total"><dt>Illustrative total</dt><dd>${valid?money((p.price+pair)*qty):'Not quoted'}</dd></div></dl><small>Demo prices only. Delivery, tax and discounts are not configured. No payment split is assumed.</small></div>`;
 }
 function rxQuantity(){return `<label class="rx-quantity">Quantity · demo pairs<input id="rx-qty" type="number" min="1" max="99" step="1" value="${rxDraft.qty}" inputmode="numeric"></label>`;}
+function rxCompactSummary(){const selected=selectedRxOption();return `<span>Synthetic demo selection · ${rxDraft.qty} pair(s)</span><b>${rxSelectionValid()?money((current().price+(lens?selected.price:0))*rxDraft.qty):'Choose an eligible lens pair'}</b><small>No payment or stock reservation until simulated checkout.</small>`;}
 function updateRxPrice(){
   const price=document.querySelector('.price-breakdown');if(price)price.outerHTML=productPrice(current());
+  const compact=document.querySelector('#gallery-summary');if(compact)compact.innerHTML=rxCompactSummary();
   const button=document.querySelector('#add-cart');if(button){button.disabled=!rxCanAdd();button.innerHTML=rxEditing!==null?'Save configuration':rxCanAdd()?'Add to demo bag':'Complete an eligible selection';}
 }
 function rxRender(focus){render();if(focus)document.querySelector(focus)?.focus();}
@@ -118,6 +111,8 @@ function configuredAdd(){
   if(errors.length){rxErrors=errors;rxRender('#rx-errors');return;}
   const option=selectedRxOption();
   const line={...current(),color,option:lens?option.category+' / '+option.option:'Frame only',lensPrice:lens?option.price:0,qty:rxDraft.qty,rx:lens?cloneRx({...rxDraft,selectedRule:{id:option.id,category:option.category,option:option.option,type:option.type,price:option.price}}):null};
+  if(typeof rxPOSContext!=='undefined'&&rxPOSContext){savePOSRx(line);return;}
+  checkoutCommand=null;
   if(rxEditing!==null){cart[rxEditing]=line;location.hash='cart';return;}
   cart.push(line);document.querySelector('#bag-count').textContent=cart.reduce((n,l)=>n+l.qty,0);document.querySelector('#bag-feedback').textContent='Added this synthetic configuration. No stock reserved.';document.querySelector('#view-bag').hidden=false;
 }
@@ -130,7 +125,7 @@ rxMain.addEventListener('click',event=>{
   if(button.id==='add-cart'){event.stopImmediatePropagation();configuredAdd();return;}
   if(button.id==='consult'&&lens){event.stopImmediatePropagation();const o=selectedRxOption();if(o?.type!=='CONSULT_WHATSAPP')return;modal(`<p class="eyebrow">WHATSAPP MESSAGE PREVIEW</p><h2>Contact our WhatsApp for details</h2><p>Hello, I would like details for OPT-${esc(current().id.toUpperCase())}, color ${esc(color)}, ${esc(rxTypes[rxDraft.type])}, ${esc(o.category)} / ${esc(o.option)}.</p><p>No prescription measurements or filename included. No WhatsApp number is configured. No message is sent and no automatic quotation is made.</p>`);return;}
   if(d.rxEdit!==undefined){event.stopImmediatePropagation();rxPendingEdit=+d.rxEdit;location.hash='product/'+cart[rxPendingEdit].id;return;}
-  if(button.id==='rx-cancel'){event.stopImmediatePropagation();rxEditing=null;location.hash='cart';return;}
+  if(button.id==='rx-cancel'){event.stopImmediatePropagation();rxEditing=null;if(rxPOSContext){rxPOSContext=null;location.hash='staff/pos';}else location.hash='cart';return;}
   if(!button.closest('.rx-configurator'))return;
   event.stopImmediatePropagation();
   if(d.rxType){rxDraft={...freshRx(),type:d.rxType,qty:rxDraft.qty};rxErrors=[];rxRender(`[data-rx-type="${d.rxType}"]`);}
@@ -150,7 +145,7 @@ rxMain.addEventListener('change',event=>{
   }
   if(!target.closest('.rx-configurator'))return;
   event.stopImmediatePropagation();
-  if(target.dataset.rxField){const parts=target.dataset.rxField.split('.');if(parts.length===2)rxDraft[parts[0]][parts[1]]=target.value;else rxDraft[parts[0]]=target.value;rxDraft.lensId=null;rxRefresh();}
+  if(target.dataset.rxField){const parts=target.dataset.rxField.split('.');const previous=parts.length===2?rxDraft[parts[0]][parts[1]]:rxDraft[parts[0]];if(previous===target.value)return;if(parts.length===2)rxDraft[parts[0]][parts[1]]=target.value;else rxDraft[parts[0]]=target.value;rxDraft.lensId=null;rxRefresh();}
   if(id==='rx-shape'){rxDraft.shape=target.value;rxDraft.lensId=null;rxRefresh();}
   if(id==='rx-file'){
     const file=target.files?.[0];if(!file)return;

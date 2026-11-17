@@ -1,0 +1,80 @@
+{
+  "results": [
+    {
+      "width": 360,
+      "cases": [
+        "immediate type/fields/no wizard",
+        "zero pricing",
+        "signed unifocal/Axis/IPD",
+        "filename replacement/removal",
+        "eligibility/consult/unavailable guards",
+        "bifocal shape/CYL/Axis/ADD",
+        "cart snapshot/edit/save/cancel",
+        "quantities/removal/checkout breakdown",
+        "no file read/persisted Rx",
+        "filename-only consultation"
+      ]
+    },
+    {
+      "width": 390,
+      "cases": [
+        "immediate type/fields/no wizard",
+        "zero pricing",
+        "signed unifocal/Axis/IPD",
+        "filename replacement/removal",
+        "eligibility/consult/unavailable guards",
+        "bifocal shape/CYL/Axis/ADD",
+        "cart snapshot/edit/save/cancel",
+        "quantities/removal/checkout breakdown",
+        "no file read/persisted Rx",
+        "filename-only consultation"
+      ]
+    },
+    {
+      "width": 768,
+      "cases": [
+        "immediate type/fields/no wizard",
+        "zero pricing",
+        "signed unifocal/Axis/IPD",
+        "filename replacement/removal",
+        "eligibility/consult/unavailable guards",
+        "bifocal shape/CYL/Axis/ADD",
+        "cart snapshot/edit/save/cancel",
+        "quantities/removal/checkout breakdown",
+        "no file read/persisted Rx",
+        "filename-only consultation"
+      ]
+    },
+    {
+      "width": 1024,
+      "cases": [
+        "immediate type/fields/no wizard",
+        "zero pricing",
+        "signed unifocal/Axis/IPD",
+        "filename replacement/removal",
+        "eligibility/consult/unavailable guards",
+        "bifocal shape/CYL/Axis/ADD",
+        "cart snapshot/edit/save/cancel",
+        "quantities/removal/checkout breakdown",
+        "no file read/persisted Rx",
+        "filename-only consultation"
+      ]
+    },
+    {
+      "width": 1440,
+      "cases": [
+        "immediate type/fields/no wizard",
+        "zero pricing",
+        "signed unifocal/Axis/IPD",
+        "filename replacement/removal",
+        "eligibility/consult/unavailable guards",
+        "bifocal shape/CYL/Axis/ADD",
+        "cart snapshot/edit/save/cancel",
+        "quantities/removal/checkout breakdown",
+        "no file read/persisted Rx",
+        "filename-only consultation"
+      ]
+    }
+  ],
+  "failures": []
+}

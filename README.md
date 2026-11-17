@@ -27,3 +27,6 @@ See [preview/README.md](preview/README.md) for local Windows instructions, mocke
 
 ## Public interactive demo setup
 [GitHub Pages deployment instructions](docs/08_Demo_Publishing.md) describe the feature-branch workflow, isolated public artifact, manual GitHub settings and future updates. Adding the workflow does not establish a successful live deployment; check the Actions deployment status.
+
+## Current operational frontend demo
+The owner-approved Phase 03.5D / 03.6 / 03.7 frontend is implemented on the feature branch. [Current demo runbook and review checklist](docs/10_Operations_Demo.md) supersede older preview-state descriptions. Backend and production integration remain unimplemented.

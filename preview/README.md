@@ -1,3 +1,7 @@
+# Current demo: Phase 03.5D / 03.6 / 03.7
+
+See [the operational demo runbook](../docs/10_Operations_Demo.md) for current run instructions, 13 staff modules, persistence, review checklist and limitations. The historical phase notes below describe earlier revisions; the runbook supersedes their disabled POS, read-only admin and wizard behavior.
+
 # Optiman Phase 03 — visual prototype
 
 Plain HTML, CSS and JavaScript. No application dependencies or build step. All product names, SKU data, prices, quantities, branch information and admin metrics are synthetic. BDT is an illustrative presentation choice, not finalized currency policy.

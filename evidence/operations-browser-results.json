@@ -1,0 +1,95 @@
+{
+  "results": [
+    {
+      "width": 360,
+      "modules": 13,
+      "flows": [
+        "POS barcode/receipt",
+        "receiving shared 10→9→13→11 stock sequence",
+        "new SKU",
+        "Code128 label preview",
+        "public checkout reservation/tracking",
+        "transfer dispatch/partial receipt",
+        "POS lens configuration",
+        "returns",
+        "analytics filters",
+        "manager scope",
+        "browser persistence"
+      ],
+      "screenshots": true
+    },
+    {
+      "width": 390,
+      "modules": 13,
+      "flows": [
+        "POS barcode/receipt",
+        "receiving shared 10→9→13→11 stock sequence",
+        "new SKU",
+        "Code128 label preview",
+        "public checkout reservation/tracking",
+        "transfer dispatch/partial receipt",
+        "POS lens configuration",
+        "returns",
+        "analytics filters",
+        "manager scope",
+        "browser persistence"
+      ],
+      "screenshots": true
+    },
+    {
+      "width": 768,
+      "modules": 13,
+      "flows": [
+        "POS barcode/receipt",
+        "receiving shared 10→9→13→11 stock sequence",
+        "new SKU",
+        "Code128 label preview",
+        "public checkout reservation/tracking",
+        "transfer dispatch/partial receipt",
+        "POS lens configuration",
+        "returns",
+        "analytics filters",
+        "manager scope",
+        "browser persistence"
+      ],
+      "screenshots": true
+    },
+    {
+      "width": 1024,
+      "modules": 13,
+      "flows": [
+        "POS barcode/receipt",
+        "receiving shared 10→9→13→11 stock sequence",
+        "new SKU",
+        "Code128 label preview",
+        "public checkout reservation/tracking",
+        "transfer dispatch/partial receipt",
+        "POS lens configuration",
+        "returns",
+        "analytics filters",
+        "manager scope",
+        "browser persistence"
+      ],
+      "screenshots": true
+    },
+    {
+      "width": 1440,
+      "modules": 13,
+      "flows": [
+        "POS barcode/receipt",
+        "receiving shared 10→9→13→11 stock sequence",
+        "new SKU",
+        "Code128 label preview",
+        "public checkout reservation/tracking",
+        "transfer dispatch/partial receipt",
+        "POS lens configuration",
+        "returns",
+        "analytics filters",
+        "manager scope",
+        "browser persistence"
+      ],
+      "screenshots": true
+    }
+  ],
+  "errors": []
+}

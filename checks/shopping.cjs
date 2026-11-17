@@ -19,7 +19,7 @@ const fs=require('node:fs');
   await checkLayout('product');
   await p.locator('#add-cart').click();
   if(!(await p.locator('#bag-feedback').textContent()).includes('Added')||!await p.locator('#view-bag').isVisible())failures.push(`${width}: bag feedback`);
-  const mode=p.getByRole('button',{name:'With Power / Lens',exact:true});await mode.focus();await p.keyboard.press('Enter');await p.getByRole('button',{name:'Continue to lenses',exact:true}).click();
+  const mode=p.getByRole('button',{name:'With Power / Lens',exact:true});await mode.focus();await p.keyboard.press('Enter');
   for(const [category,lens,total] of [['Single vision','৳1,200','৳4,400'],['Blue-cut / anti-reflective','৳1,600','৳4,800'],['Photochromic','৳2,200','৳5,400']]){
    await p.selectOption('#lens-category',category);const text=await p.locator('.price-breakdown').textContent();if(!text.includes(lens)||!text.includes(total))failures.push(`${width}: ${category} calculation`);
   }
@@ -43,9 +43,11 @@ const fs=require('node:fs');
   if(!(await p.locator('main').textContent()).includes('SIMULATED PAYMENT ONLY'))failures.push(`${width}: simulation label`);
   await p.locator('#checkout-form input:not([type=radio])').evaluateAll(inputs=>inputs.forEach((e,i)=>e.value=i===1?'example@example.test':'Example'));
   for(const state of ['pending','failed','conflict']){
-   if(state!=='pending')await p.locator('input[value=online]').check();await p.selectOption('#outcome',state);await p.locator('#checkout-form .button').click();const text=await p.locator('dialog').textContent();if(!text.includes('No order was created')||!text.includes(state==='pending'?'Pending review':state==='failed'?'Payment failure':'Allocation exception'))failures.push(`${width}: ${state} simulation`);await p.keyboard.press('Escape');
+   if(state!=='pending'){await p.goto(baseURL+'#product/atlas');await p.locator('#add-cart').click();await p.goto(baseURL+'#checkout');await p.locator('#checkout-form input:not([type=radio])').evaluateAll(inputs=>inputs.forEach((e,i)=>e.value=i===1?'example@example.test':'Example'));}
+   if(state!=='pending')await p.locator('input[value=online]').check();await p.selectOption('#outcome',state);await p.locator('#checkout-form .button').click();await p.locator('dialog').waitFor();
+   const text=await p.locator('dialog').textContent();if(!text.includes(state==='pending'?'Simulated order reserved':state==='failed'?'Simulated payment failure':'Simulated allocation exception'))failures.push(`${width}: ${state} simulation`);await p.keyboard.press('Escape');
   }
-  await p.goto(baseURL+'#cart');await p.locator('[data-remove="0"]').focus();await p.keyboard.press('Enter');if(await p.locator('.bag-item').count()!==1)failures.push(`${width}: removal`);await p.locator('[data-remove="0"]').click();if(!(await p.locator('main').textContent()).includes('Your demo bag is empty'))failures.push(`${width}: empty bag`);
+  await p.goto(baseURL+'#product/atlas');await p.locator('#add-cart').click();await p.locator('#add-cart').click();await p.goto(baseURL+'#cart');await p.locator('[data-remove="0"]').focus();await p.keyboard.press('Enter');if(await p.locator('.bag-item').count()!==1)failures.push(`${width}: removal`);await p.locator('[data-remove="0"]').click();if(!(await p.locator('main').textContent()).includes('Your demo bag is empty'))failures.push(`${width}: empty bag`);
   if(width<600){await p.getByRole('button',{name:'Open menu'}).click();await p.locator('nav').getByRole('link',{name:'Optical Frames',exact:true}).click();if(await p.locator('#filter-category').inputValue()!=='Optical Frames')failures.push(`${width}: mobile menu`);}
   checks.push({width,flows:['frame-only','three fixed prices','consultation command guard','unavailable blocking','frame-only reset','quantity and focus','removal/empty cart','three checkout simulations','frame-only excludes prescription inputs'],screens:['product','product-lenses','cart','checkout']});await p.close();
  }

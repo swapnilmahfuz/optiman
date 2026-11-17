@@ -3,13 +3,13 @@
 All values below are invented demonstration fixtures, not Optiman prices, medical eligibility, prescriptions or production policy. They are visible in the UI as synthetic. The four EterNeeds screenshots were not accessible in this chat; implementation follows the owner's written functional specification, with original Optiman styling.
 
 ## Stages and validation
-- Frame Only is the default and bypasses all prescription controls. With Power / Lens opens Type → Details (powered types only) → Lens selection.
+- Frame Only is the default and bypasses all prescription controls. With Power / Lens immediately shows type, conditional details and live eligible lenses on the same page; there is no Continue/Back wizard.
 - Types: Zero Power; Unifocal / Distance Power; Bifocal / Near Power.
 - Zero Power collects no SPH/CYL/Axis/ADD/IPD or file and allows only the explicit zero-power demo matrix.
 - Unifocal: separate right/left SPH signs (+/−) and magnitudes, optional CYL signs/magnitudes, optional Axis. Both SPH values required for manual entry. Blank CYL means not supplied; Axis with blank/zero CYL is rejected. Axis is optional even with nonzero CYL, and when supplied must be an integer 0–180.
-- Bifocal: required Moon Shape or Flat Top shape; right/left SPH signs/magnitudes and positive ADD values. Both SPH and ADD values required for manual entry. CYL/Axis are absent.
+- Bifocal: required Moon Shape or Flat Top shape; right/left SPH signs/magnitudes and positive ADD values. Both SPH and ADD values required for manual entry. Optional CYL/Axis use the same validation as Unifocal.
 - Synthetic form bounds: SPH magnitude 0–12; CYL magnitude 0–6; powers in 0.25 increments. ADD +0.25–+4.00 in 0.25 steps. Optional binocular IPD 40–80 mm in 0.5 mm increments. These are UI test boundaries, not clinical limits.
-- If all manual powers are blank and a demo filename is selected, upload-only continuation is allowed for consultation only. Partially filled manual powers still require completion. A filename never verifies or supplies powers. Bifocal shape remains required.
+- If all manual powers are blank and a demo filename is selected, filename-only consultation is allowed for consultation only. Partially filled manual powers still require completion. A filename never verifies or supplies powers. Bifocal shape remains required.
 - Do not enter real medical data. No diagnosis, AI interpretation, prescription validity claim or fabrication authorization is provided.
 
 ## Explicit pair-price matrix
@@ -39,3 +39,6 @@ A combination outside the fixed rule's test range is explicitly unavailable, nev
 
 ## Verification and rollback
 Test every type, optional fields, sign/value consistency, 0/180 Axis boundaries, synthetic ranges, filename selection/replacement/removal, eligibility, explicit prices, quantities, independent cart configurations, edit preload/save/cancel, all simulated checkout outcomes and mobile/keyboard behavior at five widths. Revert this phase's commit to roll back; no database or persistent data exists.
+
+## Current matrix ownership
+Phase 03.7 stores synthetic configurable lens rules/costs in the shared browser-local engine. The table above is the reset seed, not immutable real business pricing. See [the operational runbook](10_Operations_Demo.md). Prescription values and filenames remain memory-only and are redacted from persisted operational command data.

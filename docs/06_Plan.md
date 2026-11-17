@@ -101,3 +101,6 @@ Owner requests at-a-glance highlighting of Shipping, Return & Exchange. Bold key
 
 ## Optional Virtual Try-On — 2026-11-17
 Owner authorizes MediaPipe camera/photo preview with four distinct assets, prioritizing credible tracked 2D over unvalidated 3D. A–G commits and quality gates are documented in `13_Virtual_Try_On.md`. Preserve storefront/operations; no physical camera is available here, so real-device visual/performance acceptance remains mandatory. No backend or main merge.
+
+## Targeted 2D temple arms — 2026-11-17
+Owner authorizes matching temple assets and a rear 2D arm layer only. Front assets, drawFrame, facePose/calibration, camera/tracker, UI, product/cart/operations remain unchanged. Consume already-returned face landmarks/pose for separate smoothed arm geometry and conservative contour occlusion. Estimate ear direction from side-face landmarks, because Face Landmarker does not locate ears. Hide uncertain/occluded/far arms rather than drawing across the face or detached visible fragments. Verify front transforms/asset hashes and functional regression; actual physical head-turn quality still requires manual inspection where hardware is unavailable. Revert this targeted commit to roll back; no migration or main merge.

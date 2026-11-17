@@ -1,7 +1,7 @@
 {
   "date": "2026-11-17",
-  "local_base_url": "http://127.0.0.1:4197/optiman/",
-  "public_file_count": 40,
+  "local_base_url": "http://127.0.0.1:4198/optiman/",
+  "public_file_count": 45,
   "public_files": [
     "app.js",
     "assets/atlas-tortoiseshell-sunglasses-1000.webp",
@@ -26,14 +26,19 @@
     "staff.js",
     "styles.css",
     "vto/assets/atlas-front.webp",
+    "vto/assets/atlas-temple.webp",
     "vto/assets/forma-front.webp",
+    "vto/assets/forma-temple.webp",
     "vto/assets/muse-front.webp",
+    "vto/assets/muse-temple.webp",
     "vto/assets/noir-front.webp",
+    "vto/assets/noir-temple.webp",
     "vto/assets/sample-portrait.webp",
     "vto/camera.mjs",
     "vto/controller.mjs",
     "vto/frames.mjs",
     "vto/geometry.mjs",
+    "vto/temples.mjs",
     "vto/tracker.mjs",
     "vto/vendor/LICENSE",
     "vto/vendor/face_landmarker.task",
@@ -47,30 +52,23 @@
   "artifact_source_hash_comparison": "all files identical",
   "excluded_paths_http_status": {
     "README.md": 404,
-    "docs/01_PRD.md": 404,
+    "docs/14_Temple_Arms.md": 404,
     ".git/config": 404,
-    "vto/assets/README.md": 404,
-    "vto/vendor/PROVENANCE.md": 404,
-    "vto/vendor/sources.json": 404
+    "evidence/temple-fixtures/slight-turn.webp": 404,
+    "vto/assets/README.md": 404
   },
-  "suites": {
-    "vto_photo": "passed five widths; genuine MediaPipe inference",
-    "vto_synthetic_camera": "passed; actual physical camera not available",
-    "vto_geometry": "passed",
-    "vto_camera_lifecycle": "passed",
+  "targeted_checks": {
+    "temple_geometry_scope": "passed; original fronts/camera/tracker/calibration/UI preserved",
+    "temple_render": "all four frontal/turned/mirrored, protected face pixels zero",
+    "vto_photo": "passed five widths",
+    "vto_synthetic_camera": "passed translation/roll/scale/loss/switching/cleanup",
+    "operations_browser": "passed five widths",
     "ui": "passed 45 layouts",
-    "premium": "passed",
-    "shopping": "passed",
-    "configurator": "passed",
-    "configurator_edges": "passed",
-    "operations": "passed",
-    "storefront": "passed",
-    "lens_correction": "passed",
-    "demo_engine": "passed",
-    "lens_engine": "passed",
-    "payment_preservation": "passed"
+    "engine": "passed",
+    "payment_preservation": "passed",
+    "original_geometry": "passed",
+    "camera_lifecycle": "passed"
   },
-  "live_deployment": "unverified: GitHub API proxy HTTP 403",
-  "client_ready": false,
-  "required_manual_gate": "Real-camera visual check and physical mobile/device performance"
+  "physical_camera_arms": "unverified; manual visual acceptance required",
+  "live_pages": "not verified from this environment"
 }

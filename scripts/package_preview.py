@@ -14,7 +14,8 @@ files = [source / name for name in ('index.html', 'styles.css', 'app.js', 'confi
 files += sorted((source / 'assets').glob('*.webp'))
 if len(files) == 7:
     parser.error('Expected local WebP assets')
-vto_files = ['camera.mjs', 'tracker.mjs', 'geometry.mjs', 'frames.mjs', 'controller.mjs', 'vto.css',
+vto_files = ['camera.mjs', 'tracker.mjs', 'geometry.mjs', 'frames.mjs', 'controller.mjs', 'vto.css', 'temples.mjs',
+             'assets/atlas-temple.webp', 'assets/noir-temple.webp', 'assets/muse-temple.webp', 'assets/forma-temple.webp',
              'assets/atlas-front.webp', 'assets/noir-front.webp', 'assets/muse-front.webp',
              'assets/forma-front.webp', 'assets/sample-portrait.webp', 'vendor/vision_bundle.mjs',
              'vendor/face_landmarker.task', 'vendor/LICENSE',

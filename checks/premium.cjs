@@ -4,7 +4,7 @@ const fs=require('node:fs');
 (async()=>{
  const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',args:['--no-sandbox']});
  const failures=[],details=[];
- const categories=[['Sunglasses','sunglasses','Sunglasses'],['Optical Frames','optical','Optical Frames'],['Day-Night','day-night','Day-Night'],['Polarized','polarized','Polarized'],['Sale','sale','Sale'],['Shop All','','']];
+ const categories=[['All Eyewear','',''],['Sunglasses','sunglasses','Sunglasses'],['Optical Frames','optical','Optical Frames'],['Day-Night','day-night','Day-Night'],['Polarized','polarized','Polarized'],['Sale','sale','Sale']];
  for(const width of [360,390,768,1024,1440]){
   const page=await browser.newPage({viewport:{width,height:1000}});
   page.on('pageerror',e=>failures.push(`${width}: ${e.message}`));
@@ -33,25 +33,29 @@ const fs=require('node:fs');
   if(!focus.visible||focus.outline<2||focus.height<44)failures.push(`${width}: hero keyboard/touch`);
   await page.locator('.hero-copy .button').blur();
   // Fresh screenshots contain the entire page; force images to paint first.
-  await page.screenshot({path:`evidence/home-categories-${width}.png`,fullPage:true});
-  const navigation=await page.locator('.category-links').evaluate(e=>({
-   images:e.querySelectorAll('img').length,
-   columns:getComputedStyle(e).gridTemplateColumns.split(' ').length,
+  await page.screenshot({path:`evidence/home-pills-${width}.png`,fullPage:true});
+  const navigation=await page.locator('.category-pills').evaluate(e=>({
+   images:e.querySelectorAll('img,i,svg').length,
+   rows:new Set([...e.querySelectorAll('a')].map(a=>a.offsetTop)).size,
+   active:[...e.querySelectorAll('[aria-current]')].map(a=>a.textContent.trim()),
    labels:[...e.querySelectorAll('a')].map(a=>a.textContent.trim()),
-   clipping:[...e.querySelectorAll('a span')].some(a=>a.scrollWidth>a.clientWidth)
+   clipping:[...e.querySelectorAll('a')].some(a=>a.scrollWidth>a.clientWidth)
   }));
   if(navigation.images||navigation.clipping)failures.push(`${width}: category imagery or clipping`);
-  if(navigation.columns!==(width>=1024?6:width>=600?3:2))failures.push(`${width}: category columns`);
+  if(width>=1024&&navigation.rows!==1)failures.push(`${width}: desktop pills should share one row`);
+  if(JSON.stringify(navigation.active)!==JSON.stringify(['All Eyewear']))failures.push(`${width}: homepage active state`);
   if(JSON.stringify(navigation.labels)!==JSON.stringify(categories.map(c=>c[0])))failures.push(`${width}: category order`);
   if(await page.locator('.category-disclosure').count())failures.push(`${width}: obsolete disclosure`);
   for(const [label,slug,category] of categories){
    await page.goto('http://127.0.0.1:4173/#home');
-   const tile=page.locator('.category-links').getByRole('link',{name:label,exact:true});
+   const tile=page.locator('.category-pills').getByRole('link',{name:label,exact:true});
    const h=await tile.evaluate(e=>e.getBoundingClientRect().height);if(h<44)failures.push(`${width}: ${label} touch target`);
    await tile.focus();await page.keyboard.press('Shift+Tab');await page.keyboard.press('Tab');
    if(!await tile.evaluate(e=>e===document.activeElement&&e.matches(':focus-visible')&&parseFloat(getComputedStyle(e).outlineWidth)>=2))failures.push(`${width}: ${label} keyboard focus`);
    await page.keyboard.press('Enter');await page.waitForURL('**/#shop'+(slug?'/'+slug:''));
    if(await page.locator('#filter-category').inputValue()!==category)failures.push(`${width}: ${label} filter`);
+   const active=await page.evaluate(()=>{const doc=new DOMParser().parseFromString(categoryPills(),'text/html');return [...doc.querySelectorAll('.is-active[aria-current]')].map(a=>a.textContent);});
+   if(JSON.stringify(active)!==JSON.stringify([label]))failures.push(`${width}: ${label} route-derived active state`);
    if(label==='Sale'&&await page.locator('.product-card').count()!==0)failures.push(`${width}: Sale should be empty`);
   }
   await page.goto('http://127.0.0.1:4173/#home');

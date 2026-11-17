@@ -21,14 +21,17 @@
       },
       "navigation": {
         "images": 0,
-        "columns": 2,
+        "rows": 3,
+        "active": [
+          "All Eyewear"
+        ],
         "labels": [
+          "All Eyewear",
           "Sunglasses",
           "Optical Frames",
           "Day-Night",
           "Polarized",
-          "Sale",
-          "Shop All"
+          "Sale"
         ],
         "clipping": false
       }
@@ -54,14 +57,17 @@
       },
       "navigation": {
         "images": 0,
-        "columns": 2,
+        "rows": 3,
+        "active": [
+          "All Eyewear"
+        ],
         "labels": [
+          "All Eyewear",
           "Sunglasses",
           "Optical Frames",
           "Day-Night",
           "Polarized",
-          "Sale",
-          "Shop All"
+          "Sale"
         ],
         "clipping": false
       }
@@ -87,14 +93,17 @@
       },
       "navigation": {
         "images": 0,
-        "columns": 3,
+        "rows": 2,
+        "active": [
+          "All Eyewear"
+        ],
         "labels": [
+          "All Eyewear",
           "Sunglasses",
           "Optical Frames",
           "Day-Night",
           "Polarized",
-          "Sale",
-          "Shop All"
+          "Sale"
         ],
         "clipping": false
       }
@@ -120,14 +129,17 @@
       },
       "navigation": {
         "images": 0,
-        "columns": 6,
+        "rows": 1,
+        "active": [
+          "All Eyewear"
+        ],
         "labels": [
+          "All Eyewear",
           "Sunglasses",
           "Optical Frames",
           "Day-Night",
           "Polarized",
-          "Sale",
-          "Shop All"
+          "Sale"
         ],
         "clipping": false
       }
@@ -153,20 +165,28 @@
       },
       "navigation": {
         "images": 0,
-        "columns": 6,
+        "rows": 1,
+        "active": [
+          "All Eyewear"
+        ],
         "labels": [
+          "All Eyewear",
           "Sunglasses",
           "Optical Frames",
           "Day-Night",
           "Polarized",
-          "Sale",
-          "Shop All"
+          "Sale"
         ],
         "clipping": false
       }
     }
   ],
   "categoryRoutes": [
+    [
+      "All Eyewear",
+      "",
+      ""
+    ],
     [
       "Sunglasses",
       "sunglasses",
@@ -191,11 +211,6 @@
       "Sale",
       "sale",
       "Sale"
-    ],
-    [
-      "Shop All",
-      "",
-      ""
     ]
   ],
   "failures": []

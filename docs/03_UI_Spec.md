@@ -44,3 +44,6 @@ Explicit user instruction supersedes the previous split-hero design: full-width 
 
 ## Phase 03.3 — clean category navigation / 2026-11-17
 Homepage discovery supersedes photographic tiles with six ordered text links and subtle separators: six columns from 1024px, three at tablet widths, two on mobile. Minimum 44px touch targets, visible keyboard focus and compact transition to featured frames. Remove the category-only image disclosure; preserve hero, top navigation, product data and business flows.
+
+## Phase 03.4 — premium category pills / 2026-11-17
+Homepage discovery now uses “EXPLORE THE COLLECTION” / “Find your frame.” and compact rounded links, in order: All Eyewear, Sunglasses, Optical Frames, Day-Night, Polarized, Sale. Cream/sand inactive pills; brown/cream active pill derived from the current route, with All Eyewear the allowed homepage default. Wrap on mobile; no arrows, images or redundant exploration link. Existing top navigation, hero, featured products and shopping rules are preserved.

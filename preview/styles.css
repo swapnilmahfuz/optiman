@@ -65,26 +65,24 @@ nav a{display:flex;align-items:center;gap:10px;min-height:48px;padding:12px 0}
 .section-title h2{font-size:clamp(30px,3vw,42px)}
 .section-title>a{display:inline-flex;align-items:center;gap:10px;min-height:44px;font-size:14px;white-space:normal}
 .section-title .eyebrow{margin-bottom:9px}
-/* Phase 03.3: text-only discovery, lighter than the product collection. */
+/* Phase 03.4: compact, wrapping category pills scoped to the homepage. */
 .category-section{padding-bottom:20px}
 .category-section + .section{padding-top:20px}
-.category-section .category-links{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;border:0}
-.category-section .category-links .category-link{display:flex;align-items:center;min-width:0;min-height:60px;padding:12px 16px;border:0;border-bottom:1px solid var(--line);border-radius:0;background:transparent;font-size:15px;font-weight:500;transition:background-color .15s ease,border-color .15s ease}
-.category-link>span{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%}
-.category-section .category-links .category-link + .category-link{border-left:1px solid var(--line)}
-.category-section .category-links .category-link:hover{background:var(--sand);border-bottom-color:var(--brown)}
-.category-section .category-links .category-link:focus-visible{outline:2px solid var(--brown);outline-offset:-3px;background:var(--sand)}
-@media(min-width:600px) and (max-width:1023px){
- .category-section .category-links{grid-template-columns:repeat(3,minmax(0,1fr))}
- .category-section .category-links .category-link:nth-child(3n+1){border-left:0}
-}
+.category-section .section-title{margin-bottom:22px}
+.category-pills{display:flex;flex-wrap:wrap;gap:12px 14px;align-items:center}
+.category-pill{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:10px 23px;border:1px solid var(--sand);border-radius:999px;background:var(--cream);color:var(--brown);font-size:15px;font-weight:500;line-height:1.5;white-space:nowrap;transition:background-color .15s ease,border-color .15s ease}
+.category-pill:hover{background:var(--sand);border-color:var(--caramel)}
+.category-pill.is-active{background:var(--brown);border-color:var(--brown);color:var(--cream)}
+.category-pill.is-active:hover{background:var(--mocha)}
+.category-pill:focus-visible{outline:2px solid var(--brown);outline-offset:4px}
 @media(max-width:599px){
- .category-section .category-links{grid-template-columns:repeat(2,minmax(0,1fr))}
- .category-section .category-links .category-link{min-height:52px;font-size:14px;padding:12px}
- .category-section .category-links .category-link:nth-child(2n+1){border-left:0}
  .category-section{padding-bottom:16px}
  .category-section + .section{padding-top:16px}
+ .category-section .section-title{margin-bottom:20px}
+ .category-pills{gap:10px}
+ .category-pill{font-size:14px;padding:10px 18px;min-height:44px}
 }
+@media(prefers-reduced-motion:reduce){.category-pill{transition:none}}
 .product-grid{gap:24px;align-items:start}
 .product-card{min-width:0}
 .product-image{border-radius:12px;background:#f5ebdf;border:1px solid transparent}

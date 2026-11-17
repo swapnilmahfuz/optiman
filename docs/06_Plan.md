@@ -60,3 +60,7 @@ Every change to a locked rule requires a new version entry and explicit user app
 - Authorized homepage category refinement only: text navigation, no repeated product photos, exact six routes/order, reduced spacing before featured products.
 - Expected: 6/3/2 responsive columns, touch targets at least 44px, no clipping or overflow, Sale empty state unchanged. Run existing regression plus category keyboard/layout checks at 360/390/768/1024/1440px.
 - Rollback: revert this commit. Preserve the approved hero and top navigation; no merge, backend or deployment. Stop for visual approval.
+
+## Phase 03.4 — 2026-11-17
+- Homepage-only pill navigation refinement authorized. Expected: exact category order, route-derived active rendering, compact wrapping and touch targets at least 44px.
+- Validate five widths, all six routes including empty Sale, keyboard focus, active state and overflow. Rollback by reverting this commit. No dependencies, backend, merge or deployment; await visual approval.

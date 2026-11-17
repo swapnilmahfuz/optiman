@@ -23,8 +23,8 @@ One eyewear retailer with **2–5 physical branches** and **one shared responsiv
 
 ## LOCKED — POS / stock
 - Online-only browser POS at 2–5 branches; USB barcode scanner and 80 mm auto-cut thermal printer as target hardware, printer/cutter compatibility OPEN until physical test.
-- One catalog; branch-specific stock, central warehouse, movements, transfers, returns, cashier roles, daily reports.
-- Warehouse first for online allocation, eligible branches fallback. Website availability reflects only eligible fulfillable stock.
+- One catalog; branch-specific stock, central warehouse, movements, transfers, returns, exactly Owner and Branch Manager roles, daily reports.
+- Online Option B: any eligible branch or warehouse may fulfill; no warehouse-first preference. Website availability reflects only eligible fulfillable stock.
 - Stock source of truth is MySQL transaction, not browser cache. POS sale decrements its branch; online order allocates and reserves at eligible location.
 - No pre-payment cart reservation (0-minute selection). Confirmed COD order reserves after acceptance; online gateway confirmation followed by atomic allocation; paid-but-unavailable handled by reconciliation/refund, never oversell.
 - Online-only POS: cannot finalize a sale without confirmed server response; timeout must query transaction status before retry.
@@ -48,3 +48,6 @@ One eyewear retailer with **2–5 physical branches** and **one shared responsiv
 
 ## OPEN decisions
 - Final domain, logo, product photos/SKUs, WhatsApp number, payment provider, tax/discount policy, exact lens price matrix and supported powers, reservation expiry after order confirmation, prescription retention, return exceptions, printer model, gateway webhook contract, backup/restore plan, performance targets.
+
+## Approved amendment — Phase 03.5D / 03.6 / 03.7 (2026-11-17)
+Latest owner master prompt supersedes conflicting prototype assumptions. Exactly two roles share all operational modules; Branch Manager is assigned Khulna in the demo, Owner can scope all/one location. Shared persistent browser-local synthetic catalog, receipts, inventory ledger, transfers, sales, online allocations and returns power every screen. This is not secure authentication or cross-device synchronization. Prescription inputs remain ephemeral; no medical values or file metadata are persisted in operational records. Online fulfillment can use any eligible location, preferring a complete single-location allocation. No forced prescription wizard. No extra approval hierarchy. Barcodes identify master variants. Receiving costs are recorded; sale cost snapshots and returns drive reports; missing lens costs mean profit unavailable. Production backend remains unauthorized.

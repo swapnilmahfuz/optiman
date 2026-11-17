@@ -16,3 +16,6 @@
 
 ## Regression checklist
 Cross-channel inventory; concurrent last-unit sale; warehouse fallback; returns; order/payment retries; branch permission isolation; prescription review; price matrix consultation; mobile checkout; AR-off experience; offline POS block.
+
+## Approved Phase 03.5D / 03.6 / 03.7 amendment — 2026-11-17
+The owner's consolidated prompt explicitly supersedes earlier demo assumptions: exactly Owner and Branch Manager, identical modules with location scope only; online allocation from any eligible single location (no warehouse-first preference); shared browser-local persistent synthetic operational state and simulated stock mutations; immediate same-page prescription controls without a wizard. Persist no prescription measurements, photo filenames/content, actual customer information or credentials. Production still requires transactional server authorization/inventory and private prescription storage. This phase authorizes frontend demo implementation and Pages updates only; no backend or merge.

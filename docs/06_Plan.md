@@ -78,3 +78,6 @@ Every change to a locked rule requires a new version entry and explicit user app
 - Authorized complete frontend configurator, synthetic validation/eligibility, filename-only interface, editable cart configurations and Pages demo update. Preserve approved homepage and photography; no backend/real uploads/merge.
 - Atomic scope: staged input/validation; explicit lens matrix and summary; cart editing and checkout; regression/Pages packaging. Expected behavior and rollback in `docs/09_Synthetic_Lens_Demo_Rules.md`.
 - Update Pages artifact allowlist for the new local script, run browser suites under `/optiman/`, push feature branch and check deployment if network allows. Stop for manual review; do not claim live verification without access.
+
+## Master prompt amendment — 2026-11-17
+Master prompt authorizes frontend-only operational phases. Commits: A immediate prescription UX; B shared state/scope; C receiving/SKU/Code128; D POS/receipt; E inventory/transfers; F dashboards/analytics; G orders/returns/regressions. Validate each with behavior tests, then five-width browser suite and staged Pages package. Revert corresponding commit(s), reset versioned synthetic state when needed; no migrations. No main merge or backend. No claim of live Pages/hardware testing without evidence.

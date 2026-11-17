@@ -53,3 +53,6 @@ Keep the approved homepage unchanged. Refine single-photo product layout, explic
 
 ## Phase 03.5C — staged prescription configurator
 Owner explicitly authorized interactive synthetic power entry and a filename-only photo picker, superseding the prior placeholder-only demo boundary. Preserve locked business rules and original visual identity. Use Type → Details → Lens progression, separate eyes/signs, explicit eligibility and pair-price breakdown, deep-copied editable cart configurations and checkout summaries. No real documents, backend, storage or payment. Synthetic policy: `docs/09_Synthetic_Lens_Demo_Rules.md`; no real clinical rules are inferred.
+
+## Master prompt amendment — 2026-11-17
+Preserve approved home/hero/pills/photos. Public footer has one labeled Staff Demo entry, no ordinary POS/admin navigation. Separate original staff shell with the same 13 modules for both roles, scoped records and owner location selector. Responsive operational tables, efficient POS, readable charts, printable Code 128 labels and 80mm receipts. Prescription type/details/lenses appear immediately without Continue/Back/wizard controls.

@@ -26,3 +26,6 @@ Verify PHP extensions, InnoDB, document root, cron if needed, resource limits, H
 
 ## Acceptance
 Tests for last-unit concurrency, repeated webhook, stock transfer, returns, unauthorized branch, POS timeout, payment allocation conflict, prescription privacy, responsive UX and AR-off flow.
+
+## Master prompt amendment — 2026-11-17
+Static JS demo engine uses one versioned localStorage operational document, immutable movement records, command idempotency keys, clone/validate/commit semantics and Web Locks when available to serialize same-origin commands. No persistence of Rx values, filenames, file content, customer names or addresses. Browser persistence is not secure, cannot sync devices, and is not a production transaction server. Production constraints remain PHP 8.2+/MySQL/cPanel. Any eligible location replaces warehouse-first. Code128-B implementation includes checksum/stop/quiet zones; hardware untested.

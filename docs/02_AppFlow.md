@@ -24,3 +24,6 @@ Request -> approve -> dispatch origin -> in-transit -> receive destination; shor
 
 ## AR
 AR enabled + compatible 2D asset? -> camera permission -> tracked 2D overlay -> optional capture -> back to product. Camera denied/unsupported? -> ordinary product gallery and checkout remain available. 3D models deferred.
+
+## Master prompt amendment — 2026-11-17
+With Power / Lens immediately reveals type cards; type changes reveal conditional fields and eligible lenses in place. Supplier receipt -> shared balance/ledger -> Code 128 labels -> POS -> shared sale/stock/report. Online simulation -> single eligible allocation -> reservation -> review -> dispatch. Transfer request -> source dispatch -> partial/final destination receipt; cancellation restores only undistributed in-transit stock at origin. Return inspection -> explicit sellable/quarantine outcome -> refund and ledger. All demo operations share one state.

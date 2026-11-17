@@ -27,3 +27,6 @@ merchant_feature_entitlements, ar_assets(variant_id,type=IMAGE_2D|GLB_3D,path,ca
 
 ## Security
 activity_audit, idempotency_keys, merchant_scope, branch_access, notification_events.
+
+## Master prompt amendment — 2026-11-17
+Demo entities: locations, exactly two role modes, products/master SKUs, suppliers, on-hand/reserved/quarantine balances, immutable movements, multi-line receipts, transfers with cumulative receipt, sales with frame/lens revenue and cost snapshots, returns, online orders/reservations, redacted prescription review states, lens rules. Ephemeral Rx/cart configuration never enters persisted operational state. Owner/manager scope checks apply to commands and filtered read views. Stock availability = on-hand − reserved; in-transit is separate.

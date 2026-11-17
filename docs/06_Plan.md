@@ -84,3 +84,6 @@ Master prompt authorizes frontend-only operational phases. Commits: A immediate 
 
 ## Prescription & lens correction — 2026-11-17
 Owner authorizes targeted frontend correction: four immediate prescription types including distinct Progressive; only eligible FIXED_PRICE suggestions; incomplete guidance and exact positive consultation fallback. Preserve internal rule semantics and all unrelated operations. Add configurable WhatsApp contact without a default number, redact medical information from inquiries, preserve ephemeral cart editing. No invented progressive commercial price or clinical limits: reset Progressive is consultation-only until an explicit synthetic rule is configured. Validate existing regressions and staged `/optiman/`, commit/push feature branch; rollback this correction commit without resetting stock. Stop for visual acceptance.
+
+## Default collection sorting — 2026-11-17
+Owner requests price low-to-high as the default shop/category ordering, including Reset. Featured, high-to-low and Name remain available on selection. Verify default/reset and all alternate sorts; rollback by reverting this commit. No product data or homepage ordering change.

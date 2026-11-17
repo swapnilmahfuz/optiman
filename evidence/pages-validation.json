@@ -1,6 +1,6 @@
 {
   "date": "2026-11-17",
-  "local_base_url": "http://127.0.0.1:4181/optiman/",
+  "local_base_url": "http://127.0.0.1:4191/optiman/",
   "public_file_count": 22,
   "public_files": [
     "app.js",
@@ -39,7 +39,9 @@
     "configurator_edges": "passed",
     "ui": "passed 45 layouts and interactions",
     "premium": "passed five widths",
-    "shopping": "passed five widths"
+    "shopping": "passed five widths",
+    "lens_correction": "passed all five widths under /optiman/",
+    "lens_engine": "passed additive upgrade, config and rule guards"
   },
   "live_deployment": "unverified: network proxy denies GitHub API and Pages hostname with HTTP 403"
 }

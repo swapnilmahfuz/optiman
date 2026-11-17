@@ -25,13 +25,12 @@ const fs=require('node:fs');
   }
   await p.selectOption('#lens-category','Single vision');await checkLayout('product-lenses');
   await p.locator('#add-cart').click();
-  for(const category of ['Custom']){
-   await p.selectOption('#lens-category',category);if(!await p.locator('#add-cart').isDisabled())failures.push(`${width}: consultation purchase`);
-   if(!(await p.locator('.price-breakdown').textContent()).includes('Not quoted'))failures.push(`${width}: consultation fallback price`);
-   const before=await p.evaluate(()=>cart.length);await p.locator('#add-cart').evaluate(e=>{e.disabled=false;e.click()});if(await p.evaluate(()=>cart.length)!==before)failures.push(`${width}: consultation command guard`);
-   await p.locator('#consult').focus();await p.keyboard.press('Enter');if(!(await p.locator('dialog').textContent()).includes('No WhatsApp number'))failures.push(`${width}: inquiry boundary`);await p.keyboard.press('Escape');
-  }
-  await p.selectOption('#lens-category','Single vision');await p.selectOption('#lens-option','5');if(!await p.locator('#add-cart').isDisabled()||await p.locator('#consult').count())failures.push(`${width}: unavailable rule`);
+  await p.locator('[data-rx-type=progressive]').click();for(const side of ['right','left']){await p.fill(`#rx-${side}-sph`,'1');await p.fill(`#rx-${side}-add`,'1');}
+  if(!await p.locator('#add-cart').isDisabled())failures.push(`${width}: consultation purchase`);
+  if(!(await p.locator('.price-breakdown').textContent()).includes('Not quoted'))failures.push(`${width}: consultation fallback price`);
+  const before=await p.evaluate(()=>cart.length);await p.locator('#add-cart').evaluate(e=>{e.disabled=false;e.click()});if(await p.evaluate(()=>cart.length)!==before)failures.push(`${width}: consultation command guard`);
+  await p.locator('#consult').focus();await p.keyboard.press('Enter');if(!(await p.locator('dialog').textContent()).includes('not configured'))failures.push(`${width}: inquiry boundary`);await p.keyboard.press('Escape');
+  await p.locator('[data-rx-type=zero]').click();if(await p.locator('[data-rx-lens="5"]').count())failures.push(`${width}: unavailable suggestion`);await p.evaluate(()=>{rxDraft.lensId=5;configuredAdd()});if(!await p.locator('#add-cart').isDisabled()||await p.evaluate(()=>cart.length)!==before)failures.push(`${width}: unavailable rule`);
   if(!(await p.locator('.price-breakdown').textContent()).includes('Not quoted'))failures.push(`${width}: unavailable fallback price`);
   await p.getByRole('button',{name:'Frame Only',exact:true}).click();if(await p.locator('#rx').count()||await p.locator('#add-cart').isDisabled())failures.push(`${width}: frame-only reset`);
   await p.goto(baseURL+'#cart');await checkLayout('cart');

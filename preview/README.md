@@ -1,3 +1,7 @@
+# Latest prescription correction
+
+See [current lens behavior, WhatsApp setup and review checklist](../docs/11_Lens_Selection_Correction.md). Progressive is a separate fourth type; customer suggestions contain only compatible purchasable lenses.
+
 # Current demo: Phase 03.5D / 03.6 / 03.7
 
 See [the operational demo runbook](../docs/10_Operations_Demo.md) for current run instructions, 13 staff modules, persistence, review checklist and limitations. The historical phase notes below describe earlier revisions; the runbook supersedes their disabled POS, read-only admin and wizard behavior.

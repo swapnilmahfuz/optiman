@@ -1,0 +1,90 @@
+{
+  "results": [
+    {
+      "width": 360,
+      "passed": [
+        "four immediate types",
+        "incomplete guidance",
+        "eligible-only cards",
+        "exact positive fallback",
+        "missing/configured WhatsApp",
+        "progressive matrix editing",
+        "live price and revalidation",
+        "variant revalidation",
+        "cart Save/Cancel",
+        "checkout and price snapshots",
+        "hidden-rule command guards",
+        "touch/overflow/privacy"
+      ]
+    },
+    {
+      "width": 390,
+      "passed": [
+        "four immediate types",
+        "incomplete guidance",
+        "eligible-only cards",
+        "exact positive fallback",
+        "missing/configured WhatsApp",
+        "progressive matrix editing",
+        "live price and revalidation",
+        "variant revalidation",
+        "cart Save/Cancel",
+        "checkout and price snapshots",
+        "hidden-rule command guards",
+        "touch/overflow/privacy"
+      ]
+    },
+    {
+      "width": 768,
+      "passed": [
+        "four immediate types",
+        "incomplete guidance",
+        "eligible-only cards",
+        "exact positive fallback",
+        "missing/configured WhatsApp",
+        "progressive matrix editing",
+        "live price and revalidation",
+        "variant revalidation",
+        "cart Save/Cancel",
+        "checkout and price snapshots",
+        "hidden-rule command guards",
+        "touch/overflow/privacy"
+      ]
+    },
+    {
+      "width": 1024,
+      "passed": [
+        "four immediate types",
+        "incomplete guidance",
+        "eligible-only cards",
+        "exact positive fallback",
+        "missing/configured WhatsApp",
+        "progressive matrix editing",
+        "live price and revalidation",
+        "variant revalidation",
+        "cart Save/Cancel",
+        "checkout and price snapshots",
+        "hidden-rule command guards",
+        "touch/overflow/privacy"
+      ]
+    },
+    {
+      "width": 1440,
+      "passed": [
+        "four immediate types",
+        "incomplete guidance",
+        "eligible-only cards",
+        "exact positive fallback",
+        "missing/configured WhatsApp",
+        "progressive matrix editing",
+        "live price and revalidation",
+        "variant revalidation",
+        "cart Save/Cancel",
+        "checkout and price snapshots",
+        "hidden-rule command guards",
+        "touch/overflow/privacy"
+      ]
+    }
+  ],
+  "errors": []
+}

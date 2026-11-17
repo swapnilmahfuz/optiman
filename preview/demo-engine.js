@@ -33,11 +33,16 @@
   s.movements.push({id:'SEED-MR1',at:ago(95),location:'warehouse',product:'muse',delta:4,reservedDelta:0,reason:'Supplier receipt',reference:'SEED-R1'});
   for(const sale of s.sales)for(const item of sale.items)s.movements.push({id:'M-'+sale.id,at:sale.at,location:sale.location,product:item.product,delta:-item.qty,reservedDelta:0,reason:'POS sale',reference:sale.id});
   s.transfers.push({id:'SEED-T1',source:'warehouse',destination:'khulna',product:'muse',qty:2,received:0,status:'planned',at:ago(1)});
+  return lensCompatibilityUpgrade(s);
+ }
+ function lensCompatibilityUpgrade(s){
+  if(!s.lensCatalogRevision){s.rules.push({category:'Progressive',option:'Progressive fitting',features:'No-line multifocal design',type:'CONSULT_WHATSAPP',types:['progressive'],shapes:[],lensCost:null});s.lensCatalogRevision=1;}
   return s;
  }
  let memory;try{memory=JSON.parse(root.localStorage?.getItem(KEY)||'null');}catch{}
  if(!memory||memory.version!==VERSION)memory=seed();
- const storage=()=>{try{const x=JSON.parse(root.localStorage?.getItem(KEY)||'null');if(x&&x.version===VERSION)return x;}catch{}return memory;};
+ memory=lensCompatibilityUpgrade(memory);
+ const storage=()=>{try{const x=JSON.parse(root.localStorage?.getItem(KEY)||'null');if(x&&x.version===VERSION)return lensCompatibilityUpgrade(x);}catch{}return memory;};
  function staff(actor){if(!actor||!['Owner','Branch Manager'].includes(actor.role))throw Error('Select an Owner or Branch Manager demo mode.');}
  function permitted(actor,location){staff(actor);if(actor.role==='Branch Manager'&&location!=='khulna')throw Error('Branch Manager scope is Khulna only.');}
  function exists(s,location){if(!s.locations.some(l=>l.id===location))throw Error('Choose a valid location.');}
@@ -59,10 +64,11 @@
   if(!r||r.type!=='FIXED_PRICE')return false;
   const type=rx?.type||'zero';
   if(r.types&&!r.types.includes(type))return false;
+  if(type==='progressive'&&(!r.types?.includes('progressive')||['maxSph','maxCyl','maxAdd'].some(k=>!Number.isFinite(r[k]))))return false;
   if(type==='zero')return true;
-  if(!rx||!['unifocal','bifocal'].includes(type))return false;
+  if(!rx||!['unifocal','bifocal','progressive'].includes(type))return false;
   if(type==='bifocal'&&(!['Moon Shape','Flat Top'].includes(rx.shape)||(r.shapes?.length&&!r.shapes.includes(rx.shape))))return false;
-  for(const side of ['right','left']){const e=rx[side];if(!e||e.sph===''||!['+','-'].includes(e.sphSign))return false;const sph=Number(e.sph),cyl=e.cyl===''?0:Number(e.cyl);if(!Number.isFinite(sph)||sph<0||sph>(r.maxSph??4)||Math.abs(sph*4-Math.round(sph*4))>.000001||!Number.isFinite(cyl)||cyl<0||cyl>(r.maxCyl??2)||Math.abs(cyl*4-Math.round(cyl*4))>.000001)return false;if(e.axis!==''&&e.axis!==undefined&&(!Number.isInteger(Number(e.axis))||Number(e.axis)<0||Number(e.axis)>180||!cyl))return false;if(type==='bifocal'&&(Number(e.add)<=0||Number(e.add)>(r.maxAdd??2.5)||Math.abs(Number(e.add)*4-Math.round(Number(e.add)*4))>.000001))return false;}
+  for(const side of ['right','left']){const e=rx[side];if(!e||e.sph===''||!['+','-'].includes(e.sphSign))return false;const sph=Number(e.sph),cyl=e.cyl===''?0:Number(e.cyl);if(!Number.isFinite(sph)||sph<0||sph>(r.maxSph??4)||Math.abs(sph*4-Math.round(sph*4))>.000001||!Number.isFinite(cyl)||cyl<0||cyl>(r.maxCyl??2)||Math.abs(cyl*4-Math.round(cyl*4))>.000001)return false;if(e.axis!==''&&e.axis!==undefined&&(!Number.isInteger(Number(e.axis))||Number(e.axis)<0||Number(e.axis)>180||!cyl))return false;if(['bifocal','progressive'].includes(type)&&(!Number.isFinite(Number(e.add))||Number(e.add)<=0||Number(e.add)>(r.maxAdd??2.5)||Math.abs(Number(e.add)*4-Math.round(Number(e.add)*4))>.000001))return false;}
   return true;
  }
  function saleLines(s,lines){if(!Array.isArray(lines)||!lines.length)throw Error('Add at least one item.');return lines.map(l=>{const p=product(s,l.product||l.id);if(p.status!=='active')throw Error('Product is not active.');const qty=whole(l.qty),lensId=l.lensId??l.rx?.lensId;if((l.rx||l.rxType)&&lensId==null)throw Error('Select an explicit lens rule for prescription configurations.');let lensPrice=0,lensCost=0,lensCategory='Frame Only';if(lensId!==null&&lensId!==undefined){const r=s.rules[Number(lensId)];if(!r||r.type!=='FIXED_PRICE'||!lensDecision(r,l.rx||{type:l.rxType||'zero'}))throw Error('Consultation, unavailable or ineligible lenses cannot enter a sale.');lensPrice=amount(r.price);lensCost=r.lensCost===null?null:amount(r.lensCost);lensCategory=r.category;}
@@ -78,10 +84,11 @@
    if(!['FIXED_PRICE','CONSULT_WHATSAPP','UNAVAILABLE'].includes(data.type))throw Error('Invalid explicit rule.');
    if(data.type==='FIXED_PRICE'&&(data.price==null||data.price===''))throw Error('An explicit pair price is required.');r.type=data.type;r.price=data.type==='FIXED_PRICE'?amount(data.price):null;r.lensCost=amount(data.lensCost,true);
    if(data.features!==undefined)r.features=String(data.features).slice(0,160);
-   if(data.prescriptionTypes!==undefined){const types=String(data.prescriptionTypes).split(',');if(!types.length||types.some(t=>!['zero','unifocal','bifocal'].includes(t)))throw Error('Choose explicit prescription eligibility types.');r.types=types;}
+   if(data.prescriptionTypes!==undefined){const types=String(data.prescriptionTypes).split(',');if(!types.length||types.some(t=>!['zero','unifocal','bifocal','progressive'].includes(t)))throw Error('Choose explicit prescription eligibility types.');r.types=types;}
    if(data.shape!==undefined)r.shapes=data.shape?[data.shape]:[];
    for(const k of ['maxSph','maxCyl','maxAdd'])if(data[k]!==undefined&&data[k]!=='')r[k]=amount(data[k]);
-   if(type==='createRule'&&r.type==='FIXED_PRICE'&&((r.types.includes('unifocal')&&(r.maxSph===undefined||r.maxCyl===undefined))||(r.types.includes('bifocal')&&(r.maxSph===undefined||r.maxCyl===undefined||r.maxAdd===undefined))))throw Error('Configure explicit synthetic power bounds for powered fixed rules.');
+   if(type==='createRule'&&r.type==='FIXED_PRICE'&&((r.types.includes('unifocal')&&(r.maxSph===undefined||r.maxCyl===undefined))||(r.types.some(t=>['bifocal','progressive'].includes(t))&&(r.maxSph===undefined||r.maxCyl===undefined||r.maxAdd===undefined))))throw Error('Configure explicit synthetic power bounds for powered fixed rules.');
+   if(r.type==='FIXED_PRICE'&&r.types.includes('progressive')&&['maxSph','maxCyl','maxAdd'].some(k=>r[k]===undefined))throw Error('Configure explicit synthetic Progressive power bounds.');
    return r;
   }
   if(type==='receive'){
@@ -132,7 +139,7 @@
    const ret={id:id(s,'RET'),sale:sale.id,item:i,product:item.product,location:sale.location,at:new Date().toISOString(),qty:q,reason:String(data.reason).slice(0,120),disposition:data.disposition,refund:(item.framePrice+item.lensPrice)*q,frameRefund:item.framePrice*q,lensRefund:item.lensPrice*q,frameCost:item.frameCost,lensCost:item.lensCost,category:item.category,lensCategory:item.lensCategory};
    if(data.disposition==='sellable')move(s,sale.location,item.product,q,0,'Inspected sellable return',ret.id);else{bal(s,sale.location,item.product).quarantine+=q;move(s,sale.location,item.product,0,0,'Quarantined return (not sellable)',ret.id);}s.returns.push(ret);return ret;
   }
-  if(type==='settings'){staff(a);if(data.bands){const bands=String(data.bands).split(',').map(Number);if(bands.length<2||bands[0]!==0||bands.some((n,i)=>!Number.isFinite(n)||n<0||(i&&n<=bands[i-1])))throw Error('Use increasing comma-separated price bounds starting at 0.');s.settings.priceBands=bands;}return s.settings;}
+  if(type==='settings'){staff(a);if(data.whatsappNumber!==undefined){const number=String(data.whatsappNumber).trim();if(number&&!/^[1-9]\d{6,14}$/.test(number))throw Error('Use an international WhatsApp number: 7–15 digits, country code first, no + or spaces.');s.settings.whatsappNumber=number;}if(data.bands){const bands=String(data.bands).split(',').map(Number);if(bands.length<2||bands[0]!==0||bands.some((n,i)=>!Number.isFinite(n)||n<0||(i&&n<=bands[i-1])))throw Error('Use increasing comma-separated price bounds starting at 0.');s.settings.priceBands=bands;}return s.settings;}
   throw Error('Unknown demo command.');
  }
  async function command(type,data={},actor={role:'Public'},key){
@@ -158,6 +165,6 @@
   const ranking=s.products.filter(p=>(!filters.category||p.category===filters.category)&&(!filters.product||p.id===filters.product)&&(!filters.min||p.price>=Number(filters.min))&&(!filters.max||p.price<=Number(filters.max))).map(p=>{const pr=rows.filter(r=>r.product===p.id);const replenishments=s.movements.filter(m=>m.product===p.id&&m.delta>0);const lastReplenishment=replenishments.reduce((v,m)=>m.at>v?m.at:v,p.created);const stockAge=Math.floor((Date.now()-Date.parse(lastReplenishment))/86400000);const qty=pr.reduce((n,r)=>n+r.qty,0),availableQty=s.balances.filter(b=>b.product===p.id).reduce((n,b)=>n+available(b),0),age=Math.floor((Date.now()-Date.parse(p.created))/86400000),days=Math.max(1,(Date.parse(to)-Date.parse(from))/86400000+1);return {label:p.name,sku:p.sku,product:p.id,units:qty,revenue:pr.reduce((n,r)=>n+r.revenue,0),available:availableQty,age,stockAge,velocity:qty/days,status:age<30?'Insufficient history':qty===0?'Zero sales':qty/days<.1?'Slow-moving':'Active',turnover:qty>=0&&availableQty+qty>0?qty/Math.max(1,(availableQty+availableQty+qty)/2):null};});
   return {from,to,total,units,transactions:new Set(rows.filter(r=>r.refund===0).map(r=>r.sale)).size,average:new Set(rows.filter(r=>r.refund===0).map(r=>r.sale)).size?total/new Set(rows.filter(r=>r.refund===0).map(r=>r.sale)).size:null,profit:missing?null:knownProfit,knownProfit,missingCost:missing,refunds:rows.reduce((n,r)=>n+r.refund,0),daily:group(r=>day(r.at)).sort((a,b)=>a.label.localeCompare(b.label)),weekly:group(r=>{const d=new Date(day(r.at)+'T12:00:00Z');d.setUTCDate(d.getUTCDate()-d.getUTCDay());return day(d);}),monthly:group(r=>day(r.at).slice(0,7)),category:fill(group(r=>r.category),[...new Set(s.products.map(p=>p.category))].filter(c=>!filters.category||c===filters.category)),bands:fill(group(r=>band(r.framePrice)),bands.map(v=>band(v))),branch:group(r=>s.locations.find(l=>l.id===r.location)?.name||r.location),lenses:Object.values(rows.filter(r=>r.lensCategory!=='Frame Only').reduce((m,r)=>{const g=m[r.lensCategory]||(m[r.lensCategory]={label:r.lensCategory,units:0,revenue:0});g.units+=r.qty;g.revenue+=r.lensPrice*r.qty;return m;},{})),ranking:ranking.sort((a,b)=>b.units-a.units),rows};
  }
- const api={tracking:id=>{const o=storage().orders.find(o=>o.id===id);return o?clone({id:o.id,status:o.status,location:o.location,payment:o.payment,review:o.review,total:o.total,proposedTotal:o.proposedTotal,customerApproved:o.customerApproved}):null;},lensDecision,command,snapshot,analytics,seed,day,KEY,catalog:()=>clone(storage().products),lensRules:()=>clone(storage().rules),locations:()=>clone(storage().locations),onlineAvailable:p=>{const s=clone(storage());return product(s,p).status==='active'?allAvailability(s,p):0;},lookup:code=>{const s=storage();return clone(s.products.find(p=>p.sku.toLowerCase()===String(code).toLowerCase()||p.barcode.toLowerCase()===String(code).toLowerCase()||('opt-'+p.id)===String(code).toLowerCase()||p.name.toLowerCase()===String(code).toLowerCase())||null);}};
+ const api={contact:()=>({whatsappNumber:storage().settings.whatsappNumber||''}),tracking:id=>{const o=storage().orders.find(o=>o.id===id);return o?clone({id:o.id,status:o.status,location:o.location,payment:o.payment,review:o.review,total:o.total,proposedTotal:o.proposedTotal,customerApproved:o.customerApproved}):null;},lensDecision,command,snapshot,analytics,seed,day,KEY,catalog:()=>clone(storage().products),lensRules:()=>clone(storage().rules),locations:()=>clone(storage().locations),onlineAvailable:p=>{const s=clone(storage());return product(s,p).status==='active'?allAvailability(s,p):0;},lookup:code=>{const s=storage();return clone(s.products.find(p=>p.sku.toLowerCase()===String(code).toLowerCase()||p.barcode.toLowerCase()===String(code).toLowerCase()||('opt-'+p.id)===String(code).toLowerCase()||p.name.toLowerCase()===String(code).toLowerCase())||null);}};
  root.OptimanDemo=api;if(typeof module!=='undefined')module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);

@@ -67,7 +67,7 @@ const fs=require('node:fs');
   await page.waitForTimeout(150);await page.screenshot({path:`evidence/product-premium-${width}.png`,fullPage:true});
   await page.getByRole('button',{name:'With Power / Lens',exact:true}).click();
   if(await page.locator('.purchase').evaluate(e=>getComputedStyle(e).position)!=='static'&&width<600)failures.push(`${width}: purchase may obstruct form`);
-  await page.selectOption('#lens-category','Custom');
+  await page.locator('[data-rx-type=progressive]').click();for(const side of ['right','left']){await page.fill(`#rx-${side}-sph`,'1');await page.fill(`#rx-${side}-add`,'1');}
   await page.locator('#consult').focus();await page.keyboard.press('Enter');
   if(!await page.locator('dialog').isVisible())failures.push(`${width}: keyboard consultation`);
   await page.keyboard.press('Escape');if(await page.locator('dialog').isVisible())failures.push(`${width}: dialog escape`);

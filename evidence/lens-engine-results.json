@@ -1,0 +1,12 @@
+{
+  "checks": [
+    "additive compatibility upgrade preserves IDs/stock/contact",
+    "validates WhatsApp configuration",
+    "explicit progressive bounds and price",
+    "distinct bifocal/progressive eligibility",
+    "ADD validation",
+    "hidden state purchase guards",
+    "progressive sale snapshot"
+  ],
+  "failures": []
+}

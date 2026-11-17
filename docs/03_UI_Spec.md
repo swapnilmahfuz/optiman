@@ -56,3 +56,6 @@ Owner explicitly authorized interactive synthetic power entry and a filename-onl
 
 ## Master prompt amendment — 2026-11-17
 Preserve approved home/hero/pills/photos. Public footer has one labeled Staff Demo entry, no ordinary POS/admin navigation. Separate original staff shell with the same 13 modules for both roles, scoped records and owner location selector. Responsive operational tables, efficient POS, readable charts, printable Code 128 labels and 80mm receipts. Prescription type/details/lenses appear immediately without Continue/Back/wizard controls.
+
+## Prescription correction — 2026-11-17
+Four immediate types now include distinct Progressive. Customer suggestions contain only compatible FIXED_PRICE lenses; incomplete guidance and exact positive WhatsApp fallback supersede older disabled-rule UI descriptions. Internal statuses remain intact. See [correction behavior and review checklist](11_Lens_Selection_Correction.md).

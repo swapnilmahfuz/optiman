@@ -1,8 +1,9 @@
 'use strict';
 // Synthetic demonstration only. No storage, file reads, uploads or external calls.
-const rxTypes = {zero:'Zero Power',unifocal:'Unifocal / Distance Power',bifocal:'Bifocal / Near Power'};
+const rxTypes = {zero:'Zero Power',unifocal:'Unifocal',bifocal:'Bifocal',progressive:'Progressive'};
+const rxTypeHelp={zero:'No correction',unifocal:'Distance / Single Vision',bifocal:'Near & Distance',progressive:'Multifocal / No-line'};
 const emptyEye = () => ({sphSign:'+',sph:'',cylSign:'-',cyl:'',axis:'',add:''});
-const freshRx = () => ({type:'zero',shape:'',right:emptyEye(),left:emptyEye(),ipd:'',fileName:'',step:1,lensId:null,qty:1});
+const freshRx = () => ({type:'zero',shape:'',right:emptyEye(),left:emptyEye(),ipd:'',fileName:'',step:1,category:'',lensId:null,qty:1});
 let rxDraft=freshRx(), rxEditing=null, rxPendingEdit=null, rxErrors=[];
 const cloneRx = value => JSON.parse(JSON.stringify(value));
 function enterProductRoute(){
@@ -28,7 +29,7 @@ function rxValidation(){
     const sph=rxMagnitude(eye.sph),cyl=rxMagnitude(eye.cyl),add=rxMagnitude(eye.add);
     if(!['+','-'].includes(eye.sphSign))errors.push(`${label}: choose a valid SPH sign.`);
     if(sph===null||!quarter(sph)||sph<0||sph>12)errors.push(`${label}: SPH needs a magnitude 0–12 in 0.25 steps (demo range).`);
-    if(rxDraft.type==='unifocal'||rxDraft.type==='bifocal'){
+    if(['unifocal','bifocal','progressive'].includes(rxDraft.type)){
       if(!['+','-'].includes(eye.cylSign))errors.push(`${label}: choose a valid CYL sign.`);
       if(cyl!==null&&(!quarter(cyl)||cyl<0||cyl>6))errors.push(`${label}: CYL must be 0–6 in 0.25 steps (demo range).`);
       if(eye.axis!==''){
@@ -37,7 +38,7 @@ function rxValidation(){
         if(cyl===null||cyl===0)errors.push(`${label}: Axis requires a nonzero CYL magnitude.`);
       }
     }
-    if(rxDraft.type==='bifocal'&&(add===null||!quarter(add)||add<=0||add>4))errors.push(`${label}: ADD must be positive, +0.25 to +4 in 0.25 steps (demo range).`);
+    if(['bifocal','progressive'].includes(rxDraft.type)&&(add===null||!quarter(add)||add<=0||add>4))errors.push(`${label}: ADD must be positive, +0.25 to +4 in 0.25 steps (demo range).`);
   }
   if(rxDraft.ipd!==''){
     const ipd=Number(rxDraft.ipd);
@@ -45,7 +46,7 @@ function rxValidation(){
   }
   return errors;
 }
-function rxOptions(){return OptimanDemo.lensRules().map((r,id)=>({...r,id,features:r.features||r.option+' · synthetic pair rule'}));}
+function rxOptions(){return OptimanDemo.lensRules().map((r,id)=>({...r,id,features:r.features||({0:'Clear vision · anti-reflective finish',1:'Blue-cut · anti-reflective finish',2:'Light-adaptive lenses',6:'Moon shape · lined near and distance'}[id]||'Configured lens finish')}));}
 function rxEligibility(option){
   if(option.type==='UNAVAILABLE')return {type:'UNAVAILABLE',reason:'This explicit demo combination is unavailable.'};
   if(rxValidation().length)return {type:'UNAVAILABLE',reason:'Complete valid demo details first.'};
@@ -64,15 +65,29 @@ function rxField(side,key,label,{sign=false,max=12,step='.25',optional=false}={}
   const eye=rxDraft[side],id=`rx-${side}-${key}`;
   return `<label for="${id}">${label}${optional?' · optional':''}<span class="power-input">${sign?`<select id="${id}-sign" data-rx-field="${side}.${key}Sign" aria-label="${side} ${label} sign"><option value="+" ${eye[key+'Sign']==='+'?'selected':''}>+</option><option value="-" ${eye[key+'Sign']==='-'?'selected':''}>−</option></select>`:key==='add'?'<span class="positive-sign" aria-hidden="true">+</span>':''}<input id="${id}" aria-label="${side} ${label} magnitude" data-rx-field="${side}.${key}" type="number" min="${key==='add'?'.25':'0'}" max="${max}" step="${step}" inputmode="decimal" autocomplete="off" value="${esc(eye[key])}" placeholder="${optional?'Optional':'Demo value'}"></span></label>`;
 }
-function rxTypeStep(){return `<h3 tabindex="-1">Choose a prescription type</h3><p class="muted">Synthetic demonstration only. Do not enter your own prescription.</p><div class="rx-type-choices">${Object.entries(rxTypes).map(([id,label])=>`<button type="button" data-rx-type="${id}" aria-pressed="${rxDraft.type===id}"><strong>${label}</strong><small>${id==='zero'?'No power entry':id==='unifocal'?'Separate SPH / CYL / Axis':'Shape, SPH and positive ADD'}</small></button>`).join('')}</div>`;}
+function rxTypeStep(){return `<h3 tabindex="-1">Choose a prescription type</h3><div class="rx-type-choices">${Object.entries(rxTypes).map(([id,label])=>`<button type="button" data-rx-type="${id}" aria-pressed="${rxDraft.type===id}"><strong>${label}</strong><small>${rxTypeHelp[id]}</small></button>`).join('')}</div>`;}
 function rxFileStep(){return `<div class="rx-file"><b>Demo prescription photo · optional</b><p>Use a synthetic JPG, PNG or WebP, up to 5 MiB. Only its filename is shown. File content is never read, stored or uploaded.</p><label class="file-select">${rxDraft.fileName?'Replace demo photo':'Choose demo photo'}<input id="rx-file" type="file" accept="image/jpeg,image/png,image/webp" aria-label="Choose or replace synthetic prescription photo"></label><p id="rx-filename">${rxDraft.fileName?esc(rxDraft.fileName):'No file selected'}</p>${rxDraft.fileName?'<button class="quiet" type="button" id="rx-remove-file">Remove demo photo</button>':''}</div>`;}
-function rxDetailStep(){return `<h3 tabindex="-1">Enter synthetic demo details</h3><p class="muted">Demo bounds, not medical guidance: SPH magnitude 0–12, CYL 0–6, powers in 0.25 steps; ADD +0.25–+4.00. Blanks are permitted for CYL, Axis and IPD. Both SPH values ${rxDraft.type==='bifocal'?'and both ADD values ':''}are required unless all powers are blank with a demo photo selected.</p>${rxDraft.type==='bifocal'?`<label>Lens shape<select id="rx-shape"><option value="">Choose shape</option>${['Moon Shape','Flat Top'].map(v=>`<option ${rxDraft.shape===v?'selected':''}>${v}</option>`).join('')}</select></label>`:''}<div class="rx-eyes">${['right','left'].map(side=>`<fieldset><legend>${side==='right'?'RIGHT EYE / OD':'LEFT EYE / OS'}</legend>${rxField(side,'sph','SPH',{sign:true})}${rxField(side,'cyl','CYL',{sign:true,max:6,optional:true})}${rxField(side,'axis','Axis (degrees)',{max:180,step:'1',optional:true})}${rxDraft.type==='bifocal'?rxField(side,'add','ADD',{max:4}):''}</fieldset>`).join('')}</div><label>IPD · optional, millimeters<input id="rx-ipd" data-rx-field="ipd" type="number" inputmode="decimal" min="40" max="80" step=".5" value="${esc(rxDraft.ipd)}" placeholder="Demo range 40–80 mm" autocomplete="off"></label>${rxFileStep()}<p class="rx-review-note">Authorized staff must verify prescriptions before production. Any revised lens price requires customer approval.</p>`;}
-function rxLensStep(){
-  const options=rxOptions(),selected=selectedRxOption();
-  const category=selected?.category||'';
-  return `<h3 tabindex="-1">Choose an explicit lens pair</h3><p class="muted">${esc(rxTypes[rxDraft.type])}${rxDraft.type==='bifocal'?' · '+esc(rxDraft.shape):''}. Prices and eligibility below are synthetic examples, not Optiman policy.</p><label>Lens category<select id="lens-category"><option value="">Choose a category</option>${[...new Set(options.map(o=>o.category))].map(c=>`<option ${category===c?'selected':''}>${c}</option>`).join('')}</select></label>${category?`<label>Lens option<select id="lens-option">${options.filter(o=>o.category===category).map(o=>`<option value="${o.id}" ${o.id===rxDraft.lensId?'selected':''}>${o.option}</option>`).join('')}</select></label>`:''}<div class="rx-lens-options">${options.map(o=>{const status=rxEligibility(o);return `<button type="button" data-rx-lens="${o.id}" aria-pressed="${o.id===rxDraft.lensId}" ${status.type==='UNAVAILABLE'?'aria-disabled="true"':''}><strong>${o.category} · ${o.option}</strong><span>${o.features}</span><span class="rx-lens-price">${status.type==='FIXED_PRICE'?money(o.price)+' / pair · demo':status.type.replaceAll('_',' ')}</span><small>${status.reason}</small></button>`;}).join('')}</div>${selected?`<div class="rule-note"><span class="badge">${selected.type.replaceAll('_',' ')}</span><p>${selected.reason}</p>${selected.type==='CONSULT_WHATSAPP'?'<button class="quiet" id="consult" type="button">Contact our WhatsApp for details</button>':''}</div>`:'<p class="muted">Choose an eligible pair to see a total. No automatic price fallback.</p>'}<p class="rx-review-note">Staff verification is required before production. This configurator cannot verify a prescription.</p>`;
+function rxDetailStep(){return `<h3 tabindex="-1">Your prescription details</h3>${rxDraft.type==='bifocal'?`<label>Lens shape<select id="rx-shape"><option value="">Choose shape</option>${['Moon Shape','Flat Top'].map(v=>`<option ${rxDraft.shape===v?'selected':''}>${v}</option>`).join('')}</select></label>`:''}<div class="rx-eyes">${['right','left'].map(side=>`<fieldset><legend>${side==='right'?'RIGHT EYE / OD':'LEFT EYE / OS'}</legend>${rxField(side,'sph','SPH',{sign:true})}${rxField(side,'cyl','CYL',{sign:true,max:6,optional:true})}${rxField(side,'axis','Axis (degrees)',{max:180,step:'1',optional:true})}${['bifocal','progressive'].includes(rxDraft.type)?rxField(side,'add','ADD',{max:4}):''}</fieldset>`).join('')}</div><label>IPD · optional, millimeters<input id="rx-ipd" data-rx-field="ipd" type="number" inputmode="decimal" min="40" max="80" step=".5" value="${esc(rxDraft.ipd)}" placeholder="Optional" autocomplete="off"></label>${rxFileStep()}<p class="rx-review-note">Authorized staff must verify prescriptions before production. Any revised lens price requires customer approval.</p>`;}
+function rxContactURL(){
+  const number=OptimanDemo.contact().whatsappNumber;
+  if(!/^[1-9]\d{6,14}$/.test(number||''))return null;
+  const category=rxDraft.category||rxTypes[rxDraft.type];
+  return 'https://wa.me/'+number+'?text='+encodeURIComponent(`Hello, I would like help with ${current().name} (${current().sku}), ${category} lenses.`);
 }
-function lensPanel(){return `<section class="lens-panel rx-configurator" aria-label="Synthetic prescription configurator"><div class="lens-heading"><div><h2>Prescription & lenses</h2><p>Synthetic demo only · nothing is submitted</p></div></div>${rxTypeStep()}${rxDraft.type==='zero'?'':rxDetailStep()}${rxErrorHTML()}<div id="rx-live-lenses">${rxLensStep()}</div></section>`;}
+function rxFallback(){const url=rxContactURL();return `<div class="rx-consultation"><h4>Looking for a specific lens?</h4><p>For your specific lens requirements, please contact us on WhatsApp. Our team will be happy to assist you.</p>${url?`<a class="button" id="consult" href="${esc(url)}" target="_blank" rel="noopener noreferrer">Chat with Us on WhatsApp</a>`:'<button class="button" id="consult" type="button">Chat with Us on WhatsApp</button><p class="muted">WhatsApp contact details will be available here once configured.</p>'}</div>`;}
+function rxVisibleOptions(){return rxOptions().filter(o=>rxEligibility(o).type==='FIXED_PRICE');}
+function rxRevalidate(){const selected=selectedRxOption();if(selected?.type!=='FIXED_PRICE'||(rxDraft.category&&selected.category!==rxDraft.category))rxDraft.lensId=null;}
+function rxLensStep(){
+  rxRevalidate();
+  if(rxValidation().length)return '<h3>Explore lenses</h3><p class="rx-guidance">Enter your prescription details to explore lens options.</p>';
+  const options=rxVisibleOptions();
+  if(!options.length)return rxFallback();
+  const categories=[...new Set(options.map(o=>o.category))];
+  if(rxDraft.category&&!categories.includes(rxDraft.category))rxDraft.category='';
+  const visible=options.filter(o=>!rxDraft.category||o.category===rxDraft.category);
+  return `<h3 tabindex="-1">Choose your lenses</h3><label>Lens category<select id="lens-category"><option value="">All lens options</option>${categories.map(c=>`<option ${rxDraft.category===c?'selected':''}>${esc(c)}</option>`).join('')}</select></label><div class="rx-lens-options">${visible.map(o=>`<button type="button" data-rx-lens="${o.id}" aria-pressed="${o.id===rxDraft.lensId}"><strong>${esc(o.option)}</strong><span>${esc(o.features)}</span><span class="rx-lens-price">${money(o.price)} / pair</span>${o.id===rxDraft.lensId?'<small>Selected</small>':''}</button>`).join('')}</div>`;
+}
+function lensPanel(){return `<section class="lens-panel rx-configurator" aria-label="Synthetic prescription configurator"><div class="lens-heading"><div><h2>Prescription & lenses</h2><p>Synthetic demonstration · use invented details only; nothing is submitted</p></div></div>${rxTypeStep()}${rxDraft.type==='zero'?'':rxDetailStep()}${rxErrorHTML()}<div id="rx-live-lenses">${rxLensStep()}</div></section>`;}
 function rxRefresh(){
   const region=document.querySelector('#rx-live-lenses');if(region)region.innerHTML=rxLensStep();
   const errors=document.querySelector('#rx-errors');rxErrors=rxValidation();if(errors)errors.outerHTML=rxErrorHTML();
@@ -80,7 +95,7 @@ function rxRefresh(){
 }
 function productPrice(p){
   const selected=selectedRxOption(),valid=rxSelectionValid(),pair=lens?selected?.price:0,qty=rxDraft.qty;
-  return `<div class="price-breakdown" aria-live="polite"><p class="eyebrow">Your synthetic demo selection</p><dl><div><dt>Frame price</dt><dd>${money(p.price)}</dd></div><div><dt>Lens price per pair</dt><dd>${!lens?'Not selected':valid?money(pair):selected?.type==='CONSULT_WHATSAPP'?'Consultation required':selected?.type==='UNAVAILABLE'?'Unavailable':'Choose eligible lenses'}</dd></div><div><dt>Quantity</dt><dd>${Number.isInteger(qty)&&qty>=1&&qty<=99?qty:'—'}</dd></div><div class="selection-total"><dt>Illustrative total</dt><dd>${valid?money((p.price+pair)*qty):'Not quoted'}</dd></div></dl><small>Demo prices only. Delivery, tax and discounts are not configured. No payment split is assumed.</small></div>`;
+  return `<div class="price-breakdown" aria-live="polite"><p class="eyebrow">Your synthetic demo selection</p><dl><div><dt>Frame price</dt><dd>${money(p.price)}</dd></div><div><dt>Lens price per pair</dt><dd>${!lens?'Not selected':valid?money(pair):selected?.type==='CONSULT_WHATSAPP'?'Consultation required':'Choose your lenses'}</dd></div><div><dt>Quantity</dt><dd>${Number.isInteger(qty)&&qty>=1&&qty<=99?qty:'—'}</dd></div><div class="selection-total"><dt>Illustrative total</dt><dd>${valid?money((p.price+pair)*qty):'Not quoted'}</dd></div></dl><small>Demo prices only. Delivery, tax and discounts are not configured. No payment split is assumed.</small></div>`;
 }
 function rxQuantity(){return `<label class="rx-quantity">Quantity · demo pairs<input id="rx-qty" type="number" min="1" max="99" step="1" value="${rxDraft.qty}" inputmode="numeric"></label>`;}
 function rxCompactSummary(){const selected=selectedRxOption();return `<span>Synthetic demo selection · ${rxDraft.qty} pair(s)</span><b>${rxSelectionValid()?money((current().price+(lens?selected.price:0))*rxDraft.qty):'Choose an eligible lens pair'}</b><small>No payment or stock reservation until simulated checkout.</small>`;}
@@ -96,7 +111,7 @@ function rxSummary(config){
   let text=rxTypes[config.type]||'Unknown demo type';
   if(config.type==='bifocal')text+=' · '+config.shape;
   if(config.type!=='zero'){
-    for(const [side,label] of [['right','OD'],['left','OS']]){const e=config[side];text+=` · ${label} SPH ${rxPowerText(e,'sph')}`;text+=config.type==='bifocal'?` ADD ${rxPowerText(e,'add')}`:` CYL ${rxPowerText(e,'cyl')} Axis ${e.axis===''?'not supplied':e.axis+'°'}`;}
+    for(const [side,label] of [['right','OD'],['left','OS']]){const e=config[side];text+=` · ${label} SPH ${rxPowerText(e,'sph')}`;text+=` CYL ${rxPowerText(e,'cyl')} Axis ${e.axis===''?'not supplied':e.axis+'°'}`;if(['bifocal','progressive'].includes(config.type))text+=` ADD ${rxPowerText(e,'add')}`;}
     if(config.ipd!=='')text+=` · IPD ${config.ipd} mm`;
     if(config.fileName)text+=' · Demo photo filename selected (no file retained)';
   }
@@ -121,15 +136,16 @@ const rxMain=document.querySelector('main');
 rxMain.addEventListener('click',event=>{
   const button=event.target.closest('button');if(!button)return;
   const d=button.dataset;
+  if(d.color&&lens){rxRevalidate();}
   if(d.mode){event.stopImmediatePropagation();lens=d.mode==='lens';rxErrors=[];rxRender(`[data-mode="${d.mode}"]`);return;}
   if(button.id==='add-cart'){event.stopImmediatePropagation();configuredAdd();return;}
-  if(button.id==='consult'&&lens){event.stopImmediatePropagation();const o=selectedRxOption();if(o?.type!=='CONSULT_WHATSAPP')return;modal(`<p class="eyebrow">WHATSAPP MESSAGE PREVIEW</p><h2>Contact our WhatsApp for details</h2><p>Hello, I would like details for OPT-${esc(current().id.toUpperCase())}, color ${esc(color)}, ${esc(rxTypes[rxDraft.type])}, ${esc(o.category)} / ${esc(o.option)}.</p><p>No prescription measurements or filename included. No WhatsApp number is configured. No message is sent and no automatic quotation is made.</p>`);return;}
+  if(button.id==='consult'&&lens){event.stopImmediatePropagation();modal('<h2>WhatsApp contact</h2><p>Our WhatsApp contact is not configured in this demo yet. Please ask the store team for contact details.</p><p>No message or prescription information has been sent.</p>');return;}
   if(d.rxEdit!==undefined){event.stopImmediatePropagation();rxPendingEdit=+d.rxEdit;location.hash='product/'+cart[rxPendingEdit].id;return;}
   if(button.id==='rx-cancel'){event.stopImmediatePropagation();rxEditing=null;if(rxPOSContext){rxPOSContext=null;location.hash='staff/pos';}else location.hash='cart';return;}
   if(!button.closest('.rx-configurator'))return;
   event.stopImmediatePropagation();
   if(d.rxType){rxDraft={...freshRx(),type:d.rxType,qty:rxDraft.qty};rxErrors=[];rxRender(`[data-rx-type="${d.rxType}"]`);}
-  if(d.rxLens!==undefined){if(button.getAttribute('aria-disabled')==='true')return;rxDraft.lensId=+d.rxLens;rxErrors=[];rxRender(`[data-rx-lens="${d.rxLens}"]`);}
+  if(d.rxLens!==undefined){if(!rxVisibleOptions().some(o=>o.id===+d.rxLens))return;rxDraft.lensId=+d.rxLens;rxErrors=[];rxRender(`[data-rx-lens="${d.rxLens}"]`);}
   if(button.id==='rx-remove-file'){rxErrors=[];rxDraft.fileName='';rxDraft.lensId=null;rxRender('#rx-file');}
 });
 rxMain.addEventListener('input',event=>{
@@ -153,6 +169,6 @@ rxMain.addEventListener('change',event=>{
     if(valid)rxDraft.fileName=file.name.slice(0,200);
     target.value='';rxDraft.lensId=null;rxErrors=valid?[]:['Use a synthetic JPG, PNG or WebP up to 5 MiB. No file was read.'];rxRender(valid?'#rx-file':'#rx-errors');
   }
-  if(id==='lens-category'){rxErrors=[];const option=rxOptions().find(o=>o.category===target.value);rxDraft.lensId=option?.id??null;rxRender('#lens-category');}
-  if(id==='lens-option'){rxErrors=[];rxDraft.lensId=Number(target.value);rxRender('#lens-option');}
+  if(id==='lens-category'){rxErrors=[];rxDraft.category=target.value;const option=rxVisibleOptions().find(o=>o.category===target.value);rxDraft.lensId=option?.id??null;rxRender('#lens-category');}
+
 });

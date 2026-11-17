@@ -459,3 +459,14 @@ main:empty{min-height:100vh}
 .gallery-summary{display:flex;flex-direction:column;gap:7px;border:1px solid var(--line);border-radius:10px;padding:16px;margin-top:16px;background:var(--cream)}
 .gallery-summary span,.gallery-summary small{font-size:11px;color:var(--mocha);line-height:1.6}.gallery-summary b{font-size:22px;font-weight:600}
 @media(max-width:1023px){.gallery-summary{display:none}}
+
+/* Targeted prescription correction: customer suggestions contain purchasable lenses only. */
+.rx-configurator .rx-type-choices{grid-template-columns:repeat(2,minmax(0,1fr))}
+.rx-configurator .rx-type-choices button{min-width:0;min-height:84px}
+.rx-configurator .rx-type-choices small{line-height:1.5}
+.rx-guidance{padding:18px 0;color:var(--mocha)}
+.rx-consultation{border:1px solid var(--sand);border-radius:12px;padding:22px;margin-top:22px;background:var(--cream)}
+.rx-consultation h4{font-size:20px;margin:0 0 12px;line-height:1.4}
+.rx-consultation p{line-height:1.7}
+.rx-consultation .button{min-height:44px;white-space:normal;text-align:center}
+.rx-configurator .rx-lens-options button[aria-pressed=true]{background:var(--sand)}

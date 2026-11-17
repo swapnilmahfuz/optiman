@@ -42,3 +42,6 @@ Test every type, optional fields, sign/value consistency, 0/180 Axis boundaries,
 
 ## Current matrix ownership
 Phase 03.7 stores synthetic configurable lens rules/costs in the shared browser-local engine. The table above is the reset seed, not immutable real business pricing. See [the operational runbook](10_Operations_Demo.md). Prescription values and filenames remain memory-only and are redacted from persisted operational command data.
+
+## Prescription selection correction
+Progressive is now a fourth, separate type with SPH/CYL/Axis/ADD and optional IPD. It uses the existing synthetic form bounds and has no bifocal shape requirement. The additive Progressive seed rule is CONSULT_WHATSAPP, without a price or inferred clinical limits; staff must explicitly configure bounds/price for a fixed option. Existing rules 0–6 retain their internal semantics. Customer cards show only eligible fixed options. [Full correction notes](11_Lens_Selection_Correction.md).

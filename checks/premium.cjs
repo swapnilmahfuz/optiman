@@ -64,7 +64,7 @@ const fs=require('node:fs');
   if(!(await page.locator('.product-card').textContent()).includes('Noir'))failures.push(`${width}: header search`);
   await page.fill('#search','');await page.goto('http://127.0.0.1:4173/#product/atlas');await page.locator('.gallery-main img').evaluate(i=>i.decode());
   await page.waitForTimeout(150);await page.screenshot({path:`evidence/product-premium-${width}.png`,fullPage:true});
-  await page.getByRole('button',{name:'With lenses',exact:true}).click();
+  await page.getByRole('button',{name:'Frame + Prescription Lenses',exact:true}).click();
   if(await page.locator('.purchase').evaluate(e=>getComputedStyle(e).position)!=='static'&&width<600)failures.push(`${width}: purchase may obstruct form`);
   await page.selectOption('#lens-category','Custom');
   await page.locator('#consult').focus();await page.keyboard.press('Enter');

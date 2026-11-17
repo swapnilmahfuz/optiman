@@ -64,3 +64,7 @@ Every change to a locked rule requires a new version entry and explicit user app
 ## Phase 03.4 — 2026-11-17
 - Homepage-only pill navigation refinement authorized. Expected: exact category order, route-derived active rendering, compact wrapping and touch targets at least 44px.
 - Validate five widths, all six routes including empty Sale, keyboard focus, active state and overflow. Rollback by reverting this commit. No dependencies, backend, merge or deployment; await visual approval.
+
+## Phase 03.5 — 2026-11-17
+- Authorized product/lens/cart/checkout visual refinement only. Expected: explicit price breakdown, touch-friendly choices, clear mock feedback and no overlapping mobile controls; preserve catalog, lens rules and homepage.
+- Test at five widths: frame-only, all lens rule types, quantities/removal, checkout outcomes, navigation and keyboard. Save product/cart/checkout screenshots. Rollback: revert this commit; no persistent data. Stop for visual approval before Phase 04; no merge or deployment.

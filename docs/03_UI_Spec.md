@@ -47,3 +47,6 @@ Homepage discovery supersedes photographic tiles with six ordered text links and
 
 ## Phase 03.4 — premium category pills / 2026-11-17
 Homepage discovery now uses “EXPLORE THE COLLECTION” / “Find your frame.” and compact rounded links, in order: All Eyewear, Sunglasses, Optical Frames, Day-Night, Polarized, Sale. Cream/sand inactive pills; brown/cream active pill derived from the current route, with All Eyewear the allowed homepage default. Wrap on mobile; no arrows, images or redundant exploration link. Existing top navigation, hero, featured products and shopping rules are preserved.
+
+## Phase 03.5 — product and shopping UX / 2026-11-17
+Keep the approved homepage unchanged. Refine single-photo product layout, explicit Frame Only / Frame + Prescription Lenses choices, progressive lens options, separate frame/lens/subtotal breakdown and safe prescription placeholder. Consultation and unavailable combinations remain blocked. Improve cart and simulated checkout hierarchy with scoped styles. Mobile uses an in-flow purchase action to avoid covering fields; no real prescription collection or backend work.

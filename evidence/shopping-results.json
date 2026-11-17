@@ -1,0 +1,105 @@
+{
+  "checks": [
+    {
+      "width": 360,
+      "flows": [
+        "frame-only",
+        "three fixed prices",
+        "consultation command guard",
+        "unavailable blocking",
+        "frame-only reset",
+        "quantity and focus",
+        "removal/empty cart",
+        "three checkout simulations",
+        "no file input"
+      ],
+      "screens": [
+        "product",
+        "product-lenses",
+        "cart",
+        "checkout"
+      ]
+    },
+    {
+      "width": 390,
+      "flows": [
+        "frame-only",
+        "three fixed prices",
+        "consultation command guard",
+        "unavailable blocking",
+        "frame-only reset",
+        "quantity and focus",
+        "removal/empty cart",
+        "three checkout simulations",
+        "no file input"
+      ],
+      "screens": [
+        "product",
+        "product-lenses",
+        "cart",
+        "checkout"
+      ]
+    },
+    {
+      "width": 768,
+      "flows": [
+        "frame-only",
+        "three fixed prices",
+        "consultation command guard",
+        "unavailable blocking",
+        "frame-only reset",
+        "quantity and focus",
+        "removal/empty cart",
+        "three checkout simulations",
+        "no file input"
+      ],
+      "screens": [
+        "product",
+        "product-lenses",
+        "cart",
+        "checkout"
+      ]
+    },
+    {
+      "width": 1024,
+      "flows": [
+        "frame-only",
+        "three fixed prices",
+        "consultation command guard",
+        "unavailable blocking",
+        "frame-only reset",
+        "quantity and focus",
+        "removal/empty cart",
+        "three checkout simulations",
+        "no file input"
+      ],
+      "screens": [
+        "product",
+        "product-lenses",
+        "cart",
+        "checkout"
+      ]
+    },
+    {
+      "width": 1440,
+      "flows": [
+        "frame-only",
+        "three fixed prices",
+        "consultation command guard",
+        "unavailable blocking",
+        "frame-only reset",
+        "quantity and focus",
+        "removal/empty cart",
+        "three checkout simulations",
+        "no file input"
+      ],
+      "screens": [
+        "product",
+        "product-lenses",
+        "cart",
+        "checkout"
+      ]
+    }
+  ],
+  "failures": []
+}

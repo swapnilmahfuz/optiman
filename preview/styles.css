@@ -481,3 +481,15 @@ main:empty{min-height:100vh}
 .summary .required-advance{background:var(--sand);padding:12px;border-radius:8px}
 .summary-line{gap:12px}
 @media(min-width:1024px){.listing .filterbar{grid-template-columns:1.4fr repeat(4,1fr) auto}}
+
+/* Scannable merchant policy; wording and accordion behavior stay unchanged. */
+.shipping-policy{border:1px solid var(--sand);border-radius:12px;padding:0;overflow:hidden}
+.shipping-policy summary{padding:16px 18px;background:var(--sand);font-size:16px;line-height:1.5;justify-content:space-between;gap:12px}
+.shipping-policy summary::after{content:'+';font-size:22px;font-weight:400;flex-shrink:0}
+.shipping-policy[open] summary::after{content:'−'}
+.shipping-policy [lang=bn]{padding:4px 16px}
+.shipping-policy [lang=bn] p{margin:12px 0;padding:14px 16px;border:1px solid var(--sand);border-radius:8px;font-size:15px;line-height:1.95;background:var(--cream)}
+.shipping-policy [lang=bn] p:first-child,.shipping-policy [lang=bn] p:nth-last-child(-n+2){background:var(--sand);border-left:4px solid var(--brown)}
+.shipping-policy [lang=bn] strong{font-weight:700;color:var(--brown)}
+.shipping-policy .policy-review{margin:0;padding:16px 20px;border-top:1px solid var(--sand);line-height:1.8}
+@media(max-width:599px){.shipping-policy [lang=bn]{padding:2px 12px}.shipping-policy [lang=bn] p{padding:12px;font-size:14px}}

@@ -1,0 +1,45 @@
+{
+  "results": [
+    {
+      "width": 360,
+      "exactText": true,
+      "emphasis": true,
+      "keyboardAccordion": true,
+      "noOverflow": true,
+      "cartCheckout": true
+    },
+    {
+      "width": 390,
+      "exactText": true,
+      "emphasis": true,
+      "keyboardAccordion": true,
+      "noOverflow": true,
+      "cartCheckout": true
+    },
+    {
+      "width": 768,
+      "exactText": true,
+      "emphasis": true,
+      "keyboardAccordion": true,
+      "noOverflow": true,
+      "cartCheckout": true
+    },
+    {
+      "width": 1024,
+      "exactText": true,
+      "emphasis": true,
+      "keyboardAccordion": true,
+      "noOverflow": true,
+      "cartCheckout": true
+    },
+    {
+      "width": 1440,
+      "exactText": true,
+      "emphasis": true,
+      "keyboardAccordion": true,
+      "noOverflow": true,
+      "cartCheckout": true
+    }
+  ],
+  "errors": []
+}

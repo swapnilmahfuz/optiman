@@ -95,3 +95,6 @@ Owner explicitly configures BDT 150 delivery once per order and advance = delive
 Text-only owner request: prescription-card descriptions now use the supplied English + Bangla labels, and customer Bag/Demo Bag wording becomes Cart/Add to Cart/View Cart. Preserve internal IDs, CSS/classes, Rx fields/validation, shopping calculations and operational logic. Check mobile wrapping and shopping regressions; rollback this text-only commit. Commit/push feature branch only; no main merge.
 
 Label correction results: exact text, selection, mobile wrapping, Cart notifications/empty states and Add to Cart passed at 360/390/768/1024/1440px. Shopping and immediate configurator regressions passed all five widths; payment/preservation checks, syntax and whitespace checks passed. Screenshots: `evidence/prescription-labels-{width}.png`; results: `evidence/cart-label-results.json`. No application logic or styles changed.
+
+## Policy emphasis — 2026-11-17
+Owner requests at-a-glance highlighting of Shipping, Return & Exchange. Bold key conditions, separate readable paragraphs, and use approved sand/brown callouts; preserve all wording, legal-review/statutory-rights caveat and native accordion behavior. Verify exact text, keyboard toggle, product/cart/checkout and five responsive widths. Rollback this visual commit; no business logic changes.

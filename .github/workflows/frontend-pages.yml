@@ -25,7 +25,9 @@ jobs:
         with:
           persist-credentials: false
       - name: Check JavaScript syntax
-        run: node --check preview/app.js
+        run: |
+          node --check preview/app.js
+          node --check preview/configurator.js
       - name: Stage only public frontend files
         run: python3 scripts/package_preview.py "$RUNNER_TEMP/optiman-pages"
       - name: Read Pages configuration

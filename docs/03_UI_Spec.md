@@ -50,3 +50,6 @@ Homepage discovery now uses “EXPLORE THE COLLECTION” / “Find your frame.�
 
 ## Phase 03.5 — product and shopping UX / 2026-11-17
 Keep the approved homepage unchanged. Refine single-photo product layout, explicit Frame Only / Frame + Prescription Lenses choices, progressive lens options, separate frame/lens/subtotal breakdown and safe prescription placeholder. Consultation and unavailable combinations remain blocked. Improve cart and simulated checkout hierarchy with scoped styles. Mobile uses an in-flow purchase action to avoid covering fields; no real prescription collection or backend work.
+
+## Phase 03.5C — staged prescription configurator
+Owner explicitly authorized interactive synthetic power entry and a filename-only photo picker, superseding the prior placeholder-only demo boundary. Preserve locked business rules and original visual identity. Use Type → Details → Lens progression, separate eyes/signs, explicit eligibility and pair-price breakdown, deep-copied editable cart configurations and checkout summaries. No real documents, backend, storage or payment. Synthetic policy: `docs/09_Synthetic_Lens_Demo_Rules.md`; no real clinical rules are inferred.

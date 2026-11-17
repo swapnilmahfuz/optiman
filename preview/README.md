@@ -40,8 +40,8 @@ Add a frame before reviewing cart/checkout. POS recognizes `OPT-ATLAS`, `OPT-MUS
 - All POS finalization is disabled because no server exists. Branch selection does not enforce access or connect stock. Offline simulation only demonstrates UI blocking.
 - Receipt is a dialog layout; no print bridge, physical printer or automatic cutter is tested.
 - Admin data is read-only. No login, roles, backend API, persistence, database migrations or inventory ledger exist.
-- Prescription dialog explains future steps. There is deliberately no medical file upload or measurement collection. Never enter sensitive data.
-- WhatsApp opens an internal message preview with synthetic product context. No number is configured and nothing is sent. No prescription measurements are included.
+- Phase 03.5C supersedes the prescription placeholder with synthetic demo inputs and a filename-only photo interface. Never enter actual medical information. No file content is read or uploaded, and no measurements are transmitted or persisted.
+- WhatsApp opens an internal message preview with synthetic product context. No number is configured and nothing is sent. Prescription measurements and filenames are excluded.
 - AR is an optional placeholder, disabled by default; no camera or tracking engine is accessed.
 - Demo checkout fields are not submitted or persisted. Use fictional information only.
 - Shipping, tax, discounts, customer identity, return exceptions and operational policies remain open; no final payable total is implied.
@@ -126,3 +126,17 @@ Verification: `node checks/ui.cjs`, `node checks/premium.cjs`, and `node checks/
 Run locally as before: open `preview/index.html`, or `py -m http.server 4173 --directory preview` on Windows, then browse to `http://127.0.0.1:4173/#product/atlas`. Refresh resets all synthetic bag state. Physical Windows/device testing remains pending. No backend, real orders/payments, document collection, inventory mutation or production compatibility is implemented or verified. Rollback by reverting this phase's commit. Await visual approval before Phase 04; do not merge or deploy.
 
 Phase 03.5 actual results: JavaScript syntax and whitespace checks passed. Existing UI suite passed 45 layout checks and its interaction regressions; premium/category suite passed across all five widths. The shopping suite passed all listed flows at all five widths, with no JavaScript errors, overflow, clipped controls or purchase-action overlap. Desktop product, mobile lens configuration, cart and checkout screenshots were visually reviewed. Homepage/pill markup, catalog/rules and POS/admin renderers were verified unchanged against the preceding commit.
+
+
+## Phase 03.5C — full synthetic prescription configurator
+Use **With Power / Lens**, then choose Zero Power, Unifocal / Distance Power, or Bifocal / Near Power. Zero Power proceeds directly to lenses. Powered types show separate eye/sign controls, optional IPD and a filename-only demo photo picker. Bifocal requires shape and positive ADD. Continue validates before lenses. All prices/ranges/eligibility are synthetic fixtures documented in [09_Synthetic_Lens_Demo_Rules.md](../docs/09_Synthetic_Lens_Demo_Rules.md). The four reference screenshots were not available in this chat; no claim of matching their exact layout is made.
+
+Choose an eligible explicit pair to add; consultation and unavailable rules never enter the ordinary cart. Change power details to clear the lens selection. The quantity input updates total immediately. Cart lines preserve separate configurations and provide **Edit Prescription & Lenses**; Save replaces just that line, Cancel discards the draft. Checkout displays all configuration details and frame/lens sums as simulation only.
+
+Safe demonstration: enter invented values (e.g. SPH +1.25 / −2.00, CYL −0.50, Axis 180, IPD 63.5). For bifocal, Moon Shape, SPH +2 / −1 and ADD +1.50 demonstrate a fixed-price synthetic pair. Use only synthetic image files for file selection. Only the name is retained; contents are never read, displayed or uploaded. Browser memory only; refresh clears all configuration/cart state. No actual medical information should be entered.
+
+New source: `configurator.js` loads before `app.js` and owns draft/validation/eligibility/cart-edit commands. Pages packaging explicitly includes it. No dependencies or backend added. Existing synthetic rule IDs 0–5 retain their price/consultation/unavailable semantics; new ID 6 is a clearly labeled synthetic bifocal example. Production policy remains OPEN.
+
+Checks: existing UI/premium/shopping suites now navigate the staged flow; `node checks/configurator.cjs` exercises all types, signs, bounds, eligibility, filenames, quantities, independent cart lines, Save/Cancel and checkout at five widths, with file reads/persistent storage/non-GET requests checked. Use `PREVIEW_URL` to test a staged `/optiman/` package. Evidence uses `configurator-{screen}-{width}.png` and `configurator-results.json`. Revert this phase's commit to roll back. Stop for manual approval; no merge or backend.
+
+Actual Phase 03.5C results: existing UI (45 layouts), premium/category and shopping regression suites passed with staged-flow navigation updates. The full configurator suite passed at 360/390/768/1024/1440px against the isolated `/optiman/` Pages artifact, including all listed prescription/cart/checkout cases and no JavaScript errors or overflow. Boundary suite passed. Tests detected zero file-read attempts, no local/session storage and no non-GET requests. Pages package contains 19 source-identical public files; docs/README are excluded. New screenshots use synthetic review fixtures and were visually inspected. No physical-device, clinical or live Pages verification is claimed.

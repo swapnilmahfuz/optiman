@@ -1,0 +1,126 @@
+{
+  "results": [
+    {
+      "width": 360,
+      "cases": [
+        "zero",
+        "unifocal",
+        "bifocal",
+        "sign controls",
+        "optional fields",
+        "quarter validation",
+        "Axis 0/180/181",
+        "IPD validation",
+        "positive ADD",
+        "shape",
+        "file select/replace/remove",
+        "filename-only consultation",
+        "eligibility",
+        "explicit prices",
+        "independent configurations",
+        "edit preload/save/cancel",
+        "quantities/removal",
+        "checkout totals/outcomes",
+        "no file reads/storage/submission"
+      ]
+    },
+    {
+      "width": 390,
+      "cases": [
+        "zero",
+        "unifocal",
+        "bifocal",
+        "sign controls",
+        "optional fields",
+        "quarter validation",
+        "Axis 0/180/181",
+        "IPD validation",
+        "positive ADD",
+        "shape",
+        "file select/replace/remove",
+        "filename-only consultation",
+        "eligibility",
+        "explicit prices",
+        "independent configurations",
+        "edit preload/save/cancel",
+        "quantities/removal",
+        "checkout totals/outcomes",
+        "no file reads/storage/submission"
+      ]
+    },
+    {
+      "width": 768,
+      "cases": [
+        "zero",
+        "unifocal",
+        "bifocal",
+        "sign controls",
+        "optional fields",
+        "quarter validation",
+        "Axis 0/180/181",
+        "IPD validation",
+        "positive ADD",
+        "shape",
+        "file select/replace/remove",
+        "filename-only consultation",
+        "eligibility",
+        "explicit prices",
+        "independent configurations",
+        "edit preload/save/cancel",
+        "quantities/removal",
+        "checkout totals/outcomes",
+        "no file reads/storage/submission"
+      ]
+    },
+    {
+      "width": 1024,
+      "cases": [
+        "zero",
+        "unifocal",
+        "bifocal",
+        "sign controls",
+        "optional fields",
+        "quarter validation",
+        "Axis 0/180/181",
+        "IPD validation",
+        "positive ADD",
+        "shape",
+        "file select/replace/remove",
+        "filename-only consultation",
+        "eligibility",
+        "explicit prices",
+        "independent configurations",
+        "edit preload/save/cancel",
+        "quantities/removal",
+        "checkout totals/outcomes",
+        "no file reads/storage/submission"
+      ]
+    },
+    {
+      "width": 1440,
+      "cases": [
+        "zero",
+        "unifocal",
+        "bifocal",
+        "sign controls",
+        "optional fields",
+        "quarter validation",
+        "Axis 0/180/181",
+        "IPD validation",
+        "positive ADD",
+        "shape",
+        "file select/replace/remove",
+        "filename-only consultation",
+        "eligibility",
+        "explicit prices",
+        "independent configurations",
+        "edit preload/save/cancel",
+        "quantities/removal",
+        "checkout totals/outcomes",
+        "no file reads/storage/submission"
+      ]
+    }
+  ],
+  "failures": [],
+  "baseURL": "http://127.0.0.1:4176/optiman/"
+}

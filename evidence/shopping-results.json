@@ -11,7 +11,7 @@
         "quantity and focus",
         "removal/empty cart",
         "three checkout simulations",
-        "no file input"
+        "frame-only excludes prescription inputs"
       ],
       "screens": [
         "product",
@@ -31,7 +31,7 @@
         "quantity and focus",
         "removal/empty cart",
         "three checkout simulations",
-        "no file input"
+        "frame-only excludes prescription inputs"
       ],
       "screens": [
         "product",
@@ -51,7 +51,7 @@
         "quantity and focus",
         "removal/empty cart",
         "three checkout simulations",
-        "no file input"
+        "frame-only excludes prescription inputs"
       ],
       "screens": [
         "product",
@@ -71,7 +71,7 @@
         "quantity and focus",
         "removal/empty cart",
         "three checkout simulations",
-        "no file input"
+        "frame-only excludes prescription inputs"
       ],
       "screens": [
         "product",
@@ -91,7 +91,7 @@
         "quantity and focus",
         "removal/empty cart",
         "three checkout simulations",
-        "no file input"
+        "frame-only excludes prescription inputs"
       ],
       "screens": [
         "product",

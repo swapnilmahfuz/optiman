@@ -6,9 +6,9 @@ Expected URL: https://swapnilmahfuz.github.io/optiman/
 
 ## Workflow
 
-`.github/workflows/frontend-pages.yml` runs on pushes to `feat/phase-03-ui-prototype`, or manual dispatch on that branch. It does not deploy other branches. `scripts/package_preview.py` stages exactly `preview/index.html`, `preview/styles.css`, `preview/app.js`, and local `preview/assets/*.webp`. It rejects symlinked/outside-source files. `preview/README.md`, docs, evidence, scripts, workflow files, `.git`, credentials and unrelated files are not uploaded. Only that isolated staging directory becomes the Pages artifact.
+`.github/workflows/frontend-pages.yml` runs on pushes to `feat/phase-03-ui-prototype`, or manual dispatch on that branch. It does not deploy other branches. `scripts/package_preview.py` stages exactly `preview/index.html`, `preview/styles.css`, `preview/app.js`, `preview/configurator.js`, and local `preview/assets/*.webp`. It rejects symlinked/outside-source files. `preview/README.md`, docs, evidence, scripts, workflow files, `.git`, credentials and unrelated files are not uploaded. Only that isolated staging directory becomes the Pages artifact.
 
-No application files, designs, rules or integrations are changed. Relative assets and hash navigation work beneath `/optiman/`. Existing labels disclose synthetic prices, simulated checkout and unavailable real operations. Prescription placeholders collect no documents or medical measurements. Form fields are client-only demonstration fields; use fictional information.
+No application files, designs, rules or integrations are changed. Relative assets and hash navigation work beneath `/optiman/`. Existing labels disclose synthetic prices, simulated checkout and unavailable real operations. The configurator accepts synthetic demo measurements in browser memory and retains only a demo filename; no file content or medical data is uploaded or persisted. Form fields are client-only demonstration fields; use fictional information.
 
 ## One-time GitHub settings
 
@@ -45,4 +45,4 @@ No installation is needed for the website. These optional local verification too
 
 This environment's network proxy returns HTTP 403 for GitHub API and Pages-host checks. A successful git push does not establish a successful Actions run or public deployment. Check the Actions status manually using the steps above. Live deployment and repository visibility are unverified from this environment.
 
-Actual local result: all three suites passed against the staged `/optiman/` site, including 45 route/layout checks and shopping/category regressions at five widths. All 18 staged files match their original frontend bytes. README and docs requests return 404. Workflow YAML parsed successfully and branch/artifact path assertions passed. Evidence: `evidence/pages-validation.json`. No live deployment success is claimed.
+Actual local result: all three suites passed against the staged `/optiman/` site, including 45 route/layout checks and shopping/category regressions at five widths. At that deployment-setup stage, all 18 staged files match their original frontend bytes. README and docs requests return 404. Workflow YAML parsed successfully and branch/artifact path assertions passed. Evidence: `evidence/pages-validation.json`. No live deployment success is claimed.

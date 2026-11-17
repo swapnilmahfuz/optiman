@@ -1,7 +1,7 @@
 {
   "date": "2026-11-17",
-  "local_base_url": "http://127.0.0.1:4174/optiman/",
-  "public_file_count": 18,
+  "local_base_url": "http://127.0.0.1:4176/optiman/",
+  "public_file_count": 19,
   "public_files": [
     "app.js",
     "assets/atlas-tortoiseshell-sunglasses-1000.webp",
@@ -19,6 +19,7 @@
     "assets/noir-black-sunglasses-1000.webp",
     "assets/noir-black-sunglasses-320.webp",
     "assets/noir-black-sunglasses-640.webp",
+    "configurator.js",
     "index.html",
     "styles.css"
   ],
@@ -30,7 +31,9 @@
   "suite_results": {
     "results.json": [],
     "premium-results.json": [],
-    "shopping-results.json": []
+    "shopping-results.json": [],
+    "configurator-results.json": [],
+    "configurator-edge-results.json": []
   },
   "workflow_yaml": "parsed; branch and artifact directory checked",
   "live_deployment": "unverified: network proxy denies GitHub API and Pages hostname with HTTP 403"

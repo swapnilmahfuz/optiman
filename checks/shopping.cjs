@@ -19,13 +19,13 @@ const fs=require('node:fs');
   await checkLayout('product');
   await p.locator('#add-cart').click();
   if(!(await p.locator('#bag-feedback').textContent()).includes('Added')||!await p.locator('#view-bag').isVisible())failures.push(`${width}: bag feedback`);
-  const mode=p.getByRole('button',{name:'Frame + Prescription Lenses',exact:true});await mode.focus();await p.keyboard.press('Enter');
+  const mode=p.getByRole('button',{name:'With Power / Lens',exact:true});await mode.focus();await p.keyboard.press('Enter');await p.getByRole('button',{name:'Continue to lenses',exact:true}).click();
   for(const [category,lens,total] of [['Single vision','৳1,200','৳4,400'],['Blue-cut / anti-reflective','৳1,600','৳4,800'],['Photochromic','৳2,200','৳5,400']]){
    await p.selectOption('#lens-category',category);const text=await p.locator('.price-breakdown').textContent();if(!text.includes(lens)||!text.includes(total))failures.push(`${width}: ${category} calculation`);
   }
   await p.selectOption('#lens-category','Single vision');await checkLayout('product-lenses');
   await p.locator('#add-cart').click();
-  for(const category of ['Custom','Progressive / bifocal']){
+  for(const category of ['Custom']){
    await p.selectOption('#lens-category',category);if(!await p.locator('#add-cart').isDisabled())failures.push(`${width}: consultation purchase`);
    if(!(await p.locator('.price-breakdown').textContent()).includes('Not quoted'))failures.push(`${width}: consultation fallback price`);
    const before=await p.evaluate(()=>cart.length);await p.locator('#add-cart').evaluate(e=>{e.disabled=false;e.click()});if(await p.evaluate(()=>cart.length)!==before)failures.push(`${width}: consultation command guard`);
@@ -47,7 +47,7 @@ const fs=require('node:fs');
   }
   await p.goto(baseURL+'#cart');await p.locator('[data-remove="0"]').focus();await p.keyboard.press('Enter');if(await p.locator('.bag-item').count()!==1)failures.push(`${width}: removal`);await p.locator('[data-remove="0"]').click();if(!(await p.locator('main').textContent()).includes('Your demo bag is empty'))failures.push(`${width}: empty bag`);
   if(width<600){await p.getByRole('button',{name:'Open menu'}).click();await p.locator('nav').getByRole('link',{name:'Optical Frames',exact:true}).click();if(await p.locator('#filter-category').inputValue()!=='Optical Frames')failures.push(`${width}: mobile menu`);}
-  checks.push({width,flows:['frame-only','three fixed prices','consultation command guard','unavailable blocking','frame-only reset','quantity and focus','removal/empty cart','three checkout simulations','no file input'],screens:['product','product-lenses','cart','checkout']});await p.close();
+  checks.push({width,flows:['frame-only','three fixed prices','consultation command guard','unavailable blocking','frame-only reset','quantity and focus','removal/empty cart','three checkout simulations','frame-only excludes prescription inputs'],screens:['product','product-lenses','cart','checkout']});await p.close();
  }
  await browser.close();fs.writeFileSync('evidence/shopping-results.json',JSON.stringify({checks,failures},null,2)+'\n');console.log(JSON.stringify({checks,failures},null,2));if(failures.length)process.exitCode=1;
 })().catch(e=>{console.error(e);process.exitCode=1});

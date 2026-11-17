@@ -73,3 +73,8 @@ Every change to a locked rule requires a new version entry and explicit user app
 - User explicitly authorized public frontend demo setup, superseding the earlier no-deployment restriction for this demo only. Feature branch remains isolated; backend and production-domain work remain unauthorized.
 - Added isolated Pages packaging and branch-specific Actions workflow; exclude README and all non-public repository files. See `docs/08_Demo_Publishing.md` for manual configuration, updates and rollback/unpublishing.
 - Verify the staged artifact and existing regression under `/optiman/`. Network-proxy denial prevents live Pages/API verification; report deployment as unverified until a successful Actions run and public-site check.
+
+## Phase 03.5C — 2026-11-17
+- Authorized complete frontend configurator, synthetic validation/eligibility, filename-only interface, editable cart configurations and Pages demo update. Preserve approved homepage and photography; no backend/real uploads/merge.
+- Atomic scope: staged input/validation; explicit lens matrix and summary; cart editing and checkout; regression/Pages packaging. Expected behavior and rollback in `docs/09_Synthetic_Lens_Demo_Rules.md`.
+- Update Pages artifact allowlist for the new local script, run browser suites under `/optiman/`, push feature branch and check deployment if network allows. Stop for manual review; do not claim live verification without access.

@@ -5,7 +5,7 @@ header('Content-Type: application/json; charset=utf-8');
 header('X-Content-Type-Options: nosniff');
 header('Cache-Control: no-store');
 $parent=dirname(__DIR__);
-$home=dirname(dirname($parent));
+$home=dirname($parent);
 $root=is_dir($home.'/optiman-private/src')?$home.'/optiman-private':(is_dir($parent.'/optiman-private/src')?$parent.'/optiman-private':$parent);
 try {
     if (!is_file($root.'/config.php')) throw new RuntimeException('Configuration missing');

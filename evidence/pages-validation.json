@@ -1,7 +1,7 @@
 {
   "date": "2026-11-17",
-  "local_base_url": "http://127.0.0.1:4199/optiman/",
-  "public_file_count": 45,
+  "local_base_url": "http://127.0.0.1:4201/optiman/",
+  "public_file_count": 40,
   "public_files": [
     "app.js",
     "assets/atlas-tortoiseshell-sunglasses-1000.webp",
@@ -26,19 +26,14 @@
     "staff.js",
     "styles.css",
     "vto/assets/atlas-front.webp",
-    "vto/assets/atlas-temple.webp",
     "vto/assets/forma-front.webp",
-    "vto/assets/forma-temple.webp",
     "vto/assets/muse-front.webp",
-    "vto/assets/muse-temple.webp",
     "vto/assets/noir-front.webp",
-    "vto/assets/noir-temple.webp",
     "vto/assets/sample-portrait.webp",
     "vto/camera.mjs",
     "vto/controller.mjs",
     "vto/frames.mjs",
     "vto/geometry.mjs",
-    "vto/temples.mjs",
     "vto/tracker.mjs",
     "vto/vendor/LICENSE",
     "vto/vendor/face_landmarker.task",
@@ -49,27 +44,28 @@
     "vto/vendor/wasm/vision_wasm_nosimd_internal.wasm",
     "vto/vto.css"
   ],
-  "artifact_source_hash_comparison": "all 45 files identical",
+  "artifact_source_hash_comparison": "all 40 files identical",
   "excluded_paths_http_status": {
     "README.md": 404,
-    "docs/15_Temple_Geometry_Correction.md": 404,
+    "docs/16_Front_Only_VTO.md": 404,
     ".git/config": 404,
-    "evidence/temple-fixtures/moderate-turn.webp": 404,
-    "vto/assets/README.md": 404
+    "evidence/front-only-mobile-results.json": 404,
+    "vto/temples.mjs": 404,
+    "vto/assets/atlas-temple.webp": 404,
+    "vto/assets/noir-temple.webp": 404,
+    "vto/assets/muse-temple.webp": 404,
+    "vto/assets/forma-temple.webp": 404
   },
   "targeted_checks": {
-    "temple_geometry_scope": "passed 648 final-front affine cases, proportional geometry, smoothing and immutable scope",
-    "temple_render": "all four frontal/turned/mirrored, protected face pixels zero",
-    "vto_photo": "passed five widths",
-    "vto_synthetic_camera": "passed translation/roll/scale/loss/switching/cleanup",
-    "operations_browser": "passed five widths",
-    "ui": "passed 45 layouts",
-    "engine": "passed",
-    "payment_preservation": "passed",
+    "front_only_scope": "passed immutable front/tracker/camera, unchanged markup/photo styles, no arm requests",
+    "mobile_live": "passed 360/390, landscape/portrait/high-resolution synthetic feeds, contain and shared coordinates",
+    "vto_photo": "passed five widths, all four frames, local photo, reset, Cart and privacy",
+    "vto_synthetic_camera": "passed movement/loss/reacquisition/switching/recalibration/cleanup",
+    "ui": "passed 45 layouts and shopping/POS interactions",
     "original_geometry": "passed",
     "camera_lifecycle": "passed",
-    "matched_before_after": "passed 52 synthetic cases, all four models, zero sampled protected face pixels"
+    "payment_preservation": "passed"
   },
-  "physical_camera_arms": "unverified; manual visual acceptance required",
-  "live_pages": "not verified from this environment"
+  "live_pages": "not verified from this environment",
+  "physical_camera": "not tested; no webcam/mobile hardware available"
 }

@@ -1,4 +1,0 @@
-import './temple-geometry-fix.mjs';
-import assert from 'node:assert/strict';import {TempleState} from '../preview/vto/temples.mjs';const state=new TempleState();
-const landmarks=Array.from({length:478},()=>({x:.5,y:.5,z:0}));for(const [i,x,y,z]of [[162,.05,.45,0],[127,.04,.5,-.01],[389,.95,.45,0],[356,.96,.5,.01]])landmarks[i]={x,y,z};
-const result={faceLandmarks:[landmarks],width:200,height:200},pose={x:100,y:100,distance:100,angle:0,yaw:.1,pitch:0,opacity:1};state.update(result,pose,pose,100,true);const initial=state.data.targets[0].x;landmarks[162].x+=.02;state.update(result,pose,pose,133,false);assert(state.data.targets[0].x>initial&&state.data.targets[0].x<initial+.032);state.update(result,pose,null,166);assert.equal(state.data,null);console.log('Separate arm smoothing and tracking-loss clearing passed.');

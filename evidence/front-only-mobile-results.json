@@ -1,0 +1,224 @@
+{
+  "results": [
+    {
+      "width": 360,
+      "video": [
+        640,
+        480
+      ],
+      "layout": {
+        "width": 326,
+        "height": 434.65625,
+        "fit": "contain",
+        "canvas": [
+          640,
+          480
+        ],
+        "draw": {
+          "args": [
+            0,
+            0,
+            640,
+            480
+          ],
+          "matrix": [
+            -1,
+            0,
+            0,
+            1,
+            640,
+            0
+          ]
+        },
+        "overflow": false
+      },
+      "models": 4,
+      "recalibration": true,
+      "stop": true
+    },
+    {
+      "width": 360,
+      "video": [
+        480,
+        640
+      ],
+      "layout": {
+        "width": 326,
+        "height": 434.65625,
+        "fit": "contain",
+        "canvas": [
+          480,
+          640
+        ],
+        "draw": {
+          "args": [
+            0,
+            0,
+            480,
+            640
+          ],
+          "matrix": [
+            -1,
+            0,
+            0,
+            1,
+            480,
+            0
+          ]
+        },
+        "overflow": false
+      },
+      "models": 4,
+      "recalibration": true,
+      "stop": true
+    },
+    {
+      "width": 360,
+      "video": [
+        1280,
+        720
+      ],
+      "layout": {
+        "width": 326,
+        "height": 434.65625,
+        "fit": "contain",
+        "canvas": [
+          960,
+          540
+        ],
+        "draw": {
+          "args": [
+            0,
+            0,
+            960,
+            540
+          ],
+          "matrix": [
+            -1,
+            0,
+            0,
+            1,
+            960,
+            0
+          ]
+        },
+        "overflow": false
+      },
+      "models": 4,
+      "recalibration": true,
+      "stop": true
+    },
+    {
+      "width": 390,
+      "video": [
+        640,
+        480
+      ],
+      "layout": {
+        "width": 356,
+        "height": 474.65625,
+        "fit": "contain",
+        "canvas": [
+          640,
+          480
+        ],
+        "draw": {
+          "args": [
+            0,
+            0,
+            640,
+            480
+          ],
+          "matrix": [
+            -1,
+            0,
+            0,
+            1,
+            640,
+            0
+          ]
+        },
+        "overflow": false
+      },
+      "models": 4,
+      "recalibration": true,
+      "stop": true
+    },
+    {
+      "width": 390,
+      "video": [
+        480,
+        640
+      ],
+      "layout": {
+        "width": 356,
+        "height": 474.65625,
+        "fit": "contain",
+        "canvas": [
+          480,
+          640
+        ],
+        "draw": {
+          "args": [
+            0,
+            0,
+            480,
+            640
+          ],
+          "matrix": [
+            -1,
+            0,
+            0,
+            1,
+            480,
+            0
+          ]
+        },
+        "overflow": false
+      },
+      "models": 4,
+      "recalibration": true,
+      "stop": true
+    },
+    {
+      "width": 390,
+      "video": [
+        1280,
+        720
+      ],
+      "layout": {
+        "width": 356,
+        "height": 474.65625,
+        "fit": "contain",
+        "canvas": [
+          960,
+          540
+        ],
+        "draw": {
+          "args": [
+            0,
+            0,
+            960,
+            540
+          ],
+          "matrix": [
+            -1,
+            0,
+            0,
+            1,
+            960,
+            0
+          ]
+        },
+        "overflow": false
+      },
+      "models": 4,
+      "recalibration": true,
+      "stop": true
+    }
+  ],
+  "errors": [],
+  "armRequests": [],
+  "physicalCamera": false,
+  "scope": "Full sensor image contained, not a guarantee of face content outside sensor FOV; genuine MediaPipe on synthetic captureStream"
+}

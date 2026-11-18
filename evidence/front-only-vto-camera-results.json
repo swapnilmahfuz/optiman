@@ -1,0 +1,26 @@
+{
+  "fixture": "Synthetic portrait rendered into captureStream; genuine MediaPipe video inference, NOT physical camera evidence",
+  "checks": [
+    "no microphone/request before opt-in",
+    "stable detection",
+    "translated/rolled/scaled source",
+    "frame switching without camera restart",
+    "loss hides overlay/reacquisition",
+    "recalibration",
+    "close stops all tracks",
+    "reopen/navigation cleanup"
+  ],
+  "performance": {
+    "frames": 155,
+    "inferenceMs": 13223.499999888241,
+    "maxInferenceMs": 406.80000000447035,
+    "started": 2551.7000000029802,
+    "tracking": true,
+    "mode": "live",
+    "delegate": "CPU",
+    "averageInferenceMs": 85.31290322508542,
+    "processedFPS": 10.806137886322798,
+    "cameraActive": true
+  },
+  "errors": []
+}

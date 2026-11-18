@@ -10,3 +10,6 @@
 .vto-photo-panel label:has([data-vto-consent]){display:flex;align-items:center;gap:10px;line-height:1.6;font-size:12px}
 .vto-photo-panel [data-vto-consent]{appearance:auto;width:18px;height:18px;min-height:18px;flex:0 0 18px;padding:0;margin:0;accent-color:var(--brown)}
 .vto-header{position:sticky;top:0;z-index:3;background:var(--cream);padding:8px 0}
+
+/* Live mobile view contains the entire sensor image; photo preview stays unchanged. */
+@media(max-width:767px) and (orientation:portrait){.vto-viewport.vto-live{aspect-ratio:3/4}}

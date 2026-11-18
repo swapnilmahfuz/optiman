@@ -1,0 +1,5 @@
+/config.php
+/public/uploads/products/*
+!/public/uploads/products/.htaccess
+*.sql.backup
+*.log

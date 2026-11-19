@@ -31,7 +31,7 @@ for directory in ('src', 'public', 'migrations', 'tools'):
                     files.append(path)
                 continue
             allowed = (directory == 'src' and path.suffix == '.php' or
-                       directory == 'migrations' and path.suffix == '.sql' or
+                       directory == 'migrations' and (path.suffix == '.sql' or path.name == '003_variant_catalog.php') or
                        directory == 'tools' and path.name == 'bootstrap-owner.php' or
                        directory == 'public' and (parts in [('public', 'index.php'), ('public', '.htaccess')] or
                            len(parts) == 3 and parts[:2] == ('public', 'admin') and path.suffix in {'.html', '.css', '.js'}))

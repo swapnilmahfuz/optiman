@@ -119,6 +119,13 @@ final class ImageService
         }
     }
 
+    public static function urls(string $publicDirectory, string $basename): array
+    {
+        if (!preg_match('/^[a-f0-9]{32}$/D',$basename)) throw new InvalidArgumentException('Invalid image identifier.');
+        $base=rtrim($publicDirectory,'/').'/'.$basename;
+        return ['thumb'=>$base.'-320.webp','card'=>$base.'-640.webp','main'=>$base.'-1000.webp'];
+    }
+
     private function filePath(string $base, int $side): string
     {
         return $this->directory . DIRECTORY_SEPARATOR . $base . '-' . $side . '.webp';

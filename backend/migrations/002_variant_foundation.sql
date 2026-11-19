@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS product_variants (
   tryon_asset VARCHAR(255) NULL,
   status ENUM('active','inactive') NOT NULL DEFAULT 'inactive',
   is_default TINYINT(1) NOT NULL DEFAULT 0,
-  default_product_id BIGINT UNSIGNED AS (CASE WHEN is_default = 1 THEN product_id ELSE NULL END) PERSISTENT,
+  default_product_id BIGINT UNSIGNED AS (CASE WHEN is_default = 1 THEN product_id ELSE NULL END) STORED,
   created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   UNIQUE KEY uq_variant_sku (sku),

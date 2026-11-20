@@ -1,0 +1,66 @@
+name: Deploy Optiman storefront
+on:
+  workflow_dispatch:
+    inputs:
+      commit:
+        description: Full approved commit SHA from feat/phase-03-ui-prototype
+        required: true
+        type: string
+      operation:
+        description: Deploy or restore a previous storefront backup
+        required: true
+        default: deploy
+        type: choice
+        options:
+          - deploy
+          - rollback
+permissions:
+  contents: read
+concurrency:
+  group: optiman-production-storefront
+  cancel-in-progress: false
+jobs:
+  deploy:
+    if: github.ref == 'refs/heads/feat/phase-03-ui-prototype'
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Validate approved branch and commit
+        env:
+          SELECTED_SHA: ${{ inputs.commit }}
+          OPERATION: ${{ inputs.operation }}
+        run: |
+          if [[ ! "$SELECTED_SHA" =~ ^[0-9a-f]{40}$ ]]; then exit 1; fi
+          tip=$(git ls-remote https://github.com/swapnilmahfuz/optiman.git refs/heads/feat/phase-03-ui-prototype | cut -f1)
+          if [ "$OPERATION" = deploy ] && [ "$tip" != "$SELECTED_SHA" ]; then echo 'Deploy the current feature branch tip only.'; exit 1; fi
+      - name: Configure trusted SSH connection
+        env:
+          DEPLOY_KEY: ${{ secrets.OPTIMAN_DEPLOY_KEY }}
+          KNOWN_HOSTS: ${{ secrets.OPTIMAN_SSH_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d "$RUNNER_TEMP/ssh"
+          printf '%s\n' "$DEPLOY_KEY" > "$RUNNER_TEMP/ssh/key"
+          printf '%s\n' "$KNOWN_HOSTS" > "$RUNNER_TEMP/ssh/known_hosts"
+          chmod 600 "$RUNNER_TEMP/ssh/key" "$RUNNER_TEMP/ssh/known_hosts"
+          ssh-keygen -lf "$RUNNER_TEMP/ssh/known_hosts"
+      - name: Run selected deployment on server
+        env:
+          SELECTED_SHA: ${{ inputs.commit }}
+          OPERATION: ${{ inputs.operation }}
+        run: |
+          ssh -i "$RUNNER_TEMP/ssh/key" -p 1157 -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile="$RUNNER_TEMP/ssh/known_hosts" optiman1@mail.srv1.whitednsservice.com "bash -s -- '$SELECTED_SHA' '$OPERATION'" <<'REMOTE'
+          set -euo pipefail
+          selected_sha="$1"
+          operation="$2"
+          cd /home/optiman1/optiman-deploy/repo
+          git fetch origin feat/phase-03-ui-prototype
+          if [ "$operation" = deploy ]; then
+            git checkout feat/phase-03-ui-prototype
+            git merge --ff-only origin/feat/phase-03-ui-prototype
+          else
+            git checkout feat/phase-03-ui-prototype
+          fi
+          if [ "$operation" = deploy ]; then test "$(git rev-parse HEAD)" = "$selected_sha"; fi
+          if [ "$operation" = deploy ]; then python3 scripts/deploy_storefront.py deploy --commit "$selected_sha" --dry-run; fi
+          python3 scripts/deploy_storefront.py "$operation" --commit "$selected_sha"
+          REMOTE

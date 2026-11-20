@@ -1,8 +1,11 @@
 from pathlib import Path
 from zipfile import ZipFile, ZIP_DEFLATED
 from tempfile import TemporaryDirectory
-import subprocess, shutil
+import subprocess, shutil, argparse
 root = Path(__file__).resolve().parents[1]
+parser=argparse.ArgumentParser()
+parser.add_argument('--output',type=Path,default=root/'packages/optiman-storefront-cpanel.zip')
+args=parser.parse_args()
 with TemporaryDirectory(prefix='optiman-storefront-') as temp:
     build = Path(temp)/'site'
     subprocess.run(['python3',str(root/'scripts/package_preview.py'),str(build)],check=True)
@@ -17,6 +20,8 @@ with TemporaryDirectory(prefix='optiman-storefront-') as temp:
         if item.name=='optiman-preview-demo' or item.name.startswith('live-'): continue
         if item.is_dir(): shutil.copytree(item,demo/item.name)
         else: shutil.copy2(item,demo/item.name)
+    for obsolete in ('app.js','configurator.js','staff.js','barcode.js'):
+        (build/obsolete).unlink()
     start=html.index('<script src="configurator.js')
     end=html.index('</head>',start)
     html=html[:start]+'<script src="live-configurator.js" defer></script><script src="demo-engine.js" defer></script><script src="live-shopping.js" defer></script><script type="module" src="live-storefront.mjs"></script>'+html[end:]
@@ -31,7 +36,7 @@ Extract into public_html after backing up any existing files with the same names
 This ZIP does not contain optiman-backend, private configuration or database files.
 The storefront uses hash routes. Its checkout and lens prices are demonstrations.
 """)
-    output=root/'packages/optiman-storefront-cpanel.zip'
+    output=args.output.resolve()
     with ZipFile(output,'w',ZIP_DEFLATED,compresslevel=9) as archive:
         for file in sorted(build.rglob('*')):
             if file.is_file(): archive.write(file,file.relative_to(build).as_posix())
